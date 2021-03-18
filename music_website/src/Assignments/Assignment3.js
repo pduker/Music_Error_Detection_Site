@@ -4,11 +4,11 @@ import history from "./../history";
 import "./assignment.css";
 import { withRouter } from "react-router-dom";
 
-class Assignment1 extends Component {
+class Assignment3 extends Component {
   render() {
     return (
-        <div className="Assignment1">
-            <h2>Assignment 1</h2>
+        <div className="Assignment3">
+            <h2>Assignment 3</h2>
         <Button
           onClick={()=> {
             history.push('/');
@@ -24,4 +24,4 @@ class Assignment1 extends Component {
   }
 }
 
-export default withRouter(Assignment1);
+export default withRouter(Assignment3);
