@@ -5,6 +5,7 @@ import "./assignment.css";
 import { withRouter } from "react-router-dom";
 import {Howl, Howler} from 'howler';
 import Tmp from "./../Audio/tmp.mp3";
+var count;
 
 class Assignment1 extends Component {
     SoundPlay = (src) => {
@@ -16,8 +17,12 @@ class Assignment1 extends Component {
     RenderButtonAndSound = () => {
             return(
                 <Button 
-                    onClick={() => 
-                    this.SoundPlay(Tmp)
+                    onClick={() => {
+                        if (count < 3){
+                            this.SoundPlay(Tmp);
+                        }
+                        count++;
+                    }
                     }
                     type = "button"
                     buttonStyle = "btn--primary--solid"
@@ -28,6 +33,10 @@ class Assignment1 extends Component {
     }
   render() {
       Howler.volume(1.0)
+    if (! count){
+        count = 0;
+    }
+
     return (
         <div className="Assignment1">
             <h2>Assignment 1</h2>
