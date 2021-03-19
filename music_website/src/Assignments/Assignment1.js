@@ -4,7 +4,7 @@ import history from "./../history";
 import "./assignment.css";
 import { withRouter } from "react-router-dom";
 import {Howl, Howler} from 'howler';
-import Tmp from "./../tmp.mp3";
+import Tmp from "./../Audio/tmp.mp3";
 
 class Assignment1 extends Component {
     SoundPlay = (src) => {
