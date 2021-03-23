@@ -10,21 +10,43 @@ function App() {
   const placeX = mouseStuff[1];
   const placeY = mouseStuff[2];
 
-  const divStyle = {
+  const divStyleP = {
     display: 'none',
     position: 'absolute',
     top: placeY-13,
     left: placeX-13,
-    background: 'pink',
+    background: 'Pink',
     opacity: '.5',
-    border: '2px solid red',
+    border: '2px solid Red',
+    width: '25px',
+    height: '25px'};
+  const divStyleR = {
+    display: 'none',
+    position: 'absolute',
+    top: placeY-13,
+    left: placeX-13,
+    background: 'AquaMarine',
+    opacity: '.5',
+    border: '2px solid Green',
+    width: '25px',
+    height: '25px'};
+  const divStyleI = {
+    display: 'none',
+    position: 'absolute',
+    top: placeY-13,
+    left: placeX-13,
+    background: 'Orchid',
+    opacity: '.5',
+    border: '2px solid BlueViolet',
     width: '25px',
     height: '25px'};
     // var hotspotCount = 1;
   return (
     <div className="App">
       <Routes />
-      <div id="shape" style={divStyle}> </div>
+      <div id="shapeP" style={divStyleP}> </div>
+      <div id="shapeR" style={divStyleR}> </div>
+      <div id="shapeI" style={divStyleI}> </div>
       {/* <Button className="hotspot"
         onClick={() => {
           hotspotCount++;

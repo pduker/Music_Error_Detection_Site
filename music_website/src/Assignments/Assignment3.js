@@ -8,7 +8,9 @@ import example1 from "./../music_example/example1.jpg";
 var count;
 var isPlaying = false;
 var audio = new Audio(Tmp);
-var hotspotCount = 1;
+var hotspotCountP = 1;
+var hotspotCountR = 1;
+var hotspotCountI = 1;
 
 class Assignment3 extends Component {
     RenderButtonAndSound = () => {
@@ -70,17 +72,43 @@ class Assignment3 extends Component {
         >Go Back to Assignments</Button>
         <Button className="hotspot"
         onClick={() => {
-          hotspotCount++;
-          document.getElementById('shape').style.display = "block";
-          let clone = document.querySelector('#shape').cloneNode(true);
-          clone.setAttribute('id', 'shape'+hotspotCount.toString());
+          hotspotCountP++;
+          document.getElementById('shapeP').style.display = "block";
+          let clone = document.querySelector('#shapeP').cloneNode(true);
+          clone.setAttribute('id', 'shapeP'+hotspotCountP.toString());
           document.querySelector('div').appendChild( clone );
         }
         }
         type="button"
         buttonStyle="btn--primary--solid"
         buttonSize="btn--large"
-      >Add Shape</Button>
+        >Add Pitch Error</Button>
+        <Button className="hotspot"
+        onClick={() => {
+          hotspotCountR++;
+          document.getElementById('shapeR').style.display = "block";
+          let clone = document.querySelector('#shapeR').cloneNode(true);
+          clone.setAttribute('id', 'shapeR'+hotspotCountR.toString());
+          document.querySelector('div').appendChild( clone );
+        }
+        }
+        type="button"
+        buttonStyle="btn--primary--solid"
+        buttonSize="btn--large"
+        >Add Rhythm Error</Button>
+        <Button className="hotspot"
+        onClick={() => {
+          hotspotCountI++;
+          document.getElementById('shapeI').style.display = "block";
+          let clone = document.querySelector('#shapeI').cloneNode(true);
+          clone.setAttribute('id', 'shapeI'+hotspotCountI.toString());
+          document.querySelector('div').appendChild( clone );
+        }
+        }
+        type="button"
+        buttonStyle="btn--primary--solid"
+        buttonSize="btn--large"
+        >Add Intonation Error</Button>
       <img class="center-fit" src={example1} alt="Assignment 3"/>
       </div>
     );
