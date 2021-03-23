@@ -84,7 +84,7 @@ class Assignment1 extends Component {
         buttonStyle="btn--primary--solid"
         buttonSize="btn--large"
       >Add Shape</Button>
-        <img src={example1} alt="Assignment 1" width="1200" height="400"/>
+        <img class="center-fit" src={example1} alt="Assignment 1"/>
       </div>
     );
   }

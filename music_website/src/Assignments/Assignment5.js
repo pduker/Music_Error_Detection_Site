@@ -68,7 +68,6 @@ class Assignment5 extends Component {
           buttonStyle="btn--primary--solid"
           buttonSize="btn--large"
         >Go Back to Assignments</Button>
-        <img src={example1} alt="Assignment 5" />
         <Button className="hotspot"
         onClick={() => {
           hotspotCount++;
@@ -82,6 +81,7 @@ class Assignment5 extends Component {
         buttonStyle="btn--primary--solid"
         buttonSize="btn--large"
       >Add Shape</Button>
+      <img class="center-fit" src={example1} alt="Assignment 5"/>
       </div>
     );
   }
