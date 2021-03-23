@@ -28,6 +28,9 @@ class Assignment1 extends Component {
                     console.log("playing");
                 }
             }
+            if (count === 3){
+              alert("You have maxed out your attempts to play this sound")
+            }
         }
         }
         type="button"
@@ -68,7 +71,6 @@ class Assignment1 extends Component {
           buttonStyle="btn--primary--solid"
           buttonSize="btn--large"
         >Go Back to Assignments</Button>
-        <img src={example1} alt="Assignment 1" />
         <Button className="hotspot"
         onClick={() => {
           hotspotCount++;
@@ -82,6 +84,7 @@ class Assignment1 extends Component {
         buttonStyle="btn--primary--solid"
         buttonSize="btn--large"
       >Add Shape</Button>
+        <img src={example1} alt="Assignment 1" width="1200" height="400"/>
       </div>
     );
   }

@@ -4,7 +4,7 @@ import history from "./../history";
 import "./assignment.css";
 import { withRouter } from "react-router-dom";
 import Tmp from "./../music_example/Example2wErr.m4a";
-import example1 from "./../music_example/example1.jpg";
+import example2 from "./../music_example/example2.jpg";
 var count;
 var isPlaying = false;
 var audio = new Audio(Tmp);
@@ -68,7 +68,6 @@ class Assignment2 extends Component {
           buttonStyle="btn--primary--solid"
           buttonSize="btn--large"
         >Go Back to Assignments</Button>
-        <img src={example1} alt="Assignment 2" />
         <Button className="hotspot"
         onClick={() => {
           hotspotCount++;
@@ -82,6 +81,7 @@ class Assignment2 extends Component {
         buttonStyle="btn--primary--solid"
         buttonSize="btn--large"
       >Add Shape</Button>
+        <img src={example2} alt="Assignment 2" width="1200" height="400"/>
       </div>
     );
   }
