@@ -1,5 +1,8 @@
 :root {
     --primary: #4628ff;
+    --pitch: #ff0000;
+    --rhythm: #008000;
+    --intonation: #8a2be2; 
     --white: #fdfdfd;
     --dark: #181717;
 }
@@ -19,6 +22,24 @@
 
 .btn--primary--solid {
     background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    margin: 5px;
+}
+.btn--pitch--solid {
+    background-color: var(--pitch);
+    color: var(--white);
+    border: none;
+    margin: 5px;
+}
+.btn--rhythm--solid {
+    background-color: var(--rhythm);
+    color: var(--white);
+    border: none;
+    margin: 5px;
+}
+.btn--intonation--solid {
+    background-color: var(--intonation);
     color: var(--white);
     border: none;
     margin: 5px;

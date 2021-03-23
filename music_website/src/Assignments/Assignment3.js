@@ -70,7 +70,7 @@ class Assignment3 extends Component {
           buttonStyle="btn--primary--solid"
           buttonSize="btn--large"
         >Go Back to Assignments</Button>
-        <Button className="hotspot"
+        <Button
         onClick={() => {
           hotspotCountP++;
           document.getElementById('shapeP').style.display = "block";
@@ -80,7 +80,7 @@ class Assignment3 extends Component {
         }
         }
         type="button"
-        buttonStyle="btn--primary--solid"
+        buttonStyle="btn--pitch--solid"
         buttonSize="btn--large"
         >Add Pitch Error</Button>
         <Button className="hotspot"
@@ -93,10 +93,10 @@ class Assignment3 extends Component {
         }
         }
         type="button"
-        buttonStyle="btn--primary--solid"
+        buttonStyle="btn--rhythm--solid"
         buttonSize="btn--large"
         >Add Rhythm Error</Button>
-        <Button className="hotspot"
+        <Button
         onClick={() => {
           hotspotCountI++;
           document.getElementById('shapeI').style.display = "block";
@@ -106,7 +106,7 @@ class Assignment3 extends Component {
         }
         }
         type="button"
-        buttonStyle="btn--primary--solid"
+        buttonStyle="btn--intonation--solid"
         buttonSize="btn--large"
         >Add Intonation Error</Button>
       <img class="center-fit" src={example1} alt="Assignment 3"/>

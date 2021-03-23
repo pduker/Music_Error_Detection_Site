@@ -3,7 +3,10 @@ import "./button.css";
 
 
 const STYLES = [
-    "btn--primary--solid"
+    "btn--primary--solid",
+    "btn--pitch--solid",
+    "btn--rhythm--solid",
+    "btn--intonation--solid"
 ]
 
 const SIZES = [
