@@ -11,6 +11,7 @@ class Home extends Component {
             <h2>Welcome to the Assignments</h2>
         <Button
           onClick={()=> {
+            // document.getElementsByClassName('hotspot').display = "block";
             history.push('/Assignment1');
             history.go();
           }

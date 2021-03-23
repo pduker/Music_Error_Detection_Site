@@ -5,6 +5,7 @@
 }
 
 .btn {
+    display: inline-block;
     font-family: "Roboto", san-serif;
     font-weight: 400;
     border-radius: 10px;

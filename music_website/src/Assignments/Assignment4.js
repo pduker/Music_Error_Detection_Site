@@ -8,6 +8,7 @@ import example1 from "./../music_example/example1.jpg";
 var count;
 var isPlaying = false;
 var audio = new Audio(Tmp);
+var hotspotCount = 1;
 
 class Assignment4 extends Component {
     RenderButtonAndSound = () => {
@@ -68,6 +69,19 @@ class Assignment4 extends Component {
           buttonSize="btn--large"
         >Go Back to Assignments</Button>
         <img src={example1} alt="Assignment 4" />
+        <Button className="hotspot"
+        onClick={() => {
+          hotspotCount++;
+          document.getElementById('shape').style.display = "block";
+          let clone = document.querySelector('#shape').cloneNode(true);
+          clone.setAttribute('id', 'shape'+hotspotCount.toString());
+          document.querySelector('div').appendChild( clone );
+        }
+        }
+        type="button"
+        buttonStyle="btn--primary--solid"
+        buttonSize="btn--large"
+      >Add Shape</Button>
       </div>
     );
   }
