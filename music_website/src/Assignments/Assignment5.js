@@ -109,7 +109,7 @@ class Assignment5 extends Component {
         buttonStyle="btn--intonation--solid"
         buttonSize="btn--large"
         >Add Intonation Error</Button>
-      <img class="center-fit" src={example1} alt="Assignment 5"/>
+      <img id="img5" className="center-fit" src={example1} alt="Assignment 5"/>
       </div>
     );
   }
