@@ -8,7 +8,9 @@ class Home extends Component {
   render() {
     return (
         <div className="Home">
-            <h2>Welcome to the Assignments</h2>
+            <h2 style={{color:'white'}}>Welcome to Music Error Detection Practice Quiz</h2>
+            <h3 style={{color:'white'}}>Click on the Assignment to begin!</h3>
+            <div>
         <Button
           onClick={()=> {
             history.push('/Assignment1');
@@ -18,7 +20,9 @@ class Home extends Component {
           type = "button"
           buttonStyle = "btn--primary--solid"
           buttonSize = "btn--large"
-        >Assignment 1</Button>
+        >Assignment 1</Button> 
+        </div>
+        <div>
         <Button
           onClick={()=> {
             history.push('/Assignment2');
@@ -29,6 +33,8 @@ class Home extends Component {
           buttonStyle = "btn--primary--solid"
           buttonSize = "btn--large"
         >Assignment 2</Button>
+        </div>
+        <div>
         <Button
           onClick={()=> {
             history.push('/Assignment3');
@@ -39,6 +45,8 @@ class Home extends Component {
           buttonStyle = "btn--primary--solid"
           buttonSize = "btn--large"
         >Assignment 3</Button>
+        </div>
+        <div>
         <Button
           onClick={()=> {
             history.push('/Assignment4');
@@ -49,6 +57,7 @@ class Home extends Component {
           buttonStyle = "btn--primary--solid"
           buttonSize = "btn--large"
         >Assignment 4</Button>
+        </div>
         <Button
           onClick={()=> {
             history.push('/Assignment5');
@@ -59,6 +68,21 @@ class Home extends Component {
           buttonStyle = "btn--primary--solid"
           buttonSize = "btn--large"
         >Assignment 5</Button>
+
+
+
+
+<address>
+  Visit us at: <a href="https://www.udel.edu/apply/undergraduate-admissions/major-finder/music-education/">UD Music Education</a> 
+  <div>
+  For Questions Email: <a href="pduker@udel.edu">Professor Phil Duker</a>
+  </div>
+</address>
+
+
+
+
+
       </div>
     );
   }

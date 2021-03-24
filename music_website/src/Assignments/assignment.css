@@ -18,6 +18,7 @@ code {
   font-family: "Roboto", san-serif;
   font-weight: 400;
   border-radius: 10px;
+  background: lightgray;
 }
 
 .Assignment2 {
@@ -26,6 +27,7 @@ code {
   font-family: "Roboto", san-serif;
   font-weight: 400;
   border-radius: 10px;
+  background: lightgray;
 }
 
 .Assignment3 {
@@ -34,6 +36,7 @@ code {
   font-family: "Roboto", san-serif;
   font-weight: 400;
   border-radius: 10px;
+  background: lightgray;
 }
 
 .Assignment4 {
@@ -42,6 +45,7 @@ code {
   font-family: "Roboto", san-serif;
   font-weight: 400;
   border-radius: 10px;
+  background: lightgray;
 }
 
 .Assignment5 {
@@ -50,10 +54,19 @@ code {
   font-family: "Roboto", san-serif;
   font-weight: 400;
   border-radius: 10px;
+  background: lightgray;
 }
 
 .center-fit {
   max-width: 100%;
   max-height: 100vh;
   margin: auto;
+}
+
+.Instruction {
+  text-align: left;
+  margin: 0px 100px;
+  padding: 5px;
+  font-family: "Roboto", san-serif;
+  font-weight: 400;
 }
