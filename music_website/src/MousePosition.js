@@ -11,51 +11,53 @@ const useMousePosition = () => {
   };
 
   const handleClick = ev => {
-    if (history.location.pathname==="/Assignment1"){
-      if ((ev.clientX < (document.getElementById("img1").x + document.getElementById("img1").width) 
-      && ev.clientY < (document.getElementById("img1").y + document.getElementById("img1").height) 
-      && ev.clientX > (document.getElementById("img1").x) 
-      && ev.clientY > (document.getElementById("img1").y))){
-        placeX = ev.clientX;
-        placeY = ev.clientY;
-      }
-    }
-    if (history.location.pathname==="/Assignment2"){
-      if ((ev.clientX < (document.getElementById("img2").x + document.getElementById("img2").width) 
-      && ev.clientY < (document.getElementById("img2").y + document.getElementById("img2").height) 
-      && ev.clientX > (document.getElementById("img2").x) 
-      && ev.clientY > (document.getElementById("img2").y))){
-        placeX = ev.clientX;
-        placeY = ev.clientY;
-      }
-    }
-    if (history.location.pathname==="/Assignment3"){
-      if ((ev.clientX < (document.getElementById("img3").x + document.getElementById("img3").width) 
-      && ev.clientY < (document.getElementById("img3").y + document.getElementById("img3").height) 
-      && ev.clientX > (document.getElementById("img3").x) 
-      && ev.clientY > (document.getElementById("img3").y))){
-        placeX = ev.clientX;
-        placeY = ev.clientY;
-      }
-    }
-    if (history.location.pathname==="/Assignment4"){
-      if ((ev.clientX < (document.getElementById("img4").x + document.getElementById("img4").width) 
-      && ev.clientY < (document.getElementById("img4").y + document.getElementById("img4").height) 
-      && ev.clientX > (document.getElementById("img4").x) 
-      && ev.clientY > (document.getElementById("img4").y))){
-        placeX = ev.clientX;
-        placeY = ev.clientY;
-      }
-    }
-    if (history.location.pathname==="/Assignment5"){
-      if ((ev.clientX < (document.getElementById("img5").x + document.getElementById("img5").width) 
-      && ev.clientY < (document.getElementById("img5").y + document.getElementById("img5").height) 
-      && ev.clientX > (document.getElementById("img5").x) 
-      && ev.clientY > (document.getElementById("img5").y))){
-        placeX = ev.clientX;
-        placeY = ev.clientY;
-      }
-    }
+    // if (history.location.pathname==="/Assignment1"){
+    //   if ((ev.clientX < (document.getElementById("img1").x + document.getElementById("img1").width) 
+    //   && ev.clientY < (document.getElementById("img1").y + document.getElementById("img1").height) 
+    //   && ev.clientX > (document.getElementById("img1").x) 
+    //   && ev.clientY > (document.getElementById("img1").y))){
+    //     placeX = ev.clientX;
+    //     placeY = ev.clientY;
+    //   }
+    // }
+    // if (history.location.pathname==="/Assignment2"){
+    //   if ((ev.clientX < (document.getElementById("img2").x + document.getElementById("img2").width) 
+    //   && ev.clientY < (document.getElementById("img2").y + document.getElementById("img2").height) 
+    //   && ev.clientX > (document.getElementById("img2").x) 
+    //   && ev.clientY > (document.getElementById("img2").y))){
+    //     placeX = ev.clientX;
+    //     placeY = ev.clientY;
+    //   }
+    // }
+    // if (history.location.pathname==="/Assignment3"){
+    //   if ((ev.clientX < (document.getElementById("img3").x + document.getElementById("img3").width) 
+    //   && ev.clientY < (document.getElementById("img3").y + document.getElementById("img3").height) 
+    //   && ev.clientX > (document.getElementById("img3").x) 
+    //   && ev.clientY > (document.getElementById("img3").y))){
+    //     placeX = ev.clientX;
+    //     placeY = ev.clientY;
+    //   }
+    // }
+    // if (history.location.pathname==="/Assignment4"){
+    //   if ((ev.clientX < (document.getElementById("img4").x + document.getElementById("img4").width) 
+    //   && ev.clientY < (document.getElementById("img4").y + document.getElementById("img4").height) 
+    //   && ev.clientX > (document.getElementById("img4").x) 
+    //   && ev.clientY > (document.getElementById("img4").y))){
+    //     placeX = ev.clientX;
+    //     placeY = ev.clientY;
+    //   }
+    // }
+    // if (history.location.pathname==="/Assignment5"){
+    //   if ((ev.clientX < (document.getElementById("img5").x + document.getElementById("img5").width) 
+    //   && ev.clientY < (document.getElementById("img5").y + document.getElementById("img5").height) 
+    //   && ev.clientX > (document.getElementById("img5").x) 
+    //   && ev.clientY > (document.getElementById("img5").y))){
+    //     placeX = ev.clientX;
+    //     placeY = ev.clientY;
+    //   }
+    // }
+    placeX = ev.clientX;
+    placeY = ev.clientY;
   };
 
   useEffect(() => {
