@@ -52,6 +52,7 @@
 }
 
 .btn--large {
+    /* padding: 2vh 15vw; */
     padding: 15px 30px;
     font-size: 20px;
 }
