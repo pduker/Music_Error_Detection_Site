@@ -49,6 +49,22 @@ class Assignment5 extends Component {
     return (
       <div className="Assignment5">
         <h2>Assignment 5</h2>
+        <div className="Instruction">
+          <h2><u>Instruction:</u>  Click the "Play Sound" button to hear the music. 
+          You will only be able to play the sound 3 times. After listening to the music, 
+          place the hotspots over each note error. There are 3 differnt types of error:
+          Pitch Error (Red), Rhythm Error (Green), and Intonation Error (Purple). 
+          <br></br>
+          <br></br>
+          <u>How to place the hotspot?</u>
+          <br></br>
+          <br></br>
+          1. Click the error button
+          <br></br>
+          2. Place the hotspot on the note error
+          <br></br>
+          3. Click the error button again.</h2>
+        </div>
         {this.RenderButtonAndSound()}
         <Button
           onClick={() => {
