@@ -30,6 +30,9 @@ class Assignment3 extends Component {
                     console.log("playing");
                 }
             }
+            if (count === 2){
+              alert("You can only play this sound one more time")
+            }
             if (count === 3){
               alert("You have maxed out your attempts to play this sound")
             }
