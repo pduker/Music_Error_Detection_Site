@@ -66,19 +66,7 @@ class Assignment1 extends Component {
           3. Click the error button again.</h2>
         </div>
         {this.RenderButtonAndSound()}
-        <Button
-          onClick={() => {
-            if (isPlaying) {
-                audio.pause();
-                isPlaying = false;
-                console.log("paused");
-            } 
-          }
-          }
-          type="button"
-          buttonStyle="btn--primary--solid"
-          buttonSize="btn--large"
-        >Pause Sound</Button>
+
         <Button
           onClick={() => {
             history.push('/');
@@ -130,6 +118,8 @@ class Assignment1 extends Component {
         >Add Intonation Error</Button>
         <br></br>
         <img id="img1" className="center-fit" src={example1} alt="Assignment 1"/>
+
+        
       </div>
     );
   }
