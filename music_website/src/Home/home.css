@@ -20,3 +20,16 @@ code {
   font-weight: 400;
   border-radius: 10px;
 }
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+
+}
+
+a {
+  color: white;
+}
