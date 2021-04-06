@@ -40,7 +40,7 @@ class Assignment5 extends Component {
         }
         type="button"
         buttonStyle="btn--primary--solid"
-        buttonSize="btn--large"
+        buttonSize="btn--medium"
       >Play Sound</Button>
     )
   }
@@ -78,7 +78,7 @@ class Assignment5 extends Component {
           }
           type="button"
           buttonStyle="btn--primary--solid"
-          buttonSize="btn--large"
+          buttonSize="btn--medium"
         >Go Back to Assignments</Button>
         <Button
         onClick={() => {
@@ -91,7 +91,7 @@ class Assignment5 extends Component {
         }
         type="button"
         buttonStyle="btn--pitch--solid"
-        buttonSize="btn--large"
+        buttonSize="btn--medium"
         >Add Pitch Error</Button>
         <Button
         onClick={() => {
@@ -104,7 +104,7 @@ class Assignment5 extends Component {
         }
         type="button"
         buttonStyle="btn--rhythm--solid"
-        buttonSize="btn--large"
+        buttonSize="btn--medium"
         >Add Rhythm Error</Button>
         <Button
         onClick={() => {
@@ -117,7 +117,7 @@ class Assignment5 extends Component {
         }
         type="button"
         buttonStyle="btn--intonation--solid"
-        buttonSize="btn--large"
+        buttonSize="btn--medium"
         >Add Intonation Error</Button>
       <img id="img5" className="center-fit" src={example1} alt="Assignment 5"/>
       </div>

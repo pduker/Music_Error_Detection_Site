@@ -47,12 +47,13 @@
 }
 
 .btn--medium {
-    padding: 10px 20px;
+    padding: 1.5vh 4vw;
+    /* padding: 10px 20px; */
     font-size: 18px;
 }
 
 .btn--large {
-    /* padding: 2vh 15vw; */
-    padding: 15px 30px;
+    padding: 2vh 15vw;
+    /* padding: 15px 30px; */
     font-size: 20px;
 }

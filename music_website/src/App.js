@@ -7,37 +7,36 @@ function App() {
   const mouseStuff = useMousePosition();
   const placeX = mouseStuff[1];
   const placeY = mouseStuff[2];
-
   const divStyleP = {
     display: 'none',
     position: 'absolute',
-    top: placeY-13,
-    left: placeX-13,
+    top: placeY-window.innerHeight*0.025,
+    left: placeX-window.innerWidth*0.015,
     background: 'Pink',
     opacity: '.5',
     border: '2px solid Red',
-    width: '25px',
-    height: '25px'};
+    width: '38px',
+    height: '38px'};
   const divStyleR = {
     display: 'none',
     position: 'absolute',
-    top: placeY-13,
-    left: placeX-13,
+    top: placeY-window.innerHeight*0.025,
+    left: placeX-window.innerWidth*0.015,
     background: 'AquaMarine',
     opacity: '.5',
     border: '2px solid Green',
-    width: '25px',
-    height: '25px'};
+    width: '38px',
+    height: '38px'};
   const divStyleI = {
     display: 'none',
     position: 'absolute',
-    top: placeY-13,
-    left: placeX-13,
+    top: placeY-window.innerHeight*0.025,
+    left: placeX-window.innerWidth*0.015,
     background: 'Orchid',
     opacity: '.5',
     border: '2px solid BlueViolet',
-    width: '25px',
-    height: '25px'};
+    width: '38px',
+    height: '38px'};
   return (
     <div className="App">
       <Routes />
