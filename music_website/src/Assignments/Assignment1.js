@@ -122,7 +122,6 @@ class Assignment1 extends Component {
         <br></br>
         <img id="img1" className="center-fit" src={example1} alt="Assignment 1"/>
 
-        
       </div>
     );
   }
