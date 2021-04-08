@@ -5,6 +5,7 @@ import "./assignment.css";
 import { withRouter } from "react-router-dom";
 import Tmp from "./../music_example/Example1.m4a";
 import example1 from "./../music_example/example1.jpg";
+import headerImg from "./../Images/Header.png";
 var count;
 var isPlaying = false;
 var audio = new Audio(Tmp);
@@ -51,6 +52,9 @@ class Assignment1 extends Component {
 
     return (
       <div className="Assignment1">
+        <header>
+        <img id="img1" className="center-fit" src={headerImg} alt="Header"/>
+        </header>
         <h2>Assignment 1</h2>
         <div className="Instruction">
           <h2><u>Instruction:</u>  Click the "Play Sound" button to hear the music. 

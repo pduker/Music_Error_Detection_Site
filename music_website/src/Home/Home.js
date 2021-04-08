@@ -3,11 +3,15 @@ import { Button } from "./../Components/Button";
 import history from "./../history";
 import "./home.css";
 import { withRouter } from "react-router-dom";
+import headerImg from "./../Images/Header.png";
 
 class Home extends Component {
   render() {
     return (
       <div className="Home">
+        <header>
+        <img id="img1" className="center-fit" src={headerImg} alt="Header"/>
+        </header>
         <h2 style={{ color: 'white' }}>Welcome to Music Error Detection Practice Quiz</h2>
         <h3 style={{ color: 'white' }}>Click on the Assignment to begin!</h3>
         <div>
