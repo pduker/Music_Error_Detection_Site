@@ -12,9 +12,9 @@ function App() {
     position: 'absolute',
     top: placeY-window.innerHeight*0.025,
     left: placeX-window.innerWidth*0.015,
-    background: 'Pink',
+    background: 'Orchid',
     opacity: '.5',
-    border: '2px solid Red',
+    border: '2px solid BlueViolet',
     width: '38px',
     height: '38px'};
   const divStyleR = {
@@ -22,9 +22,9 @@ function App() {
     position: 'absolute',
     top: placeY-window.innerHeight*0.025,
     left: placeX-window.innerWidth*0.015,
-    background: 'AquaMarine',
+    background: 'Pink',
     opacity: '.5',
-    border: '2px solid Green',
+    border: '2px solid Red',
     width: '38px',
     height: '38px'};
   const divStyleI = {
@@ -32,9 +32,9 @@ function App() {
     position: 'absolute',
     top: placeY-window.innerHeight*0.025,
     left: placeX-window.innerWidth*0.015,
-    background: 'Orchid',
+    background: 'AquaMarine',
     opacity: '.5',
-    border: '2px solid BlueViolet',
+    border: '2px solid Green',
     width: '38px',
     height: '38px'};
   return (

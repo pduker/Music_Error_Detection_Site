@@ -1,8 +1,8 @@
 :root {
     --primary: #172c8a;
-    --pitch: #ff0000;
-    --rhythm: #008000;
-    --intonation: #8a2be2; 
+    --pitch: #8a2be2;
+    --rhythm:  #ff0000;
+    --intonation: #008000; 
     --white: #fdfdfd;
     --dark: #181717;
 }
