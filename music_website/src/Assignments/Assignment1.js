@@ -4,14 +4,21 @@ import history from "./../history";
 import "./assignment.css";
 import { withRouter } from "react-router-dom";
 import Tmp from "./../music_example/Example1.m4a";
-import example1 from "./../music_example/example1.jpg";
-import headerImg from "./../Images/Header.png";
+import example1 from "./../music_example/Example1Display.png";
+import example1Ans from "./../music_example/Example1Answer.png";
+// import headerImg from "./../Images/Header.png";
 var count;
 var isPlaying = false;
 var audio = new Audio(Tmp);
 var hotspotCountP = 1;
 var hotspotCountR = 1;
 var hotspotCountI = 1;
+const imageStyle1 = {
+  display: 'block'
+};
+const imageStyle2 = {
+  display: 'none'
+};
 
 class Assignment1 extends Component {
     RenderButtonAndSound = () => {
@@ -52,9 +59,9 @@ class Assignment1 extends Component {
 
     return (
       <div className="Assignment1">
-        <header>
+        {/* <header>
         <img id="img1" className="center-fit" src={headerImg} alt="Header"/>
-        </header>
+        </header> */}
         <h2>Assignment 1</h2>
         <div className="Instruction">
           <h2><u>Instruction:</u>  Click the "Play Sound" button to hear the music. 
@@ -124,7 +131,19 @@ class Assignment1 extends Component {
         buttonSize="btn--medium"
         >Add Intonation Error</Button>
         <br></br>
-        <img id="img1" className="center-fit" src={example1} alt="Assignment 1"/>
+        <img id="img1" className="center-fit" style={imageStyle1} src={example1} alt="Assignment 1"/>
+        <img id="img1ans" className="center-fit" style={imageStyle2} src={example1Ans} alt="Assignment 1"/>
+        <br></br>
+        <Button id = 'submit'
+          onClick={() => {
+            document.getElementById('img1').style.display = "none";
+            document.getElementById('img1ans').style.display = "block";
+          }
+          }
+          type="button"
+          buttonStyle="btn--primary--solid"
+          buttonSize="btn--medium"
+        >Submit</Button>     
 
         
       </div>

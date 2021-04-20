@@ -4,13 +4,20 @@ import history from "./../history";
 import "./assignment.css";
 import { withRouter } from "react-router-dom";
 import Tmp from "./../music_example/Example1.m4a";
-import example1 from "./../music_example/example1.jpg";
+import example3 from "./../music_example/Example1Display.png";
+import example3Ans from "./../music_example/Example1Answer.png";
 var count;
 var isPlaying = false;
 var audio = new Audio(Tmp);
 var hotspotCountP = 1;
 var hotspotCountR = 1;
 var hotspotCountI = 1;
+const imageStyle1 = {
+  display: 'block'
+};
+const imageStyle2 = {
+  display: 'none'
+};
 
 class Assignment3 extends Component {
     RenderButtonAndSound = () => {
@@ -119,7 +126,19 @@ class Assignment3 extends Component {
         buttonStyle="btn--intonation--solid"
         buttonSize="btn--medium"
         >Add Intonation Error</Button>
-      <img id="img3" className="center-fit" src={example1} alt="Assignment 3"/>
+      <img id="img3" className="center-fit" style={imageStyle1} src={example3} alt="Assignment 3"/>
+        <img id="img3ans" className="center-fit" style={imageStyle2} src={example3Ans} alt="Assignment 3"/>
+        <br></br>
+        <Button id = 'submit'
+          onClick={() => {
+            document.getElementById('img3').style.display = "none";
+            document.getElementById('img3ans').style.display = "block";
+          }
+          }
+          type="button"
+          buttonStyle="btn--primary--solid"
+          buttonSize="btn--medium"
+        >Submit</Button>     
       </div>
     );
   }

@@ -58,8 +58,8 @@ code {
 }
 
 .center-fit {
-  max-width: 100%;
-  max-height: 100vh;
+  max-width: 70%;
+  max-height: 70vh;
   margin: auto;
 }
 
@@ -69,4 +69,5 @@ code {
   padding: 5px;
   font-family: "Roboto", san-serif;
   font-weight: 400;
+  font-size: 81% ;
 }
