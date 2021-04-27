@@ -6,7 +6,8 @@ const STYLES = [
     "btn--primary--solid",
     "btn--pitch--solid",
     "btn--rhythm--solid",
-    "btn--intonation--solid"
+    "btn--intonation--solid",
+    "btn--primary--solid-go-back"
 ]
 
 const SIZES = [
