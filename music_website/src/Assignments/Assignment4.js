@@ -63,7 +63,7 @@ class Assignment4 extends Component {
           <h2><u>Instruction:</u>  Click the "Play Sound" button to hear the music. 
           You will only be able to play the sound 3 times. After listening to the music, 
           place the hotspots over each note error. There are 3 differnt types of error:
-          Pitch Error (Red), Rhythm Error (Green), and Intonation Error (Purple). 
+          Pitch Error (Purple), Rhythm Error (Red), and Intonation Error (Green). 
           <br></br>
           <br></br>
           <u>How to place the hotspot?</u>
@@ -77,16 +77,6 @@ class Assignment4 extends Component {
         </div>
         {this.RenderButtonAndSound()}
 
-        <Button
-          onClick={() => {
-            history.push('/');
-            history.go();
-          }
-          }
-          type="button"
-          buttonStyle="btn--primary--solid"
-          buttonSize="btn--medium"
-        >Go Back to Assignments</Button>
         <Button
         onClick={() => {
           hotspotCountP++;
@@ -129,6 +119,17 @@ class Assignment4 extends Component {
       <img id="img4" className="center-fit" style={imageStyle1} src={example4} alt="Assignment 4"/>
         <img id="img4ans" className="center-fit" style={imageStyle2} src={example4Ans} alt="Assignment 4"/>
         <br></br>
+        <Button
+          onClick={() => {
+            history.push('/');
+            history.go();
+          }
+          }
+          type="button"
+          buttonStyle="btn--primary--solid-go-back"
+          buttonSize="btn--medium"
+        >Back</Button>
+
         <Button id = 'submit'
           onClick={() => {
             document.getElementById('img4').style.display = "none";

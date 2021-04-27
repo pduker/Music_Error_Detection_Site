@@ -27,6 +27,12 @@
     border: none;
     margin: 5px;
 }
+.btn--primary--solid-go-back {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    margin-right: 45%;
+}
 .btn--pitch--solid {
     background-color: var(--pitch);
     color: var(--white);
