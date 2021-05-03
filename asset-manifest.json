@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/music_website/static/css/main.3b73f58b.chunk.css",
-    "main.js": "/music_website/static/js/main.ff80dee6.chunk.js",
-    "main.js.map": "/music_website/static/js/main.ff80dee6.chunk.js.map",
-    "runtime-main.js": "/music_website/static/js/runtime-main.5c67a57b.js",
-    "runtime-main.js.map": "/music_website/static/js/runtime-main.5c67a57b.js.map",
-    "static/js/2.b56a2db8.chunk.js": "/music_website/static/js/2.b56a2db8.chunk.js",
-    "static/js/2.b56a2db8.chunk.js.map": "/music_website/static/js/2.b56a2db8.chunk.js.map",
-    "index.html": "/music_website/index.html",
-    "static/css/main.3b73f58b.chunk.css.map": "/music_website/static/css/main.3b73f58b.chunk.css.map",
-    "static/js/2.b56a2db8.chunk.js.LICENSE.txt": "/music_website/static/js/2.b56a2db8.chunk.js.LICENSE.txt",
-    "static/media/home.css": "/music_website/static/media/Background.e6447c89.png",
-    "static/media/Example1.106dd9f8.m4a": "/music_website/static/media/Example1.106dd9f8.m4a",
-    "static/media/Example1Answer.8bfe5b83.png": "/music_website/static/media/Example1Answer.8bfe5b83.png",
-    "static/media/Example1Display.0c740b6e.png": "/music_website/static/media/Example1Display.0c740b6e.png",
-    "static/media/Example2Answer.186f41ac.png": "/music_website/static/media/Example2Answer.186f41ac.png",
-    "static/media/Example2Display.6d3cb6a6.png": "/music_website/static/media/Example2Display.6d3cb6a6.png",
-    "static/media/Example2wErr.54b12a4e.m4a": "/music_website/static/media/Example2wErr.54b12a4e.m4a",
-    "static/media/Header.856dcc60.png": "/music_website/static/media/Header.856dcc60.png"
+    "main.css": "/Cisc475-Music_Website/static/css/main.ef81a927.chunk.css",
+    "main.js": "/Cisc475-Music_Website/static/js/main.ff80dee6.chunk.js",
+    "main.js.map": "/Cisc475-Music_Website/static/js/main.ff80dee6.chunk.js.map",
+    "runtime-main.js": "/Cisc475-Music_Website/static/js/runtime-main.2c5d1f20.js",
+    "runtime-main.js.map": "/Cisc475-Music_Website/static/js/runtime-main.2c5d1f20.js.map",
+    "static/js/2.b56a2db8.chunk.js": "/Cisc475-Music_Website/static/js/2.b56a2db8.chunk.js",
+    "static/js/2.b56a2db8.chunk.js.map": "/Cisc475-Music_Website/static/js/2.b56a2db8.chunk.js.map",
+    "index.html": "/Cisc475-Music_Website/index.html",
+    "static/css/main.ef81a927.chunk.css.map": "/Cisc475-Music_Website/static/css/main.ef81a927.chunk.css.map",
+    "static/js/2.b56a2db8.chunk.js.LICENSE.txt": "/Cisc475-Music_Website/static/js/2.b56a2db8.chunk.js.LICENSE.txt",
+    "static/media/home.css": "/Cisc475-Music_Website/static/media/Background.e6447c89.png",
+    "static/media/Example1.106dd9f8.m4a": "/Cisc475-Music_Website/static/media/Example1.106dd9f8.m4a",
+    "static/media/Example1Answer.8bfe5b83.png": "/Cisc475-Music_Website/static/media/Example1Answer.8bfe5b83.png",
+    "static/media/Example1Display.0c740b6e.png": "/Cisc475-Music_Website/static/media/Example1Display.0c740b6e.png",
+    "static/media/Example2Answer.186f41ac.png": "/Cisc475-Music_Website/static/media/Example2Answer.186f41ac.png",
+    "static/media/Example2Display.6d3cb6a6.png": "/Cisc475-Music_Website/static/media/Example2Display.6d3cb6a6.png",
+    "static/media/Example2wErr.54b12a4e.m4a": "/Cisc475-Music_Website/static/media/Example2wErr.54b12a4e.m4a",
+    "static/media/Header.856dcc60.png": "/Cisc475-Music_Website/static/media/Header.856dcc60.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.5c67a57b.js",
+    "static/js/runtime-main.2c5d1f20.js",
     "static/js/2.b56a2db8.chunk.js",
-    "static/css/main.3b73f58b.chunk.css",
+    "static/css/main.ef81a927.chunk.css",
     "static/js/main.ff80dee6.chunk.js"
   ]
 }
