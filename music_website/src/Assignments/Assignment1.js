@@ -64,7 +64,7 @@ class Assignment1 extends Component {
         </header> */}
         <h2>Assignment 1</h2>
         <div className="Instruction">
-          <h2><u>Instruction:</u>  Click the "Play Sound" button to hear the music. 
+        <h2><u>Instruction:</u>  Click the "Play Sound" button to hear the music. 
           You will only be able to play the sound 3 times. After listening to the music, 
           place the hotspots over each note error. There are 3 differnt types of error:
           Pitch Error (Purple), Rhythm Error (Red), and Intonation Error (Green). 
@@ -72,12 +72,15 @@ class Assignment1 extends Component {
           <br></br>
           <u>How to place the hotspot?</u>
           <br></br>
-          <br></br>
           1. Click the error button
           <br></br>
           2. Place the hotspot on the note error
           <br></br>
-          3. Click the error button again.</h2>
+          3. Click the error button again.
+          <br></br>
+          4. If you want to add more errors, click on the note to place hotspot and click the error button.
+          <br></br>
+          5. After you are done, click the submit button to check your answer</h2>
         </div>
         {this.RenderButtonAndSound()}
 
