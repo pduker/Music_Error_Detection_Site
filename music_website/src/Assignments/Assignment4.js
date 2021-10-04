@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Button } from "./../Components/Button";
-import history from "./../history";
-import "./assignment.css";
+import history from "../Scripts/history";
+import "./../Styles/assignment.css";
 import { withRouter } from "react-router-dom";
-import Tmp from "./../music_example/Example1.m4a";
-import example4 from "./../music_example/Example1Display.png";
-import example4Ans from "./../music_example/Example1Answer.png";
+import Tmp from "./../Resources/Audio/Example1.m4a";
+import example4 from "./../Resources/Images/Example1Display.png";
+import example4Ans from "./../Resources/Images/Example1Answer.png";
 var count;
 var isPlaying = false;
 var audio = new Audio(Tmp);
