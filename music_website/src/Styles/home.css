@@ -5,11 +5,11 @@ body {
   border-radius: 10px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url("Background.png");
+  background: url("./../Resources/Images/Background.png");
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -27,7 +27,6 @@ footer {
   width: 100%;
   text-align: center;
   color: white;
-
 }
 
 a {

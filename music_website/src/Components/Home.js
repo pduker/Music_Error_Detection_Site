@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Button } from "./../Components/Button";
-import history from "./../history";
-import "./home.css";
+import { Button } from "./Button";
+import history from "./../Scripts/history";
+import "./../Styles/home.css";
 import { withRouter } from "react-router-dom";
-import headerImg from "./../Images/Header.png";
+import headerImg from "./../Resources/Images/Header.png";
 
 class Home extends Component {
   render() {

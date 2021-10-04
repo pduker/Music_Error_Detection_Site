@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.css';
-import Routes from './Routes';
-import useMousePosition from './MousePosition';
+import './../Styles/App.css';
+import Routes from '../Scripts/Routes';
+import useMousePosition from '../Scripts/MousePosition';
 
 function App() {
   const mouseStuff = useMousePosition();
