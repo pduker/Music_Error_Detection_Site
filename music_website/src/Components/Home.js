@@ -12,8 +12,8 @@ class Home extends Component {
         <header>
         <img id="img1" className="center-fit" src={headerImg} alt="Header"/>
         </header>
-        <h2 style={{ color: 'white' }}>Welcome to Music Error Detection Practice Quiz</h2>
-        <h3 style={{ color: 'white' }}>Click on the Assignment to begin!</h3>
+        <h2 style={{ color: 'white' }}>Welcome to the Music Error Detection Practice Quiz!</h2>
+        <h3 style={{ color: 'white' }}>Click on one of the assignments below to begin.</h3>
         <div>
           <Button
             onClick={() => {
@@ -80,8 +80,9 @@ class Home extends Component {
           <address>
             Visit us at: <a href="https://www.udel.edu/apply/undergraduate-admissions/major-finder/music-education/">UD Music Education</a>
             <div>
-              For Questions Email: <a href="pduker@udel.edu">Professor Phil Duker</a>
+              For questions please email: <a href="mailto:pduker@udel.edu">Professor Phil Duker</a>
             </div>
+            <br></br>
           </address>
         </footer>
 
