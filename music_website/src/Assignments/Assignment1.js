@@ -172,6 +172,7 @@ class Assignment1 extends Component {
         <img id="img1ans" className="center-fit" style={imageStyle2} src={example1Ans} alt="Assignment 1"/>
         <br></br>
 
+        <div className="bottomButtons">
         <Button
           onClick={() => {
             history.push('/');
@@ -203,6 +204,8 @@ class Assignment1 extends Component {
           buttonStyle="btn--primary--solid"
           buttonSize="btn--medium"
         >Submit</Button>
+        </div>
+
       </div>
     );
   }

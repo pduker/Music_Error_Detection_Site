@@ -32,7 +32,8 @@
     background-color: var(--primary);
     color: var(--white);
     border: none;
-    margin-right: 45%;
+    /* margin-right: 45%; */
+    margin: 5px;
 }
 
 .btn--pitch--solid {
