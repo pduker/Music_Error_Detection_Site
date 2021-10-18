@@ -60,11 +60,11 @@ class Assignment3 extends Component {
     return (
       <div className="Assignment3">
         <h2>Assignment 3</h2>
-        <div className="Instruction">
-        <h2><u>Instruction:</u>  Click the "Play Sound" button to hear the music. 
-          You will only be able to play the sound 3 times. After listening to the music, 
-          place the hotspots over each note error. There are 3 differnt types of error:
-          Pitch Error (Purple), Rhythm Error (Red), and Intonation Error (Green). 
+        <div className="Instructions">
+        <h2><u>Instructions:</u>  Click the "Play Sound" button to hear the music.
+          You will only be able to play the sound 3 times. After listening to the music,
+          place the hotspots over each note error. There are 3 different types of error:
+          Pitch Error (Purple), Rhythm Error (Red), and Intonation Error (Green).
           <br></br>
           <br></br>
           <u>How to place the hotspot?</u>
@@ -97,7 +97,7 @@ class Assignment3 extends Component {
             let clone = document.querySelector('#shapeP').cloneNode(true);
             clone.setAttribute('id', 'shapeP'+hotspotCountP.toString());
             document.querySelector('div').appendChild( clone );
-            
+
           }
           buttVal = "P";
         }
@@ -106,11 +106,11 @@ class Assignment3 extends Component {
         buttonStyle="btn--pitch--solid"
         buttonSize="btn--medium"
         >Add Pitch Error</Button>
-        
+
         <Button
         onClick={() => {
           hotspotCountR++;
-          
+
           document.getElementById('shapeR').style.display = "block";
 
           if (buttVal === "P"){
@@ -175,6 +175,17 @@ class Assignment3 extends Component {
           buttonStyle="btn--primary--solid-go-back"
           buttonSize="btn--medium"
         >Back</Button>
+
+        <Button id='reset'
+          onClick={() => {
+            window.location.reload(false);
+          }
+          }
+          type="button"
+          buttonStyle="btn--primary--solid"
+          buttonSize="btn--medium"
+        >Reset</Button>
+
         <Button id = 'submit'
           onClick={() => {
             document.getElementById('img3').style.display = "none";
@@ -184,7 +195,7 @@ class Assignment3 extends Component {
           type="button"
           buttonStyle="btn--primary--solid"
           buttonSize="btn--medium"
-        >Submit</Button>     
+        >Submit</Button>
       </div>
     );
   }
