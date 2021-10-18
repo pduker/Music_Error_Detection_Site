@@ -1,8 +1,8 @@
 :root {
     --primary: #172c8a;
     --pitch: #8a2be2;
-    --rhythm:  #ff0000;
-    --intonation: #008000; 
+    --rhythm: #ff0000;
+    --intonation: #008000;
     --white: #fdfdfd;
     --dark: #181717;
 }
@@ -27,24 +27,28 @@
     border: none;
     margin: 5px;
 }
+
 .btn--primary--solid-go-back {
     background-color: var(--primary);
     color: var(--white);
     border: none;
     margin-right: 45%;
 }
+
 .btn--pitch--solid {
     background-color: var(--pitch);
     color: var(--white);
     border: none;
     margin: 5px;
 }
+
 .btn--rhythm--solid {
     background-color: var(--rhythm);
     color: var(--white);
     border: none;
     margin: 5px;
 }
+
 .btn--intonation--solid {
     background-color: var(--intonation);
     color: var(--white);
