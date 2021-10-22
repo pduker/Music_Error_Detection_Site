@@ -38,7 +38,7 @@ class Debug extends Component {
             count++;
             isPlaying = false;
             console.log(count);
-        }
+        };
         return (
             <Button
                 onClick={() => {
@@ -61,8 +61,8 @@ class Debug extends Component {
                 buttonStyle="btn--primary--solid"
                 buttonSize="btn--medium"
             >Play Sound</Button>
-        )
-    }
+        );
+    };
 
     moveOnImage(evt) {
         const coords = { x: evt.nativeEvent.layerX, y: evt.nativeEvent.layerY };
@@ -71,9 +71,22 @@ class Debug extends Component {
             moveMsg: `You moved on the image at coords ${JSON.stringify(coords)} !`
         });
 
-        document.getElementById("x-coordinate").innerText = `CURRENT X COORDINATE IS ${coords.x}`;
-        document.getElementById("y-coordinate").innerText = `CURRENT Y COORDINATE IS ${coords.y}`;
-        document.getElementById("coordinate-json").innerText = `COORDINATE JSON IS "coords": [${coords.x},${coords.y},20]`;
+        document.getElementById("x-coordinate").innerText = `X coordinate is ${coords.x}`;
+        document.getElementById("y-coordinate").innerText = `Y coordinate is ${coords.y}`;
+        document.getElementById("coordinate-json").innerText = `Coordinate JSON is "coords": [${coords.x},${coords.y},20]`;
+    }
+
+    moveOnArea(area, evt) {
+        console.log(`You entered a shape`);
+
+        this.setState({
+            hoveredArea: area,
+            msg: `You entered ${area.shape} ${area.name} at coords ${JSON.stringify(
+                area.coords
+            )} !`
+        });
+
+        document.getElementById("shape-id").innerText = `You are hovering over the shape with ID: ${area.id}`;
     }
 
     render() {
@@ -201,19 +214,23 @@ class Debug extends Component {
                 <br></br>
 
                 <div id="debug-information">
-                    DEBUG INFORMATION
+                    Debug Information
                 </div>
 
                 <div id="x-coordinate">
-                    CURRENT X COORDINATE IS: UNKNOWN
+                    X coordinate is unknown
                 </div>
 
                 <div id="y-coordinate">
-                    CURRENT Y COORDINATE IS: UNKNOWN
+                    Y coordinate is unknown
                 </div>
 
                 <div id="coordinate-json">
-                    COORDINATE JSON: UNKNOWN
+                    Coordinate JSON is unknown
+                </div>
+
+                <div id="shape-id">
+                    You are hovering over the shape with ID: unknown
                 </div>
 
                 <br></br>
@@ -223,6 +240,7 @@ class Debug extends Component {
                         src={URL}
                         map={IMAGE_MAP}
                         onImageMouseMove={evt => this.moveOnImage(evt)}
+                        onMouseMove={(area, _, evt) => this.moveOnArea(area, evt)}
                     />
                 </div>
 
