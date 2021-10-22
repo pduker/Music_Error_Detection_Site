@@ -178,7 +178,9 @@ class Assignment4 extends Component {
 
         <Button id='reset'
           onClick={() => {
-            window.location.reload(false);
+            if(window.confirm("Are you sure you want to reset?")){
+              window.location.reload(false);
+            }
           }
           }
           type="button"
@@ -188,8 +190,10 @@ class Assignment4 extends Component {
 
         <Button id = 'submit'
           onClick={() => {
-            document.getElementById('img4').style.display = "none";
-            document.getElementById('img4ans').style.display = "block";
+            if(window.confirm("Are you sure you want to submit?")){
+              document.getElementById('img4').style.display = "none";
+              document.getElementById('img4ans').style.display = "block";
+            }
           }
           }
           type="button"
