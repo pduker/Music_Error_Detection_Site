@@ -193,9 +193,9 @@ class Debug extends Component {
 
                 <div>
                     <p>Color Coding Key</p>
-                    <p>Pitch errors are represented by RED</p>
-                    <p>Rhythm errors are represented by PURPLE</p>
-                    <p>Intonation errors are represented by GREEN</p>
+                    <p>Pitch errors are represented by RED, Hex is #fc110080 (80 means 50% transparency)</p>
+                    <p>Rhythm errors are represented by BLUE, Hex is #1500fc80 (80 means 50% transparency)</p>
+                    <p>Intonation errors are represented by GREEN, Hex is #00fc4380 (80 means 50% transparency)</p>
                 </div>
 
                 <br></br>

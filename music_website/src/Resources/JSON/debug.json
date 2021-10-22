@@ -1,29 +1,79 @@
 [
   {
-    "id": "70821260-A65D-411B-911B-F01661B34CCA",
-    "title": "TestTitle",
+    "id": "1B800C9D-39A4-4B2C-A107-29C56FDA4BEF",
+    "isError": true,
     "shape": "circle",
-    "name": "13",
-    "preFillColor": "#ff7b0080",
+    "preFillColor": "#fc110080",
     "fillColor": "blue",
     "strokeColor": "black",
     "coords": [
-      849,
+      319,
+      112,
+      20
+    ]
+  },
+  {
+    "id": "70821260-A65D-411B-911B-F01661B34CCA",
+    "isError": true,
+    "shape": "circle",
+    "preFillColor": "#00fc4380",
+    "fillColor": "blue",
+    "strokeColor": "black",
+    "coords": [
+      984,
       135,
       20
     ]
   },
   {
     "id": "A9C8801C-0625-4A7B-A8C7-1C98F6C7C8B4",
-    "title": "TestTitle",
+    "isError": true,
     "shape": "circle",
-    "name": "13",
-    "preFillColor": "#00ff5980",
+    "preFillColor": "#1500fc80",
     "fillColor": "pink",
     "strokeColor": "black",
     "coords": [
-      400,
-      267,
+      650,
+      134,
+      20
+    ]
+  },
+  {
+    "id": "5E23FE0F-0726-4977-A0C5-4D9AF4098878",
+    "isError": true,
+    "shape": "circle",
+    "preFillColor": "#00fc4380",
+    "fillColor": "blue",
+    "strokeColor": "black",
+    "coords": [
+      797,
+      268,
+      20
+    ]
+  },
+  {
+    "id": "A5103C10-3B85-4C9C-9BEA-602C767FCC05",
+    "isError": true,
+    "shape": "circle",
+    "preFillColor": "#fc110080",
+    "fillColor": "blue",
+    "strokeColor": "black",
+    "coords": [
+      567,
+      265,
+      20
+    ]
+  },
+  {
+    "id": "2BCC2CBA-95A4-4E1A-98CA-30F761CB5276",
+    "isError": false,
+    "shape": "circle",
+    "preFillColor": "#e3fc0080",
+    "fillColor": "blue",
+    "strokeColor": "black",
+    "coords": [
+      470,
+      130,
       20
     ]
   }
