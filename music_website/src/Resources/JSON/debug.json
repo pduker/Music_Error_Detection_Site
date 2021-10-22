@@ -1,0 +1,30 @@
+[
+  {
+    "id": "70821260-A65D-411B-911B-F01661B34CCA",
+    "title": "TestTitle",
+    "shape": "circle",
+    "name": "13",
+    "preFillColor": "#ff7b0080",
+    "fillColor": "blue",
+    "strokeColor": "black",
+    "coords": [
+      849,
+      135,
+      20
+    ]
+  },
+  {
+    "id": "A9C8801C-0625-4A7B-A8C7-1C98F6C7C8B4",
+    "title": "TestTitle",
+    "shape": "circle",
+    "name": "13",
+    "preFillColor": "#00ff5980",
+    "fillColor": "pink",
+    "strokeColor": "black",
+    "coords": [
+      400,
+      267,
+      20
+    ]
+  }
+]

@@ -75,6 +75,19 @@ class Home extends Component {
           >Assignment 5</Button>
         </div>
 
+        <div>
+          <Button
+            onClick={() => {
+              history.push('/Debug');
+              history.go();
+            }
+            }
+            type="button"
+            buttonStyle="btn--primary--solid"
+            buttonSize="btn--large"
+          >Debug</Button>
+        </div>
+
 
         <footer>
           <address>
