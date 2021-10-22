@@ -2,6 +2,7 @@
   {
     "id": "1B800C9D-39A4-4B2C-A107-29C56FDA4BEF",
     "isError": true,
+    "errorType": "pitchError",
     "shape": "circle",
     "preFillColor": "#fc110080",
     "fillColor": "blue",
@@ -15,6 +16,7 @@
   {
     "id": "70821260-A65D-411B-911B-F01661B34CCA",
     "isError": true,
+    "errorType": "intonationError",
     "shape": "circle",
     "preFillColor": "#00fc4380",
     "fillColor": "blue",
@@ -28,6 +30,7 @@
   {
     "id": "A9C8801C-0625-4A7B-A8C7-1C98F6C7C8B4",
     "isError": true,
+    "errorType": "rhythmError",
     "shape": "circle",
     "preFillColor": "#1500fc80",
     "fillColor": "pink",
@@ -41,6 +44,7 @@
   {
     "id": "5E23FE0F-0726-4977-A0C5-4D9AF4098878",
     "isError": true,
+    "errorType": "intonationError",
     "shape": "circle",
     "preFillColor": "#00fc4380",
     "fillColor": "blue",
@@ -54,6 +58,7 @@
   {
     "id": "A5103C10-3B85-4C9C-9BEA-602C767FCC05",
     "isError": true,
+    "errorType": "pitchError",
     "shape": "circle",
     "preFillColor": "#fc110080",
     "fillColor": "blue",

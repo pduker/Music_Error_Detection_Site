@@ -86,7 +86,7 @@ class Debug extends Component {
             )} !`
         });
 
-        document.getElementById("shape-id").innerText = `You are hovering over the shape with ID: ${area.id}`;
+        document.getElementById("shape-id").innerText = `Shape info: ID=${area.id}, isError=${area.isError}, errorType=${area.errorType}`;
     }
 
     render() {
@@ -230,7 +230,7 @@ class Debug extends Component {
                 </div>
 
                 <div id="shape-id">
-                    You are hovering over the shape with ID: unknown
+                    Shape info: unknown
                 </div>
 
                 <br></br>
