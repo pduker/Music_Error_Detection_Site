@@ -77,7 +77,11 @@ class Debug extends Component {
     }
 
     moveOnArea(area, evt) {
-        console.log(`You entered a shape`);
+        const coords = { x: evt.nativeEvent.layerX, y: evt.nativeEvent.layerY };
+
+        document.getElementById("x-coordinate").innerText = `X coordinate is ${coords.x}`;
+        document.getElementById("y-coordinate").innerText = `Y coordinate is ${coords.y}`;
+        document.getElementById("coordinate-json").innerText = `Coordinate JSON is "coords": [${coords.x},${coords.y},20]`;
 
         this.setState({
             hoveredArea: area,
