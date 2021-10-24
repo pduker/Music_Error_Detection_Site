@@ -14,10 +14,6 @@ import mapJSON from "../Resources/JSON/debug.json";
 var count;
 var isPlaying = false;
 var audio = new Audio(Tmp);
-var hotspotCountP = 1;
-var hotspotCountR = 1;
-var hotspotCountI = 1;
-let buttVal = "";
 
 const imageStyle1 = {
     display: 'block'
@@ -27,12 +23,28 @@ const imageStyle2 = {
     display: 'none'
 };
 
-const IMAGE_MAP = {
+var IMAGE_MAP = {
     name: 'debug-map',
     areas: mapJSON
 };
 
+var isDisabled = false;
+
+
 class Debug extends Component {
+    constructor() {
+        super();
+        this.state = {
+            imageWidth: 0,
+        };
+    }
+
+    async componentDidMount() {
+        this.setState({
+            imageWidth: await this.getImageWidth(),
+        });
+    }
+
     RenderButtonAndSound = () => {
         audio.onended = function () {
             count++;
@@ -93,118 +105,77 @@ class Debug extends Component {
         document.getElementById("shape-id").innerText = `Shape info: ID=${area.id}, isError=${area.isError}, errorType=${area.errorType}`;
     }
 
+    clicked(area) {
+        console.log(`You clicked shape ${area.id}, ${area.preFillColor} ${area.fillColor} ${area.strokeColor}`);
+
+
+        //area.userSelection = "someError";
+        //area.preFillColor = "#04b533";
+        //area.fillColor = "#04b533";
+        //area.strokeColor = "#04b533";
+
+        this.setState({
+            msg: `You clicked on ${area.shape} at coords ${JSON.stringify(
+                area.coords
+            )} !`
+        });
+
+        // const content = document.getElementById("image-mapper-div").innerHTML;
+        // document.getElementById("image-mapper-div").innerHTML = content;
+    }
+
+    async getImageWidth() {
+        var img = new Image();
+
+        img.onload = async function () {
+            return img.width;
+        };
+
+        img.src = URL;
+
+        return img.onload();
+    }
+
     render() {
         if (!count) {
             count = 0;
         }
 
         return (
-            <div className="Debug">
+            <div id="assignment-debug" className="assignment">
                 <h2>Debug</h2>
                 <div className="Instructions">
-                    <h2><u>Instructions:</u>  Click the "Play Sound" button to hear the music.
+                    <h2>Instructions:  Click the "Play Sound" button to hear the music.
                         You will only be able to play the sound 3 times. After listening to the music,
-                        place the hotspots over each note error. There are 3 different types of error:
-                        Pitch Error (Purple), Rhythm Error (Red), and Intonation Error (Green).
+                        place the hotspots over each note error. There are 3 different types of errors:
+                        Pitch Error (Red), Rhythm Error (Blue), and Intonation Error (Green).
                         <br></br>
                         <br></br>
-                        <u>How to place the hotspot?</u>
+                        How to select the errors:
                         <br></br>
-                        1. Click the error button
+                        1. todo
                         <br></br>
-                        2. Place the hotspot on the note error
+                        2. todo
                         <br></br>
-                        3. Click the error button again.
+                        3. todo
                         <br></br>
-                        4. If you want to add more errors, click on the note to place hotspot and click the error button.
+                        4. todo
                         <br></br>
-                        5. After you are done, click the submit button to check your answer</h2>
+                        5. todo</h2>
                 </div>
                 {this.RenderButtonAndSound()}
 
                 <Button
                     onClick={() => {
-                        hotspotCountP++;
-
-                        document.getElementById('shapeP').style.display = "block";
-
-                        if (buttVal === "R") {
-                            document.getElementById('shapeR').style.display = "none";
-                        }
-                        else if (buttVal === "I") {
-                            document.getElementById('shapeI').style.display = "none";
-                        }
-                        else {
-                            let clone = document.querySelector('#shapeP').cloneNode(true);
-                            clone.setAttribute('id', 'shapeP' + hotspotCountP.toString());
-                            document.querySelector('div').appendChild(clone);
-
-                        }
-                        buttVal = "P";
+                        isDisabled = !isDisabled;
                     }
                     }
                     type="button"
                     buttonStyle="btn--pitch--solid"
                     buttonSize="btn--medium"
-                >Add Pitch Error</Button>
+                >Test</Button>
 
-                <Button
-                    onClick={() => {
-                        hotspotCountR++;
-
-                        document.getElementById('shapeR').style.display = "block";
-
-                        if (buttVal === "P") {
-                            document.getElementById('shapeP').style.display = "none";
-                        }
-
-                        else if (buttVal === "I") {
-                            document.getElementById('shapeI').style.display = "none";
-                        }
-
-                        else {
-                            let clone = document.querySelector('#shapeR').cloneNode(true);
-                            clone.setAttribute('id', 'shapeR' + hotspotCountR.toString());
-                            document.querySelector('div').appendChild(clone);
-                        }
-
-                        buttVal = "R";
-                    }
-                    }
-                    type="button"
-                    buttonStyle="btn--rhythm--solid"
-                    buttonSize="btn--medium"
-                >Add Rhythm Error</Button>
-                <Button
-                    onClick={() => {
-                        hotspotCountI++;
-
-                        document.getElementById('shapeI').style.display = "block";
-
-                        if (buttVal === "R") {
-                            document.getElementById('shapeR').style.display = "none";
-                        }
-
-                        else if (buttVal === "P") {
-                            document.getElementById('shapeP').style.display = "none";
-                        }
-
-                        else {
-                            let clone = document.querySelector('#shapeI').cloneNode(true);
-                            clone.setAttribute('id', 'shapeI' + hotspotCountI.toString());
-                            document.querySelector('div').appendChild(clone);
-                        }
-
-                        buttVal = "I";
-                    }
-                    }
-                    type="button"
-                    buttonStyle="btn--intonation--solid"
-                    buttonSize="btn--medium"
-                >Add Intonation Error</Button>
                 <br></br>
-
-                {/* <img id="img5" className="center-fit" style={imageStyle1} src={example5} alt="Debug" /> */}
 
                 <br></br>
 
@@ -239,16 +210,37 @@ class Debug extends Component {
 
                 <br></br>
 
-                <div className="image-mapper-div">
+                <div id="instructions">
+                    New Instructions
+                    <li>test</li>
+                    <li>test</li>
+                </div>
+
+                <br></br>
+
+                <div id="image-mapper-div" className="image-mapper">
                     <ImageMapper
+                        id="mapper-debug"
                         src={URL}
                         map={IMAGE_MAP}
                         onImageMouseMove={evt => this.moveOnImage(evt)}
                         onMouseMove={(area, _, evt) => this.moveOnArea(area, evt)}
+                        onClick={area => this.clicked(area)}
+                        stayMultiHighlighted={true}
+                        //toggleHighlighted={true}
+                        disabled={isDisabled}
+                        width={window.innerWidth}
+                        imgWidth={this.state.imageWidth}
                     />
                 </div>
 
-                <img id="img5ans" className="center-fit" style={imageStyle2} src={example5Ans} alt="Debug" />
+                <br></br>
+
+                <div className="radio-buttons" style={{ marginTop: 50 + 'px' }}>
+                    <input type="radio" name="clickType" value="" onClick={() => console.log(`radio button 1 was clicked`)} />Default
+                    <input type="radio" name="clickType" value="" onClick={() => console.log(`radio button 2 was clicked`)} />JSON generator
+                </div>
+
                 <br></br>
                 <Button
                     onClick={() => {

@@ -58,7 +58,7 @@ class Assignment5 extends Component {
     }
 
     return (
-      <div className="Assignment5">
+      <div id="Assignment5" className="assignment">
         <h2>Assignment 5</h2>
         <div className="Instructions">
         <h2><u>Instructions:</u>  Click the "Play Sound" button to hear the music.

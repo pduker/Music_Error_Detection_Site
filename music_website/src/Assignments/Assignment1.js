@@ -60,7 +60,7 @@ class Assignment1 extends Component {
     }
 
     return (
-      <div className="Assignment1">
+      <div id="Assignment1" className="assignment">
         {/* <header>
         <img id="img1" className="center-fit" src={headerImg} alt="Header"/>
         </header> */}
