@@ -10,6 +10,7 @@ import example5Ans from "./../Resources/Images/Example1Answer.png";
 import ImageMapper from "react-img-mapper";
 import URL from "../Resources/Images/assignment-debug.jpg";
 import mapJSON from "../Resources/JSON/debug.json";
+import SheetMusic from "../Components/SheetMusic";
 
 var count;
 var isPlaying = false;
@@ -33,6 +34,13 @@ const IMAGE_MAP = {
 };
 
 class Debug extends Component {
+
+    constructor(props){
+        super(props);
+        this.state = {};
+        this.handleClickSheetMusic = this.handleClickSheetMusic.bind(this);
+    }
+
     RenderButtonAndSound = () => {
         audio.onended = function () {
             count++;
@@ -64,8 +72,15 @@ class Debug extends Component {
         );
     };
 
+    handleClickSheetMusic(){
+        console.log("component has been clicked at coordinates: (", this.state.coords.x, ",", this.state.coords.y,")");
+    }
+
     moveOnImage(evt) {
         const coords = { x: evt.nativeEvent.layerX, y: evt.nativeEvent.layerY };
+        this.setState({
+            coords: coords
+        });
 
         this.setState({
             moveMsg: `You moved on the image at coords ${JSON.stringify(coords)} !`
@@ -239,14 +254,14 @@ class Debug extends Component {
 
                 <br></br>
 
-                <div className="image-mapper-div">
+                <SheetMusic onInsideClick={this.handleClickSheetMusic}>
                     <ImageMapper
                         src={URL}
                         map={IMAGE_MAP}
                         onImageMouseMove={evt => this.moveOnImage(evt)}
                         onMouseMove={(area, _, evt) => this.moveOnArea(area, evt)}
                     />
-                </div>
+                </SheetMusic>
 
                 <img id="img5ans" className="center-fit" style={imageStyle2} src={example5Ans} alt="Debug" />
                 <br></br>
