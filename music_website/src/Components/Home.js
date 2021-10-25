@@ -22,7 +22,7 @@ class Home extends Component {
             }
             }
             type="button"
-            buttonStyle="btn--primary--solid"
+            buttonStyle="home-page-button"
             buttonSize="btn--large"
           >Assignment 1</Button>
         </div>
@@ -34,7 +34,7 @@ class Home extends Component {
             }
             }
             type="button"
-            buttonStyle="btn--primary--solid"
+            buttonStyle="home-page-button"
             buttonSize="btn--large"
           >Assignment 2</Button>
         </div>
@@ -46,7 +46,7 @@ class Home extends Component {
             }
             }
             type="button"
-            buttonStyle="btn--primary--solid"
+            buttonStyle="home-page-button"
             buttonSize="btn--large"
           >Assignment 3</Button>
         </div>
@@ -58,7 +58,7 @@ class Home extends Component {
             }
             }
             type="button"
-            buttonStyle="btn--primary--solid"
+            buttonStyle="home-page-button"
             buttonSize="btn--large"
           >Assignment 4</Button>
         </div>
@@ -70,7 +70,7 @@ class Home extends Component {
             }
             }
             type="button"
-            buttonStyle="btn--primary--solid"
+            buttonStyle="home-page-button"
             buttonSize="btn--large"
           >Assignment 5</Button>
         </div>
@@ -83,7 +83,7 @@ class Home extends Component {
             }
             }
             type="button"
-            buttonStyle="btn--primary--solid"
+            buttonStyle="home-page-button"
             buttonSize="btn--large"
           >Debug</Button>
         </div>
