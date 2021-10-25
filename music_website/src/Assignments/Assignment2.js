@@ -58,7 +58,7 @@ class Assignment2 extends Component {
     }
 
     return (
-      <div className="Assignment2">
+      <div id="Assignment2" className="assignment">
         <h2>Assignment 2</h2>
         <div className="Instructions">
         <h2><u>Instructions:</u>  Click the "Play Sound" button to hear the music.
@@ -178,7 +178,9 @@ class Assignment2 extends Component {
 
         <Button id='reset'
           onClick={() => {
-            window.location.reload(false);
+            if(window.confirm("Are you sure you want to reset?")){
+              window.location.reload(false);
+            }
           }
           }
           type="button"
@@ -188,8 +190,11 @@ class Assignment2 extends Component {
 
         <Button id = 'submit'
           onClick={() => {
-            document.getElementById('img2').style.display = "none";
-            document.getElementById('img2ans').style.display = "block";
+            if(window.confirm("Are you sure you want to submit?")){
+              document.getElementById('img2').style.display = "none";
+              document.getElementById('img2ans').style.display = "block";
+            }
+            
           }
           }
           type="button"

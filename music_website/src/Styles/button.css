@@ -21,6 +21,14 @@
     filter: brightness(.750);
 }
 
+.home-page-button {
+    background-color: var(--primary);
+    color: var(--white);
+    border: none;
+    margin: 5px;
+    width: 50%;
+}
+
 .btn--primary--solid {
     background-color: var(--primary);
     color: var(--white);

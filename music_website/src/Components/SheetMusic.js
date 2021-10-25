@@ -24,7 +24,7 @@ class SheetMusic extends Component {
 
     render() { 
         return (
-            <div ref={this.wrapperRef}>
+            <div div id="image-mapper-div" className="image-mapper" ref={this.wrapperRef}>
                 {this.props.children}
             </div>
         )

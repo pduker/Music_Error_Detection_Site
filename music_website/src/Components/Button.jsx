@@ -3,6 +3,7 @@ import "./../Styles/button.css";
 
 
 const STYLES = [
+    "home-page-button",
     "btn--primary--solid",
     "btn--pitch--solid",
     "btn--rhythm--solid",
@@ -19,10 +20,10 @@ export const Button = ({
 }) => {
 
     const checkButtonStyle = STYLES.includes(buttonStyle)
-    ? buttonStyle 
+    ? buttonStyle
     : STYLES[0];
-    const checkButtonSize = SIZES.includes(buttonSize) 
-    ? buttonSize 
+    const checkButtonSize = SIZES.includes(buttonSize)
+    ? buttonSize
     : SIZES[0];
 
     return (
