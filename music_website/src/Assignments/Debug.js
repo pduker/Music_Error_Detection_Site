@@ -79,10 +79,6 @@ class Debug extends Component {
         );
     };
 
-    handleClickSheetMusic(){
-        console.log("component has been clicked at coordinates: (", this.state.coords.x, ",", this.state.coords.y,")");
-    }
-
     moveOnImage(evt) {
         const coords = { x: evt.nativeEvent.layerX, y: evt.nativeEvent.layerY };
         this.setState({
@@ -144,6 +140,10 @@ class Debug extends Component {
         img.src = URL;
 
         return img.onload();
+    }
+
+    handleClickSheetMusic(){
+        console.log("component has been clicked at coordinates: (", this.state.coords.x, ",", this.state.coords.y,")");
     }
 
     render() {
