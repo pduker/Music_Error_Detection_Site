@@ -108,6 +108,45 @@ class Debug extends Component {
     clicked(area) {
         console.log(`You clicked shape ${area.id}, ${area.preFillColor} ${area.fillColor} ${area.strokeColor}`);
 
+        const colorYellow = "#e3fc0080";
+        const colorRed = "#fc110080";
+        const colorBlue = "#1500fc80";
+        const colorGreen = "#00fc4380";
+
+        //console.log(`IMAGE_MAP.areas=${JSON.stringify(IMAGE_MAP.areas)}`);
+
+        for (let i = 0; i < IMAGE_MAP.areas.length; i++) {
+            //console.log(`IMAGE_MAP.areas[${i}]=${JSON.stringify(IMAGE_MAP.areas[i])}`);
+
+            if (IMAGE_MAP.areas[i].id == area.id) {
+                console.log(`match`);
+                console.log(`IMAGE_MAP.areas[${i}]=${JSON.stringify(IMAGE_MAP.areas[i])}`);
+
+                if (area.fillColor == colorRed) {
+                    console.log(`colorRed`);
+                    //area.fillColor = colorBlue;
+                    IMAGE_MAP.areas[i].fillColor = colorBlue;
+                } else if (area.fillColor == colorBlue) {
+                    console.log(`colorBlue`);
+                    //area.fillColor = colorGreen;
+                    IMAGE_MAP.areas[i].fillColor = colorGreen;
+                } else if (area.fillColor == colorGreen) {
+                    console.log(`colorGreen`);
+                    //area.fillColor = colorYellow;
+                    IMAGE_MAP.areas[i].fillColor = colorYellow;
+                } else if (area.fillColor == colorYellow) {
+                    console.log(`colorYellow`);
+                    //area.fillColor = colorRed;
+                    IMAGE_MAP.areas[i].fillColor = colorRed;
+                } else {
+                    console.log(`other`);
+                    //area.fillColor = colorYellow;
+                    IMAGE_MAP.areas[i].fillColor = colorYellow;
+                }
+            }
+        }
+
+
 
         //area.userSelection = "someError";
         //area.preFillColor = "#04b533";
@@ -255,7 +294,7 @@ class Debug extends Component {
 
                 <Button id='reset'
                     onClick={() => {
-                        if(window.confirm("Are you sure you want to reset?")){
+                        if (window.confirm("Are you sure you want to reset?")) {
                             window.location.reload(false);
                         }
                     }
@@ -267,9 +306,59 @@ class Debug extends Component {
 
                 <Button id='submit'
                     onClick={() => {
-                        if(window.confirm("Are you sure you want to submit?")){
-                            document.getElementById('img5').style.display = "none";
-                            document.getElementById('img5ans').style.display = "block";
+                        let pitchErrorsCorrect = 0;
+                        let pitchErrorsMissed = 0;
+                        let rhythmErrorsCorrect = 0;
+                        let rhythmErrorsMissed = 0;
+                        let intonationErrorsCorrect = 0;
+                        let intonationErrorsMissed = 0;
+
+                        let noErrorsCorrect = 0;
+                        let noErrorsMissed = 0;
+
+                        for (let shape of IMAGE_MAP.areas) {
+                            console.log(`shape=${JSON.stringify(shape)}`);
+
+                            // Check if the shape's fill color is correct
+                            if (shape.errorType == "pitchError") {
+                                if (shape.fillColor == "#fc110080") {
+                                    console.log(`pitchError correct`);
+                                    pitchErrorsCorrect += 1;
+                                } else {
+                                    console.log(`pitchError incorrect`);
+                                    pitchErrorsMissed += 1;
+                                }
+                            } else if (shape.errorType == "intonationError") {
+                                if (shape.fillColor == "#00fc4380") {
+                                    console.log(`intonationError correct`);
+                                    intonationErrorsCorrect += 1;
+                                } else {
+                                    console.log(`intonationError incorrect`);
+                                    intonationErrorsMissed += 1;
+                                }
+                            } else if (shape.errorType == "rhythmError") {
+                                if (shape.fillColor == "#1500fc80") {
+                                    console.log(`rhythmError correct`);
+                                    rhythmErrorsCorrect += 1;
+                                } else {
+                                    console.log(`rhythmError incorrect`);
+                                    rhythmErrorsMissed += 1;
+                                }
+                            } else if (shape.errorType == undefined) {
+                                if (shape.fillColor == "#e3fc0080") {
+                                    console.log(`noError correct`);
+                                    noErrorsCorrect += 1;
+                                } else {
+                                    console.log(`noError incorrect`);
+                                    noErrorsMissed += 1;
+                                }
+                            }
+
+                            let totalCorrect = pitchErrorsCorrect + rhythmErrorsCorrect + intonationErrorsCorrect + noErrorsCorrect;
+                            let totalMissed = pitchErrorsMissed + rhythmErrorsMissed + intonationErrorsMissed + noErrorsMissed;
+
+                            // Create a basic report
+                            document.getElementById("results").innerText = `Results\n There are ${IMAGE_MAP.areas.length} shapes\n pitchErrorsCorrect=${pitchErrorsCorrect}, pitchErrorsMissed=${pitchErrorsMissed}\n intonationErrorsCorrect=${intonationErrorsCorrect}, intonationErrorsMissed=${intonationErrorsMissed}\n rhythmErrorsCorrect=${rhythmErrorsCorrect}, rhythmErrorsMissed=${rhythmErrorsMissed}\n noErrorsCorrect=${noErrorsCorrect}, noErrorsMissed=${noErrorsMissed} \n totalCorrect=${totalCorrect}\n totalMissed=${totalMissed}`;
                         }
                     }
                     }
@@ -277,6 +366,14 @@ class Debug extends Component {
                     buttonStyle="btn--primary--solid"
                     buttonSize="btn--medium"
                 >Submit</Button>
+
+                <br></br>
+
+                <br></br>
+
+                <div id="results">
+                    Results
+                </div>
             </div>
         );
     }
