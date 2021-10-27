@@ -126,22 +126,27 @@ class Debug extends Component {
                     console.log(`colorRed`);
                     //area.fillColor = colorBlue;
                     IMAGE_MAP.areas[i].fillColor = colorBlue;
+                    IMAGE_MAP.areas[i].preFillColor = colorBlue;
                 } else if (area.fillColor == colorBlue) {
                     console.log(`colorBlue`);
                     //area.fillColor = colorGreen;
                     IMAGE_MAP.areas[i].fillColor = colorGreen;
+                    IMAGE_MAP.areas[i].preFillColor = colorGreen;
                 } else if (area.fillColor == colorGreen) {
                     console.log(`colorGreen`);
                     //area.fillColor = colorYellow;
                     IMAGE_MAP.areas[i].fillColor = colorYellow;
+                    IMAGE_MAP.areas[i].preFillColor = colorYellow;
                 } else if (area.fillColor == colorYellow) {
                     console.log(`colorYellow`);
                     //area.fillColor = colorRed;
                     IMAGE_MAP.areas[i].fillColor = colorRed;
+                    IMAGE_MAP.areas[i].preFillColor = colorRed;
                 } else {
                     console.log(`other`);
                     //area.fillColor = colorYellow;
                     IMAGE_MAP.areas[i].fillColor = colorYellow;
+                    IMAGE_MAP.areas[i].preFillColor = colorYellow;
                 }
             }
         }
@@ -358,7 +363,7 @@ class Debug extends Component {
                             let totalMissed = pitchErrorsMissed + rhythmErrorsMissed + intonationErrorsMissed + noErrorsMissed;
 
                             // Create a basic report
-                            document.getElementById("results").innerText = `Results\n There are ${IMAGE_MAP.areas.length} shapes\n pitchErrorsCorrect=${pitchErrorsCorrect}, pitchErrorsMissed=${pitchErrorsMissed}\n intonationErrorsCorrect=${intonationErrorsCorrect}, intonationErrorsMissed=${intonationErrorsMissed}\n rhythmErrorsCorrect=${rhythmErrorsCorrect}, rhythmErrorsMissed=${rhythmErrorsMissed}\n noErrorsCorrect=${noErrorsCorrect}, noErrorsMissed=${noErrorsMissed} \n totalCorrect=${totalCorrect}\n totalMissed=${totalMissed}`;
+                            document.getElementById("results").innerText = `Results\n There are ${IMAGE_MAP.areas.length} shapes\n pitchErrorsCorrect=${pitchErrorsCorrect}, pitchErrorsMissed=${pitchErrorsMissed}\n intonationErrorsCorrect=${intonationErrorsCorrect}, intonationErrorsMissed=${intonationErrorsMissed}\n rhythmErrorsCorrect=${rhythmErrorsCorrect}, rhythmErrorsMissed=${rhythmErrorsMissed}\n noErrorsCorrect=${noErrorsCorrect}, noErrorsMissed=${noErrorsMissed} \n totalCorrect=${totalCorrect}/${IMAGE_MAP.areas.length}\n totalMissed=${totalMissed}/${IMAGE_MAP.areas.length}`;
                         }
                     }
                     }
