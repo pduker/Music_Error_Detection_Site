@@ -74,6 +74,18 @@ class Home extends Component {
             buttonSize="btn--large"
           >Assignment 5</Button>
         </div>
+        <div>
+          <Button
+            onClick={() => {
+              history.push('/AssignmentTemplate');
+              history.go();
+            }
+            }
+            type="button"
+            buttonStyle="btn--primary--solid"
+            buttonSize="btn--large"
+          >New Assignment Template</Button>
+        </div>
 
         <div>
           <Button

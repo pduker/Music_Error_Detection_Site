@@ -1,0 +1,70 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.assignment-template {
+  text-align: center;
+  margin: 5px;
+  font-family: "Roboto", san-serif;
+  font-weight: 400;
+  border-radius: 10px;
+  background: lightgray;
+}
+
+.instructions {
+  text-align: left;
+  margin: 0px 100px;
+  padding: 0 5px;
+  font-family: "Roboto", san-serif;
+  font-weight: 400;
+  font-size: 81%;
+}
+
+.button {
+  display: inline-block;
+  font-family: "Roboto", san-serif;
+  font-weight: 400;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  padding: 1.5vh 4vw;
+  font-size: 18px;
+  color: #fdfdfd;
+  border: none;
+  margin: 5px;
+}
+
+.button:hover {
+  transform: translate(-3px);
+  filter: brightness(0.75);
+}
+
+#pitch-error {
+  background-color: #8a2be2;
+}
+
+#rythm-error {
+  background-color: #ff0000;
+}
+
+#intonation-error {
+  background-color: #008000;
+}
+
+.music-sheet {
+  display: block;
+  max-width: 70%;
+  max-height: 70vh;
+  margin: auto;
+}
+
+.submit-button,
+.music-button,
+.back-button {
+  background-color: #172c8a;
+}
