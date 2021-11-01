@@ -235,6 +235,7 @@ class Debug extends Component {
                         <br></br>
                         5. todo</h2>
                 </div>
+                <input id = "inc" value = "0" hidden></input>
                 {this.RenderButtonAndSound()}
 
                 <Button

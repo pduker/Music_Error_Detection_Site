@@ -72,6 +72,7 @@
   {
     "id": "2BCC2CBA-95A4-4E1A-98CA-30F761CB5276",
     "isError": false,
+    "errorType": "noError",
     "shape": "circle",
     "preFillColor": "#e3fc0080",
     "fillColor": "#e3fc0080",
@@ -81,5 +82,18 @@
       130,
       20
     ]
-  }
+  },
+  {"id":"4575c67e-323f-4945-b49c-c7419757d100","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[1021,132,20]},
+  {"id":"dc11ffd7-1243-4843-9d0e-e38418d323f9","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[1018,254,20]},
+  {"id":"66747124-01c2-4cdb-b506-3a2f626a106a","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[851,138,20]},
+  {"id":"b99eda66-48a4-4528-8e4b-6039c2de38eb","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[897,129,20]},
+  {"id":"2e22cee7-9e2d-43a6-aa31-cba6241425bc","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[938,128,20]},
+  {"id":"cd3c825c-75f9-44ef-87bb-72da348f4fd8","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[852,262,20]},
+  {"id":"faf5c227-b363-4cfc-89c9-20c53f097202","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[692,273,20]},
+  {"id":"3f673b7a-ad7a-4061-8b25-8d86f736a8dd","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[754,269,20]},
+  {"id":"36d329dc-b8cf-438a-9e2a-137694d00d6f","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[410,274,20]},
+  {"id":"06063fc3-a72d-443e-b18f-f55d646c7853","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[260,253,20]},
+  {"id":"711da289-df3d-400d-a07a-cfcce86f07c4","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[260,127,20]},
+  {"id":"77135a3e-3816-429c-a506-281647318169","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[700,140,20]},
+  {"id":"865b9eaa-56ee-421c-a859-14e6710d0b97","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[579,140,20]}
 ]
