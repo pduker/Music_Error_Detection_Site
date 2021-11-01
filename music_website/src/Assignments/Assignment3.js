@@ -12,6 +12,7 @@ var audio = new Audio(Tmp);
 var hotspotCountP = 1;
 var hotspotCountR = 1;
 var hotspotCountI = 1;
+let buttVal = "";
 const imageStyle1 = {
   display: 'block'
 };
@@ -57,13 +58,13 @@ class Assignment3 extends Component {
     }
 
     return (
-      <div className="Assignment3">
+      <div id="Assignment3" className="assignment">
         <h2>Assignment 3</h2>
-        <div className="Instruction">
-        <h2><u>Instruction:</u>  Click the "Play Sound" button to hear the music. 
-          You will only be able to play the sound 3 times. After listening to the music, 
-          place the hotspots over each note error. There are 3 differnt types of error:
-          Pitch Error (Purple), Rhythm Error (Red), and Intonation Error (Green). 
+        <div className="Instructions">
+        <h2><u>Instructions:</u>  Click the "Play Sound" button to hear the music.
+          You will only be able to play the sound 3 times. After listening to the music,
+          place the hotspots over each note error. There are 3 different types of error:
+          Pitch Error (Purple), Rhythm Error (Red), and Intonation Error (Green).
           <br></br>
           <br></br>
           <u>How to place the hotspot?</u>
@@ -83,23 +84,50 @@ class Assignment3 extends Component {
         <Button
         onClick={() => {
           hotspotCountP++;
+
           document.getElementById('shapeP').style.display = "block";
-          let clone = document.querySelector('#shapeP').cloneNode(true);
-          clone.setAttribute('id', 'shapeP'+hotspotCountP.toString());
-          document.querySelector('div').appendChild( clone );
+
+          if (buttVal === "R"){
+            document.getElementById('shapeR').style.display = "none";
+          }
+          else if (buttVal === "I"){
+            document.getElementById('shapeI').style.display = "none";
+          }
+          else {
+            let clone = document.querySelector('#shapeP').cloneNode(true);
+            clone.setAttribute('id', 'shapeP'+hotspotCountP.toString());
+            document.querySelector('div').appendChild( clone );
+
+          }
+          buttVal = "P";
         }
         }
         type="button"
         buttonStyle="btn--pitch--solid"
         buttonSize="btn--medium"
         >Add Pitch Error</Button>
-        <Button className="hotspot"
+
+        <Button
         onClick={() => {
           hotspotCountR++;
+
           document.getElementById('shapeR').style.display = "block";
-          let clone = document.querySelector('#shapeR').cloneNode(true);
-          clone.setAttribute('id', 'shapeR'+hotspotCountR.toString());
-          document.querySelector('div').appendChild( clone );
+
+          if (buttVal === "P"){
+            document.getElementById('shapeP').style.display = "none";
+          }
+
+          else if (buttVal === "I"){
+            document.getElementById('shapeI').style.display = "none";
+          }
+
+          else {
+            let clone = document.querySelector('#shapeR').cloneNode(true);
+            clone.setAttribute('id', 'shapeR'+hotspotCountR.toString());
+            document.querySelector('div').appendChild( clone );
+          }
+
+          buttVal = "R";
         }
         }
         type="button"
@@ -109,17 +137,32 @@ class Assignment3 extends Component {
         <Button
         onClick={() => {
           hotspotCountI++;
+
           document.getElementById('shapeI').style.display = "block";
-          let clone = document.querySelector('#shapeI').cloneNode(true);
-          clone.setAttribute('id', 'shapeI'+hotspotCountI.toString());
-          document.querySelector('div').appendChild( clone );
+
+          if (buttVal === "R"){
+            document.getElementById('shapeR').style.display = "none";
+          }
+
+          else if (buttVal === "P"){
+            document.getElementById('shapeP').style.display = "none";
+          }
+
+          else {
+            let clone = document.querySelector('#shapeI').cloneNode(true);
+            clone.setAttribute('id', 'shapeI'+hotspotCountI.toString());
+            document.querySelector('div').appendChild( clone );
+          }
+
+          buttVal = "I";
         }
         }
         type="button"
         buttonStyle="btn--intonation--solid"
         buttonSize="btn--medium"
         >Add Intonation Error</Button>
-      <img id="img3" className="center-fit" style={imageStyle1} src={example3} alt="Assignment 3"/>
+        <br></br>
+        <img id="img3" className="center-fit" style={imageStyle1} src={example3} alt="Assignment 3"/>
         <img id="img3ans" className="center-fit" style={imageStyle2} src={example3Ans} alt="Assignment 3"/>
         <br></br>
         <Button
@@ -132,16 +175,31 @@ class Assignment3 extends Component {
           buttonStyle="btn--primary--solid-go-back"
           buttonSize="btn--medium"
         >Back</Button>
-        <Button id = 'submit'
+
+        <Button id='reset'
           onClick={() => {
-            document.getElementById('img3').style.display = "none";
-            document.getElementById('img3ans').style.display = "block";
+            if(window.confirm("Are you sure you want to reset?")){
+              window.location.reload(false);
+            }
           }
           }
           type="button"
           buttonStyle="btn--primary--solid"
           buttonSize="btn--medium"
-        >Submit</Button>     
+        >Reset</Button>
+
+        <Button id = 'submit'
+          onClick={() => {
+            if(window.confirm("Are you sure you want to submit?")){
+              document.getElementById('img3').style.display = "none";
+              document.getElementById('img3ans').style.display = "block";
+            }
+          }
+          }
+          type="button"
+          buttonStyle="btn--primary--solid"
+          buttonSize="btn--medium"
+        >Submit</Button>
       </div>
     );
   }

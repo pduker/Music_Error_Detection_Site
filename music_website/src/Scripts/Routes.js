@@ -7,6 +7,7 @@ import Assignment2 from "../Assignments/Assignment2";
 import Assignment3 from "../Assignments/Assignment3";
 import Assignment4 from "../Assignments/Assignment4";
 import Assignment5 from "../Assignments/Assignment5";
+import Debug from "../Assignments/Debug";
 import history from './history';
 import AssignmentTemplate from "../Components/AssignmentTemplate";
 
@@ -27,6 +28,7 @@ export default class Routes extends Component {
                     <Route path="/Assignment3" component={Assignment3} />
                     <Route path="/Assignment4" component={Assignment4} />
                     <Route path="/Assignment5" component={Assignment5} />
+                    <Route path="/Debug" component={Debug} />
                     <Route path="/AssignmentTemplate" render={(props) => <AssignmentTemplate {...props} audioUrl={audio1} sheetMusic={sheetMusic1}/>} />
                 </Switch>
             </Router>
