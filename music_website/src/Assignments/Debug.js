@@ -38,6 +38,7 @@ class Debug extends Component {
         super(props);
         this.state = {
             imageWidth: 0,
+            imageMapAreas: IMAGE_MAP.areas,
         };
         this.handleClickSheetMusic = this.handleClickSheetMusic.bind(this);
     }
@@ -188,6 +189,23 @@ class Debug extends Component {
 
     handleClickSheetMusic(){
         console.log("component has been clicked at coordinates: (", this.state.coords.x, ",", this.state.coords.y,")");
+        let newAreas = this.state.imageMapAreas;
+        let newError = {
+            "id": "azsexdcfvgbhawsexdrcvfgbhqwsedrf",
+            "isError": true,
+            "errorType": "pitchError",
+            "shape": "circle",
+            "preFillColor": "#e3fc0080",
+            "fillColor": "#e3fc0080",
+            "strokeColor": "black",
+            "coords": [
+                this.state.coords.x,
+                this.state.coords.y,
+                20
+            ]
+        };
+        newAreas.push(newError);
+        this.setState({ imageMapAreas: newAreas });
     }
 
     render() {
