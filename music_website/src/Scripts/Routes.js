@@ -9,9 +9,15 @@ import Assignment4 from "../Assignments/Assignment4";
 import Assignment5 from "../Assignments/Assignment5";
 import Debug from "../Assignments/Debug";
 import history from './history';
+import AssignmentTemplate from "../Components/AssignmentTemplate";
+
+//there has to be a better way than individually importing each file
+import audio1 from "../Resources/Audio/Example1.m4a";
+import sheetMusic1 from "../Resources/Images/example1.jpg";
 
 export default class Routes extends Component {
     render() {
+        // let assignment1 = <AssignmentTemplate/>
         return (
             <div>
             <Router history={history}>
@@ -23,6 +29,7 @@ export default class Routes extends Component {
                     <Route path="/Assignment4" component={Assignment4} />
                     <Route path="/Assignment5" component={Assignment5} />
                     <Route path="/Debug" component={Debug} />
+                    <Route path="/AssignmentTemplate" render={(props) => <AssignmentTemplate {...props} audioUrl={audio1} sheetMusic={sheetMusic1}/>} />
                 </Switch>
             </Router>
             </div>
