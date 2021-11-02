@@ -27,6 +27,8 @@ const COLOR_RHYTHM_ERROR = "#1500fc80";
 // The color for an intonation  error is green
 const COLOR_INTONATION_ERROR = "#00fc4380";
 
+// The color used for transparency
+const COLOR_TRANSPARENT = "#e3fc0000";
 
 class Debug extends Component {
     constructor() {
@@ -216,6 +218,29 @@ class Debug extends Component {
                 </div>
 
                 {this.RenderButtonAndSound()}
+
+                <Button
+                    onClick={() => {
+                        for (const shape of IMAGE_MAP.areas) {
+                            // If the shape is transparent, make it visible
+                            if (shape.preFillColor == COLOR_TRANSPARENT) {
+                                shape.preFillColor = COLOR_NO_ERROR;
+                                shape.strokeColor = "black";
+                            }
+                            // Otherwise make it transparent
+                            else {
+                                shape.preFillColor = COLOR_TRANSPARENT;
+                                shape.strokeColor = COLOR_TRANSPARENT;
+                            }
+                        }
+
+                        this.refreshMapper();
+                    }
+                    }
+                    type="button"
+                    buttonStyle="btn--primary--solid-go-back"
+                    buttonSize="btn--medium"
+                >Toggle Transparency</Button>
 
                 <br></br>
                 <br></br>

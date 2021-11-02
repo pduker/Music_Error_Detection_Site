@@ -4,99 +4,219 @@
     "isError": true,
     "errorType": "pitchError",
     "shape": "circle",
-    "preFillColor": "#e3fc0080",
+    "preFillColor": "#e3fc0000",
     "fillColor": "#e3fc0080",
-    "strokeColor": "black",
-    "coords": [
-      319,
-      112,
-      20
-    ]
+    "strokeColor": "e3fc0000",
+    "coords": [319, 112, 20]
   },
   {
     "id": "70821260-A65D-411B-911B-F01661B34CCA",
     "isError": true,
     "errorType": "intonationError",
     "shape": "circle",
-    "preFillColor": "#e3fc0080",
+    "preFillColor": "#e3fc0000",
     "fillColor": "#e3fc0080",
-    "strokeColor": "black",
-    "coords": [
-      984,
-      135,
-      20
-    ]
+    "strokeColor": "e3fc0000",
+    "coords": [984, 135, 20]
   },
   {
     "id": "A9C8801C-0625-4A7B-A8C7-1C98F6C7C8B4",
     "isError": true,
     "errorType": "rhythmError",
     "shape": "circle",
-    "preFillColor": "#e3fc0080",
+    "preFillColor": "#e3fc0000",
     "fillColor": "#e3fc0080",
-    "strokeColor": "black",
-    "coords": [
-      650,
-      134,
-      20
-    ]
+    "strokeColor": "e3fc0000",
+    "coords": [650, 134, 20]
   },
   {
     "id": "5E23FE0F-0726-4977-A0C5-4D9AF4098878",
     "isError": true,
     "errorType": "intonationError",
     "shape": "circle",
-    "preFillColor": "#e3fc0080",
+    "preFillColor": "#e3fc0000",
     "fillColor": "#e3fc0080",
-    "strokeColor": "black",
-    "coords": [
-      797,
-      268,
-      20
-    ]
+    "strokeColor": "e3fc0000",
+    "coords": [797, 268, 20]
   },
   {
     "id": "A5103C10-3B85-4C9C-9BEA-602C767FCC05",
     "isError": true,
     "errorType": "pitchError",
     "shape": "circle",
-    "preFillColor": "#e3fc0080",
+    "preFillColor": "#e3fc0000",
     "fillColor": "#e3fc0080",
-    "strokeColor": "black",
-    "coords": [
-      567,
-      265,
-      20
-    ]
+    "strokeColor": "e3fc0000",
+    "coords": [567, 265, 20]
   },
   {
     "id": "2BCC2CBA-95A4-4E1A-98CA-30F761CB5276",
     "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "preFillColor": "#e3fc0080",
+    "preFillColor": "#e3fc0000",
     "fillColor": "#e3fc0080",
-    "strokeColor": "black",
-    "coords": [
-      470,
-      130,
-      20
-    ]
+    "strokeColor": "e3fc0000",
+    "coords": [470, 130, 20]
   },
-  {"id":"de19ebae-84e5-4d67-be68-930f7a9dabb2","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[261,119,20]},
-  {"id":"5157f49f-3c2b-49a5-968e-b7ff644f6152","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[1037,127,20]},
-  {"id":"771a5ac6-1168-4ec3-b89a-85bdb5ebf65d","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[1035,255,20]},
-  {"id":"cc785e2d-5dcb-4231-ad7d-1c815249d254","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[860,134,20]},
-  {"id":"c96be3d7-ec72-45ed-9351-b6e5756a174d","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[896,130,20]},
-  {"id":"ec293e6f-5559-4a3a-b46b-c9b59a081533","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[947,124,20]},
-  {"id":"e68b6588-441e-4389-9428-244d3be73685","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[697,137,20]},
-  {"id":"accc2e16-ae34-4f88-85c8-9726066e0df4","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[860,263,20]},
-  {"id":"44239cff-9b19-4514-8009-ef715217b41e","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[701,279,20]},
-  {"id":"616d050d-409c-4f62-8e42-1e722835d116","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[755,274,20]},
-  {"id":"32ad4199-12ba-44fc-9ee8-88fa99e7f05f","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[409,270,20]},
-  {"id":"29ad6e5f-3fc9-4c1e-b388-0da07c00568a","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[259,254,20]},
-  {"id":"270b237f-4a29-425d-b7a3-485f0736dfcc","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[571,134,20]},
-  {"id":"b0bee10d-e733-42f3-bfb8-d6a2c2e09f91","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[515,132,20]},
-  {"id":"75eabbbd-e172-4375-9016-e86f0a039a03","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[403,125,20]},
-  {"id":"177c4bf1-b69a-425b-93c4-cc529a62bbf6","isError":false,"errorType":"noError","shape":"circle","preFillColor":"#e3fc0080","fillColor":"#e3fc0080","strokeColor":"black","coords":[362,115,20]}
+  {
+    "id": "5157f49f-3c2b-49a5-968e-b7ff644f6152",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#e3fc0000",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#e3fc0000",
+    "coords": [1037, 127, 20]
+  },
+  {
+    "id": "de19ebae-84e5-4d67-be68-930f7a9dabb2",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#e3fc0000",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#e3fc0000",
+    "coords": [261, 119, 20]
+  },
+  {
+    "id": "771a5ac6-1168-4ec3-b89a-85bdb5ebf65d",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#e3fc0000",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#e3fc0000",
+    "coords": [1035, 255, 20]
+  },
+  {
+    "id": "cc785e2d-5dcb-4231-ad7d-1c815249d254",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#e3fc0000",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#e3fc0000",
+    "coords": [860, 134, 20]
+  },
+  {
+    "id": "c96be3d7-ec72-45ed-9351-b6e5756a174d",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#e3fc0000",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#e3fc0000",
+    "coords": [896, 130, 20]
+  },
+  {
+    "id": "ec293e6f-5559-4a3a-b46b-c9b59a081533",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#e3fc0000",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#e3fc0000",
+    "coords": [947, 124, 20]
+  },
+  {
+    "id": "e68b6588-441e-4389-9428-244d3be73685",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#e3fc0000",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#e3fc0000",
+    "coords": [697, 137, 20]
+  },
+  {
+    "id": "accc2e16-ae34-4f88-85c8-9726066e0df4",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#e3fc0000",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#e3fc0000",
+    "coords": [860, 263, 20]
+  },
+  {
+    "id": "44239cff-9b19-4514-8009-ef715217b41e",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#e3fc0000",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#e3fc0000",
+    "coords": [701, 279, 20]
+  },
+  {
+    "id": "616d050d-409c-4f62-8e42-1e722835d116",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#e3fc0000",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#e3fc0000",
+    "coords": [755, 274, 20]
+  },
+  {
+    "id": "32ad4199-12ba-44fc-9ee8-88fa99e7f05f",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#e3fc0000",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#e3fc0000",
+    "coords": [409, 270, 20]
+  },
+  {
+    "id": "29ad6e5f-3fc9-4c1e-b388-0da07c00568a",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#e3fc0000",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#e3fc0000",
+    "coords": [259, 254, 20]
+  },
+  {
+    "id": "270b237f-4a29-425d-b7a3-485f0736dfcc",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#e3fc0000",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#e3fc0000",
+    "coords": [571, 134, 20]
+  },
+  {
+    "id": "b0bee10d-e733-42f3-bfb8-d6a2c2e09f91",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#e3fc0000",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#e3fc0000",
+    "coords": [515, 132, 20]
+  },
+  {
+    "id": "75eabbbd-e172-4375-9016-e86f0a039a03",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#e3fc0000",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#e3fc0000",
+    "coords": [403, 125, 20]
+  },
+  {
+    "id": "177c4bf1-b69a-425b-93c4-cc529a62bbf6",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#e3fc0000",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#e3fc0000",
+    "coords": [362, 115, 20]
+  }
 ]
