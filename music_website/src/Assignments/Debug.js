@@ -4,44 +4,47 @@ import history from "../Scripts/history";
 import "./../Styles/assignment.css";
 import { withRouter } from "react-router-dom";
 import Tmp from "./../Resources/Audio/Example1.m4a";
-import example5 from "./../Resources/Images/Example1Display.png";
-import example5Ans from "./../Resources/Images/Example1Answer.png";
-
 import ImageMapper from "react-img-mapper";
 import URL from "../Resources/Images/assignment-debug.jpg";
 import mapJSON from "../Resources/JSON/debug.json";
+import { v4 as uuidv4 } from 'uuid';
 
 var count;
 var isPlaying = false;
 var audio = new Audio(Tmp);
-
-const imageStyle1 = {
-    display: 'block'
-};
-
-const imageStyle2 = {
-    display: 'none'
-};
 
 var IMAGE_MAP = {
     name: 'debug-map',
     areas: mapJSON
 };
 
-var isDisabled = false;
+// The color for no error is yellow
+const COLOR_NO_ERROR = "#e3fc0080";
+// The color for a pitch error is red
+const COLOR_PITCH_ERROR = "#fc110080";
+// The color for a rhythm  error is red
+const COLOR_RHYTHM_ERROR = "#1500fc80";
+// The color for an intonation  error is green
+const COLOR_INTONATION_ERROR = "#00fc4380";
 
 
 class Debug extends Component {
     constructor() {
         super();
         this.state = {
+            coordinates: [0, 0],
+            selectedArea: { "id": "0", "isError": false, "errorType": "noError" },
             imageWidth: 0,
+            windowWidth: window.innerWidth,
+            jsonGeneratorSelection: "noError",
+            toggle: true
         };
     }
 
     async componentDidMount() {
         this.setState({
             imageWidth: await this.getImageWidth(),
+            theMap: IMAGE_MAP.areas
         });
     }
 
@@ -76,96 +79,84 @@ class Debug extends Component {
         );
     };
 
+    updateCoordinates(evt) {
+        this.setState({ coordinates: [evt.nativeEvent.layerX, evt.nativeEvent.layerY] });
+    }
+
+    updateCoordinateHtml(evt) {
+        this.updateCoordinates(evt);
+        const coordX = this.state.coordinates[0];
+        const coordY = this.state.coordinates[1];
+
+        document.getElementById("x-coordinate").innerText = `X coordinate is ${coordX}`;
+        document.getElementById("y-coordinate").innerText = `Y coordinate is ${coordY}`;
+        document.getElementById("coordinate-json").innerText = `Coordinate JSON is "coords": [${coordX},${coordY},20]`;
+    }
+
     moveOnImage(evt) {
-        const coords = { x: evt.nativeEvent.layerX, y: evt.nativeEvent.layerY };
-
-        this.setState({
-            moveMsg: `You moved on the image at coords ${JSON.stringify(coords)} !`
-        });
-
-        document.getElementById("x-coordinate").innerText = `X coordinate is ${coords.x}`;
-        document.getElementById("y-coordinate").innerText = `Y coordinate is ${coords.y}`;
-        document.getElementById("coordinate-json").innerText = `Coordinate JSON is "coords": [${coords.x},${coords.y},20]`;
+        this.updateCoordinateHtml(evt);
     }
 
     moveOnArea(area, evt) {
-        const coords = { x: evt.nativeEvent.layerX, y: evt.nativeEvent.layerY };
+        this.updateCoordinateHtml(evt);
+        this.setState({ selectedArea: area });
 
-        document.getElementById("x-coordinate").innerText = `X coordinate is ${coords.x}`;
-        document.getElementById("y-coordinate").innerText = `Y coordinate is ${coords.y}`;
-        document.getElementById("coordinate-json").innerText = `Coordinate JSON is "coords": [${coords.x},${coords.y},20]`;
+        const areaId = this.state.selectedArea.id;
+        const areasIsError = this.state.selectedArea.isError;
+        const areaErrorType = this.state.selectedArea.errorType;
 
-        this.setState({
-            hoveredArea: area,
-            msg: `You entered ${area.shape} ${area.name} at coords ${JSON.stringify(
-                area.coords
-            )} !`
-        });
+        document.getElementById("shape-id").innerText = `Shape info: ID=${areaId}, isError=${areasIsError}, errorType=${areaErrorType}`;
+    }
 
-        document.getElementById("shape-id").innerText = `Shape info: ID=${area.id}, isError=${area.isError}, errorType=${area.errorType}`;
+    clickedOutside(evt) {
+        this.updateCoordinates(evt);
+        const newId = uuidv4();
+        const coordX = this.state.coordinates[0];
+        const coordY = this.state.coordinates[1];
+
+        let isError = false;
+        if (this.state.jsonGeneratorSelection != "noError") {
+            isError = true;
+        }
+        let errorType = this.state.jsonGeneratorSelection;
+
+        let generatedJson = `{`;
+        generatedJson += `"id":"${newId}",`;
+        generatedJson += `"isError":${isError},`;
+        generatedJson += `"errorType":"${errorType}",`;
+        generatedJson += `"shape":"circle",`;
+        generatedJson += `"preFillColor":"${COLOR_NO_ERROR}",`;
+        generatedJson += `"fillColor":"${COLOR_NO_ERROR}",`;
+        generatedJson += `"strokeColor":"black",`;
+        generatedJson += `"coords":[${coordX},${coordY},20]`;
+        generatedJson += `}`;
+
+        document.getElementById("generated-json").innerText = generatedJson;
     }
 
     clicked(area) {
-        console.log(`You clicked shape ${area.id}, ${area.preFillColor} ${area.fillColor} ${area.strokeColor}`);
-
-        const colorYellow = "#e3fc0080";
-        const colorRed = "#fc110080";
-        const colorBlue = "#1500fc80";
-        const colorGreen = "#00fc4380";
-
-        //console.log(`IMAGE_MAP.areas=${JSON.stringify(IMAGE_MAP.areas)}`);
-
-        for (let i = 0; i < IMAGE_MAP.areas.length; i++) {
-            //console.log(`IMAGE_MAP.areas[${i}]=${JSON.stringify(IMAGE_MAP.areas[i])}`);
-
-            if (IMAGE_MAP.areas[i].id == area.id) {
-                console.log(`match`);
-                console.log(`IMAGE_MAP.areas[${i}]=${JSON.stringify(IMAGE_MAP.areas[i])}`);
-
-                if (area.fillColor == colorRed) {
-                    console.log(`colorRed`);
-                    //area.fillColor = colorBlue;
-                    IMAGE_MAP.areas[i].fillColor = colorBlue;
-                    IMAGE_MAP.areas[i].preFillColor = colorBlue;
-                } else if (area.fillColor == colorBlue) {
-                    console.log(`colorBlue`);
-                    //area.fillColor = colorGreen;
-                    IMAGE_MAP.areas[i].fillColor = colorGreen;
-                    IMAGE_MAP.areas[i].preFillColor = colorGreen;
-                } else if (area.fillColor == colorGreen) {
-                    console.log(`colorGreen`);
-                    //area.fillColor = colorYellow;
-                    IMAGE_MAP.areas[i].fillColor = colorYellow;
-                    IMAGE_MAP.areas[i].preFillColor = colorYellow;
-                } else if (area.fillColor == colorYellow) {
-                    console.log(`colorYellow`);
-                    //area.fillColor = colorRed;
-                    IMAGE_MAP.areas[i].fillColor = colorRed;
-                    IMAGE_MAP.areas[i].preFillColor = colorRed;
+        for (const shape of IMAGE_MAP.areas) {
+            if (shape.id == area.id) {
+                if (area.fillColor == COLOR_PITCH_ERROR) {
+                    shape.fillColor = COLOR_RHYTHM_ERROR;
+                    shape.preFillColor = COLOR_RHYTHM_ERROR;
+                } else if (area.fillColor == COLOR_RHYTHM_ERROR) {
+                    shape.fillColor = COLOR_INTONATION_ERROR;
+                    shape.preFillColor = COLOR_INTONATION_ERROR;
+                } else if (area.fillColor == COLOR_INTONATION_ERROR) {
+                    shape.fillColor = COLOR_NO_ERROR;
+                    shape.preFillColor = COLOR_NO_ERROR;
+                } else if (area.fillColor == COLOR_NO_ERROR) {
+                    shape.fillColor = COLOR_PITCH_ERROR;
+                    shape.preFillColor = COLOR_PITCH_ERROR;
                 } else {
-                    console.log(`other`);
-                    //area.fillColor = colorYellow;
-                    IMAGE_MAP.areas[i].fillColor = colorYellow;
-                    IMAGE_MAP.areas[i].preFillColor = colorYellow;
+                    shape.fillColor = COLOR_NO_ERROR;
+                    shape.preFillColor = COLOR_NO_ERROR;
                 }
             }
         }
 
-
-
-        //area.userSelection = "someError";
-        //area.preFillColor = "#04b533";
-        //area.fillColor = "#04b533";
-        //area.strokeColor = "#04b533";
-
-        this.setState({
-            msg: `You clicked on ${area.shape} at coords ${JSON.stringify(
-                area.coords
-            )} !`
-        });
-
-        // const content = document.getElementById("image-mapper-div").innerHTML;
-        // document.getElementById("image-mapper-div").innerHTML = content;
+        this.refreshMapper();
     }
 
     async getImageWidth() {
@@ -176,8 +167,24 @@ class Debug extends Component {
         };
 
         img.src = URL;
-
         return img.onload();
+    }
+
+    /**
+     * This is a temporary fix to make React refresh the mapper
+     */
+    refreshMapper() {
+        if (this.state.toggle === true) {
+            this.setState({
+                windowWidth: window.innerWidth + 1,
+                toggle: false
+            });
+        } else {
+            this.setState({
+                windowWidth: window.innerWidth - 1,
+                toggle: true
+            });
+        }
     }
 
     render() {
@@ -207,21 +214,10 @@ class Debug extends Component {
                         <br></br>
                         5. todo</h2>
                 </div>
-                <input id = "inc" value = "0" hidden></input>
+
                 {this.RenderButtonAndSound()}
 
-                <Button
-                    onClick={() => {
-                        isDisabled = !isDisabled;
-                    }
-                    }
-                    type="button"
-                    buttonStyle="btn--pitch--solid"
-                    buttonSize="btn--medium"
-                >Test</Button>
-
                 <br></br>
-
                 <br></br>
 
                 <div>
@@ -270,21 +266,15 @@ class Debug extends Component {
                         map={IMAGE_MAP}
                         onImageMouseMove={evt => this.moveOnImage(evt)}
                         onMouseMove={(area, _, evt) => this.moveOnArea(area, evt)}
+                        onImageClick={evt => this.clickedOutside(evt)}
                         onClick={area => this.clicked(area)}
                         stayMultiHighlighted={true}
-                        //toggleHighlighted={true}
-                        disabled={isDisabled}
-                        width={window.innerWidth}
+                        width={this.state.windowWidth}
                         imgWidth={this.state.imageWidth}
                     />
                 </div>
 
                 <br></br>
-
-                <div className="radio-buttons" style={{ marginTop: 50 + 'px' }}>
-                    <input type="radio" name="clickType" value="" onClick={() => console.log(`radio button 1 was clicked`)} />Default
-                    <input type="radio" name="clickType" value="" onClick={() => console.log(`radio button 2 was clicked`)} />JSON generator
-                </div>
 
                 <br></br>
                 <Button
@@ -318,53 +308,51 @@ class Debug extends Component {
                         let rhythmErrorsMissed = 0;
                         let intonationErrorsCorrect = 0;
                         let intonationErrorsMissed = 0;
-
                         let noErrorsCorrect = 0;
                         let noErrorsMissed = 0;
 
-                        for (let shape of IMAGE_MAP.areas) {
-                            console.log(`shape=${JSON.stringify(shape)}`);
-
+                        for (const shape of IMAGE_MAP.areas) {
                             // Check if the shape's fill color is correct
                             if (shape.errorType == "pitchError") {
-                                if (shape.fillColor == "#fc110080") {
-                                    console.log(`pitchError correct`);
+                                if (shape.fillColor == COLOR_PITCH_ERROR) {
                                     pitchErrorsCorrect += 1;
                                 } else {
-                                    console.log(`pitchError incorrect`);
                                     pitchErrorsMissed += 1;
                                 }
                             } else if (shape.errorType == "intonationError") {
-                                if (shape.fillColor == "#00fc4380") {
-                                    console.log(`intonationError correct`);
+                                if (shape.fillColor == COLOR_INTONATION_ERROR) {
                                     intonationErrorsCorrect += 1;
                                 } else {
-                                    console.log(`intonationError incorrect`);
                                     intonationErrorsMissed += 1;
                                 }
                             } else if (shape.errorType == "rhythmError") {
-                                if (shape.fillColor == "#1500fc80") {
-                                    console.log(`rhythmError correct`);
+                                if (shape.fillColor == COLOR_RHYTHM_ERROR) {
                                     rhythmErrorsCorrect += 1;
                                 } else {
-                                    console.log(`rhythmError incorrect`);
                                     rhythmErrorsMissed += 1;
                                 }
-                            } else if (shape.errorType == undefined) {
-                                if (shape.fillColor == "#e3fc0080") {
-                                    console.log(`noError correct`);
+                            } else if (shape.errorType == "noError") {
+                                if (shape.fillColor == COLOR_NO_ERROR) {
                                     noErrorsCorrect += 1;
                                 } else {
-                                    console.log(`noError incorrect`);
                                     noErrorsMissed += 1;
                                 }
                             }
 
-                            let totalCorrect = pitchErrorsCorrect + rhythmErrorsCorrect + intonationErrorsCorrect + noErrorsCorrect;
-                            let totalMissed = pitchErrorsMissed + rhythmErrorsMissed + intonationErrorsMissed + noErrorsMissed;
+                            const totalCorrect = pitchErrorsCorrect + rhythmErrorsCorrect + intonationErrorsCorrect + noErrorsCorrect;
+                            const totalMissed = pitchErrorsMissed + rhythmErrorsMissed + intonationErrorsMissed + noErrorsMissed;
 
-                            // Create a basic report
-                            document.getElementById("results").innerText = `Results\n There are ${IMAGE_MAP.areas.length} shapes\n pitchErrorsCorrect=${pitchErrorsCorrect}, pitchErrorsMissed=${pitchErrorsMissed}\n intonationErrorsCorrect=${intonationErrorsCorrect}, intonationErrorsMissed=${intonationErrorsMissed}\n rhythmErrorsCorrect=${rhythmErrorsCorrect}, rhythmErrorsMissed=${rhythmErrorsMissed}\n noErrorsCorrect=${noErrorsCorrect}, noErrorsMissed=${noErrorsMissed} \n totalCorrect=${totalCorrect}/${IMAGE_MAP.areas.length}\n totalMissed=${totalMissed}/${IMAGE_MAP.areas.length}`;
+                            const reportText =
+                            `Here are the results:
+                            There are ${IMAGE_MAP.areas.length} shapes
+                            pitchErrorsCorrect=${pitchErrorsCorrect}, pitchErrorsMissed=${pitchErrorsMissed}
+                            intonationErrorsCorrect=${intonationErrorsCorrect}, intonationErrorsMissed=${intonationErrorsMissed}
+                            rhythmErrorsCorrect=${rhythmErrorsCorrect}, rhythmErrorsMissed=${rhythmErrorsMissed}
+                            noErrorsCorrect=${noErrorsCorrect}, noErrorsMissed=${noErrorsMissed}
+                            totalCorrect=${totalCorrect}/${IMAGE_MAP.areas.length}\n totalMissed=${totalMissed}/${IMAGE_MAP.areas.length}
+                            `;
+
+                            document.getElementById("results").innerText = reportText;
                         }
                     }
                     }
@@ -374,11 +362,25 @@ class Debug extends Component {
                 >Submit</Button>
 
                 <br></br>
-
+                <br></br>
+                <br></br>
                 <br></br>
 
                 <div id="results">
                     Results
+                </div>
+
+                <div className="radio-buttons-error-type" style={{ marginTop: 20 + 'px' }}>
+                    <input type="radio" name="clickType" value="" onClick={() => this.state.jsonGeneratorSelection = "noError"} />No error
+                    <input type="radio" name="clickType" value="" onClick={() => this.state.jsonGeneratorSelection = "pitchError"} />Pitch error
+                    <input type="radio" name="clickType" value="" onClick={() => this.state.jsonGeneratorSelection = "rhythmError"} />Rhythm error
+                    <input type="radio" name="clickType" value="" onClick={() => this.state.jsonGeneratorSelection = "intonationError"} />Intonation error
+                </div>
+
+                <br></br>
+
+                <div id="generated-json" style={{ marginRight: 20 + 'px' }, { marginLeft: 20 + 'px' }}>
+                    Copy the generated JSON below
                 </div>
             </div>
         );
