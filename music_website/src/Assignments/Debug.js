@@ -191,7 +191,7 @@ class Debug extends Component {
         console.log("component has been clicked at coordinates: (", this.state.coords.x, ",", this.state.coords.y,")");
         let newAreas = this.state.imageMapAreas;
         let newError = {
-            "id": "azsexdcfvgbhawsexdrcvfgbhqwsedrf",
+            // "id": "azsexdcfvgbhawsexdrcvfgbhqwsedrf",
             "isError": true,
             "errorType": "pitchError",
             "shape": "circle",
@@ -291,7 +291,8 @@ class Debug extends Component {
 
                 <br></br>
 
-                <SheetMusic onInsideClick={this.handleClickSheetMusic}>
+                {/* <SheetMusic onInsideClick={this.handleClickSheetMusic}> */}
+                <SheetMusic>
                     <ImageMapper
                         id="mapper-debug"
                         src={URL}
