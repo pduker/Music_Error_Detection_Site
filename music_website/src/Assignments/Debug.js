@@ -5,7 +5,7 @@ import "./../Styles/assignment.css";
 import { withRouter } from "react-router-dom";
 import Tmp from "./../Resources/Audio/Example1.m4a";
 import ImageMapper from "react-img-mapper";
-import URL from "../Resources/Images/assignment-debug.jpg";
+import IMAGE_PATH from "../Resources/Images/assignment-debug.jpg";
 import mapJSON from "../Resources/JSON/debug.json";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -30,6 +30,8 @@ const COLOR_INTONATION_ERROR = "#00fc4380";
 // The color used for transparency
 const COLOR_TRANSPARENT = "#e3fc0000";
 
+const MAX_PLAY_COUNT = 3;
+
 class Debug extends Component {
     constructor() {
         super();
@@ -39,14 +41,15 @@ class Debug extends Component {
             imageWidth: 0,
             windowWidth: window.innerWidth,
             jsonGeneratorSelection: "noError",
-            toggle: true
+            toggle: true,
+            theMap: IMAGE_MAP
         };
     }
 
     async componentDidMount() {
         this.setState({
             imageWidth: await this.getImageWidth(),
-            theMap: IMAGE_MAP.areas
+            theMap: IMAGE_MAP
         });
     }
 
@@ -59,17 +62,17 @@ class Debug extends Component {
         return (
             <Button
                 onClick={() => {
-                    if (count < 3) {
+                    if (count < MAX_PLAY_COUNT) {
                         if (!isPlaying) {
                             audio.play();
                             isPlaying = true;
                             console.log("playing");
                         }
                     }
-                    if (count === 2) {
+                    if (count === MAX_PLAY_COUNT - 1) {
                         alert("You can only play this sound one more time")
                     }
-                    if (count === 3) {
+                    if (count === MAX_PLAY_COUNT) {
                         alert("You have maxed out your attempts to play this sound")
                     }
                 }
@@ -81,10 +84,16 @@ class Debug extends Component {
         );
     };
 
+    /**
+     * Given a mouse event, this updates the stored coordinates the cursor is at
+     */
     updateCoordinates(evt) {
         this.setState({ coordinates: [evt.nativeEvent.layerX, evt.nativeEvent.layerY] });
     }
 
+    /**
+     * Given a mouse event, this updates the HTML and displays some information like the X and Y coordinates
+     */
     updateCoordinateHtml(evt) {
         this.updateCoordinates(evt);
         const coordX = this.state.coordinates[0];
@@ -95,10 +104,16 @@ class Debug extends Component {
         document.getElementById("coordinate-json").innerText = `Coordinate JSON is "coords": [${coordX},${coordY},20]`;
     }
 
+    /**
+     * This is triggered when the mouse is moved over the image (not a shape)
+     */
     moveOnImage(evt) {
         this.updateCoordinateHtml(evt);
     }
 
+    /**
+     * This is triggered when the mouse is moved over a shape
+     */
     moveOnArea(area, evt) {
         this.updateCoordinateHtml(evt);
         this.setState({ selectedArea: area });
@@ -110,6 +125,9 @@ class Debug extends Component {
         document.getElementById("shape-id").innerText = `Shape info: ID=${areaId}, isError=${areasIsError}, errorType=${areaErrorType}`;
     }
 
+    /**
+     * This is triggered when a click occurs on the image (not a shape)
+     */
     clickedOutside(evt) {
         this.updateCoordinates(evt);
         const newId = uuidv4();
@@ -136,6 +154,9 @@ class Debug extends Component {
         document.getElementById("generated-json").innerText = generatedJson;
     }
 
+    /**
+     * This is trigged when a shape is clicked
+     */
     clicked(area) {
         for (const shape of IMAGE_MAP.areas) {
             if (shape.id == area.id) {
@@ -161,6 +182,9 @@ class Debug extends Component {
         this.refreshMapper();
     }
 
+    /**
+     * This gets the image's width and returns it
+     */
     async getImageWidth() {
         var img = new Image();
 
@@ -168,7 +192,7 @@ class Debug extends Component {
             return img.width;
         };
 
-        img.src = URL;
+        img.src = IMAGE_PATH;
         return img.onload();
     }
 
@@ -287,8 +311,8 @@ class Debug extends Component {
                 <div id="image-mapper-div" className="image-mapper">
                     <ImageMapper
                         id="mapper-debug"
-                        src={URL}
-                        map={IMAGE_MAP}
+                        src={IMAGE_PATH}
+                        map={this.state.theMap}
                         onImageMouseMove={evt => this.moveOnImage(evt)}
                         onMouseMove={(area, _, evt) => this.moveOnArea(area, evt)}
                         onImageClick={evt => this.clickedOutside(evt)}
