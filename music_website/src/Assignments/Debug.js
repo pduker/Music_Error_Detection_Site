@@ -126,7 +126,7 @@ class Debug extends Component {
         const coordY = this.state.coordinates[1];
 
         let isError = false;
-        if (this.state.jsonGeneratorSelection != "noError") {
+        if (this.state.jsonGeneratorSelection !== "noError") {
             isError = true;
         }
         let errorType = this.state.jsonGeneratorSelection;
@@ -147,17 +147,17 @@ class Debug extends Component {
 
     clicked(area) {
         for (const shape of IMAGE_MAP.areas) {
-            if (shape.id == area.id) {
-                if (area.fillColor == COLOR_PITCH_ERROR) {
+            if (shape.id === area.id) {
+                if (area.fillColor === COLOR_PITCH_ERROR) {
                     shape.fillColor = COLOR_RHYTHM_ERROR;
                     shape.preFillColor = COLOR_RHYTHM_ERROR;
-                } else if (area.fillColor == COLOR_RHYTHM_ERROR) {
+                } else if (area.fillColor === COLOR_RHYTHM_ERROR) {
                     shape.fillColor = COLOR_INTONATION_ERROR;
                     shape.preFillColor = COLOR_INTONATION_ERROR;
-                } else if (area.fillColor == COLOR_INTONATION_ERROR) {
+                } else if (area.fillColor === COLOR_INTONATION_ERROR) {
                     shape.fillColor = COLOR_NO_ERROR;
                     shape.preFillColor = COLOR_NO_ERROR;
-                } else if (area.fillColor == COLOR_NO_ERROR) {
+                } else if (area.fillColor === COLOR_NO_ERROR) {
                     shape.fillColor = COLOR_PITCH_ERROR;
                     shape.preFillColor = COLOR_PITCH_ERROR;
                 } else {
@@ -252,7 +252,7 @@ class Debug extends Component {
                     onClick={() => {
                         for (const shape of IMAGE_MAP.areas) {
                             // If the shape is transparent, make it visible
-                            if (shape.preFillColor == COLOR_TRANSPARENT) {
+                            if (shape.preFillColor === COLOR_TRANSPARENT) {
                                 shape.preFillColor = COLOR_NO_ERROR;
                                 shape.strokeColor = "black";
                             }
@@ -367,26 +367,26 @@ class Debug extends Component {
 
                         for (const shape of IMAGE_MAP.areas) {
                             // Check if the shape's fill color is correct
-                            if (shape.errorType == "pitchError") {
-                                if (shape.fillColor == COLOR_PITCH_ERROR) {
+                            if (shape.errorType === "pitchError") {
+                                if (shape.fillColor === COLOR_PITCH_ERROR) {
                                     pitchErrorsCorrect += 1;
                                 } else {
                                     pitchErrorsMissed += 1;
                                 }
-                            } else if (shape.errorType == "intonationError") {
-                                if (shape.fillColor == COLOR_INTONATION_ERROR) {
+                            } else if (shape.errorType === "intonationError") {
+                                if (shape.fillColor === COLOR_INTONATION_ERROR) {
                                     intonationErrorsCorrect += 1;
                                 } else {
                                     intonationErrorsMissed += 1;
                                 }
-                            } else if (shape.errorType == "rhythmError") {
-                                if (shape.fillColor == COLOR_RHYTHM_ERROR) {
+                            } else if (shape.errorType === "rhythmError") {
+                                if (shape.fillColor === COLOR_RHYTHM_ERROR) {
                                     rhythmErrorsCorrect += 1;
                                 } else {
                                     rhythmErrorsMissed += 1;
                                 }
-                            } else if (shape.errorType == "noError") {
-                                if (shape.fillColor == COLOR_NO_ERROR) {
+                            } else if (shape.errorType === "noError") {
+                                if (shape.fillColor === COLOR_NO_ERROR) {
                                     noErrorsCorrect += 1;
                                 } else {
                                     noErrorsMissed += 1;
@@ -433,7 +433,7 @@ class Debug extends Component {
 
                 <br></br>
 
-                <div id="generated-json" style={{ marginRight: 20 + 'px' }, { marginLeft: 20 + 'px' }}>
+                <div id="generated-json" style={{ marginRight: 20 + 'px',  marginLeft: 20 + 'px' }}>
                     Copy the generated JSON below
                 </div>
             </div>
