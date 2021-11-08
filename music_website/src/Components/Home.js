@@ -82,7 +82,7 @@ class Home extends Component {
             }
             }
             type="button"
-            buttonStyle="btn--primary--solid"
+            buttonStyle="home-page-button"
             buttonSize="btn--large"
           >New Assignment Template</Button>
         </div>

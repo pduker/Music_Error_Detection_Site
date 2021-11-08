@@ -70,10 +70,10 @@ class Debug extends Component {
                         }
                     }
                     if (count === MAX_PLAY_COUNT - 1) {
-                        alert("You can only play this sound one more time")
+                        alert("You can only play this sound one more time");
                     }
                     if (count === MAX_PLAY_COUNT) {
-                        alert("You have maxed out your attempts to play this sound")
+                        alert("You have maxed out your attempts to play this sound");
                     }
                 }
                 }
@@ -85,7 +85,7 @@ class Debug extends Component {
     };
 
     /**
-     * Given a mouse event, this updates the stored coordinates the cursor is at
+     * Given a mouse event, this updates the stored coordinates to where the cursor is
      */
     updateCoordinates(evt) {
         this.setState({ coordinates: [evt.nativeEvent.layerX, evt.nativeEvent.layerY] });
@@ -155,7 +155,7 @@ class Debug extends Component {
     }
 
     /**
-     * This is trigged when a shape is clicked
+     * This is triggered when a shape is clicked
      */
     clicked(area) {
         for (const shape of IMAGE_MAP.areas) {
@@ -324,8 +324,8 @@ class Debug extends Component {
                 </div>
 
                 <br></br>
-
                 <br></br>
+
                 <Button
                     onClick={() => {
                         history.push('/');
