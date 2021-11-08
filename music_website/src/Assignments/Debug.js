@@ -44,12 +44,21 @@ class Debug extends Component {
             toggle: true,
             theMap: IMAGE_MAP
         };
+
+        window.addEventListener("resize", this.updateWindowWidth);
     }
+
+    /**
+     * Updates the windowWidth state to the current window width
+     */
+    updateWindowWidth = () => {
+        this.setState({ windowWidth: window.innerWidth });
+    };
 
     async componentDidMount() {
         this.setState({
             imageWidth: await this.getImageWidth(),
-            theMap: IMAGE_MAP
+            theMap: IMAGE_MAP,
         });
     }
 
@@ -392,7 +401,7 @@ class Debug extends Component {
                             const totalMissed = pitchErrorsMissed + rhythmErrorsMissed + intonationErrorsMissed + noErrorsMissed;
 
                             const reportText =
-                            `Here are the results:
+                                `Here are the results:
                             There are ${IMAGE_MAP.areas.length} shapes
                             pitchErrorsCorrect=${pitchErrorsCorrect}, pitchErrorsMissed=${pitchErrorsMissed}
                             intonationErrorsCorrect=${intonationErrorsCorrect}, intonationErrorsMissed=${intonationErrorsMissed}
