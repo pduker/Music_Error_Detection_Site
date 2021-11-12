@@ -4,7 +4,7 @@
     "isError": true,
     "errorType": "pitchError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [319, 112, 20]
@@ -14,7 +14,7 @@
     "isError": true,
     "errorType": "intonationError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [984, 135, 20]
@@ -24,7 +24,7 @@
     "isError": true,
     "errorType": "rhythmError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [650, 134, 20]
@@ -34,7 +34,7 @@
     "isError": true,
     "errorType": "intonationError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [797, 268, 20]
@@ -44,7 +44,7 @@
     "isError": true,
     "errorType": "pitchError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [567, 265, 20]
@@ -54,7 +54,7 @@
     "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [470, 130, 20]
@@ -64,7 +64,7 @@
     "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [1037, 127, 20]
@@ -74,7 +74,7 @@
     "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [261, 119, 20]
@@ -84,7 +84,7 @@
     "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [1035, 255, 20]
@@ -94,7 +94,7 @@
     "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [860, 134, 20]
@@ -104,7 +104,7 @@
     "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [896, 130, 20]
@@ -114,7 +114,7 @@
     "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [947, 124, 20]
@@ -124,7 +124,7 @@
     "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [697, 137, 20]
@@ -134,7 +134,7 @@
     "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [860, 263, 20]
@@ -144,17 +144,17 @@
     "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
-    "coords": [701, 279, 20]
+    "coords": [690, 271, 20]
   },
   {
     "id": "616d050d-409c-4f62-8e42-1e722835d116",
     "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [755, 274, 20]
@@ -164,7 +164,7 @@
     "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [409, 270, 20]
@@ -174,7 +174,7 @@
     "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [259, 254, 20]
@@ -184,7 +184,7 @@
     "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [571, 134, 20]
@@ -194,7 +194,7 @@
     "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [515, 132, 20]
@@ -204,7 +204,7 @@
     "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [403, 125, 20]
@@ -214,7 +214,7 @@
     "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "preFillColor": "#e3fc0000",
+    "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [362, 115, 20]

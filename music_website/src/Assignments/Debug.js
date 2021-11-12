@@ -8,6 +8,7 @@ import ImageMapper from "react-img-mapper";
 import IMAGE_PATH from "../Resources/Images/assignment-debug.jpg";
 import mapJSON from "../Resources/JSON/debug.json";
 import { v4 as uuidv4 } from 'uuid';
+import { useEffect } from 'react'
 
 var count;
 var isPlaying = false;
@@ -53,11 +54,27 @@ class Debug extends Component {
         this.setState({ windowWidth: window.innerWidth });
     };
 
-    async componentDidMount() {
+    /**
+     * Sets the initial state of the mapper and image width
+     */
+    async setInitialState() {
+        console.log(`setInitialState running`);
         this.setState({
             imageWidth: await this.getImageWidth(),
-            theMap: IMAGE_MAP,
+            theMap: IMAGE_MAP
         });
+    }
+
+    /**
+     * Runs on component mount
+     */
+    async componentDidMount() {
+        console.log(`componentDidMount running`);
+        await this.setInitialState();
+        setTimeout(
+            () => this.setInitialState(),
+            1500
+        );
     }
 
     RenderButtonAndSound = () => {
@@ -230,9 +247,7 @@ class Debug extends Component {
                 <h2>Debug</h2>
                 <div className="Instructions">
                     <h2>Instructions:  Click the "Play Sound" button to hear the music.
-                        You will only be able to play the sound 3 times. After listening to the music,
-                        place the hotspots over each note error. There are 3 different types of errors:
-                        Pitch Error (Red), Rhythm Error (Blue), and Intonation Error (Green).
+                        You will only be able to play the sound 3 times. After listening to the music, todo
                         <br></br>
                         <br></br>
                         How to select the errors:
@@ -256,12 +271,10 @@ class Debug extends Component {
                             // If the shape is transparent, make it visible
                             if (shape.preFillColor == COLOR_TRANSPARENT) {
                                 shape.preFillColor = COLOR_NO_ERROR;
-                                shape.strokeColor = "black";
                             }
                             // Otherwise make it transparent
                             else {
                                 shape.preFillColor = COLOR_TRANSPARENT;
-                                shape.strokeColor = COLOR_TRANSPARENT;
                             }
                         }
 
@@ -272,6 +285,20 @@ class Debug extends Component {
                     buttonStyle="btn--primary--solid-go-back"
                     buttonSize="btn--medium"
                 >Toggle Transparency</Button>
+
+                <Button
+                    onClick={() => this.refreshMapper()}
+                    type="button"
+                    buttonStyle="btn--primary--solid-go-back"
+                    buttonSize="btn--medium"
+                >Refresh Mapper</Button>
+
+                <Button
+                    onClick={() => this.setInitialState()}
+                    type="button"
+                    buttonStyle="btn--primary--solid-go-back"
+                    buttonSize="btn--medium"
+                >Set State Test</Button>
 
                 <br></br>
                 <br></br>
@@ -372,7 +399,7 @@ class Debug extends Component {
                                     pitchErrorsCorrect += 1;
                                 } else {
                                     pitchErrorsMissed += 1;
-                                    if (shape.fillColor != COLOR_NO_ERROR){
+                                    if (shape.fillColor != COLOR_NO_ERROR) {
                                         shape.fillColor = COLOR_INCORRECT;
                                         shape.preFillColor = COLOR_INCORRECT;
                                     }
@@ -382,7 +409,7 @@ class Debug extends Component {
                                     intonationErrorsCorrect += 1;
                                 } else {
                                     intonationErrorsMissed += 1;
-                                    if (shape.fillColor != COLOR_NO_ERROR){
+                                    if (shape.fillColor != COLOR_NO_ERROR) {
                                         shape.fillColor = COLOR_INCORRECT;
                                         shape.preFillColor = COLOR_INCORRECT;
                                     }
@@ -392,7 +419,7 @@ class Debug extends Component {
                                     rhythmErrorsCorrect += 1;
                                 } else {
                                     rhythmErrorsMissed += 1;
-                                    if (shape.fillColor != COLOR_NO_ERROR){
+                                    if (shape.fillColor != COLOR_NO_ERROR) {
                                         shape.fillColor = COLOR_INCORRECT;
                                         shape.preFillColor = COLOR_INCORRECT;
                                     }
@@ -415,38 +442,32 @@ class Debug extends Component {
                             const rythmErrors = rhythmErrorsCorrect + rhythmErrorsMissed;
                             const intonationErrors = intonationErrorsCorrect + intonationErrorsMissed;
 
-
-
-
                             let reportText =
-                            `Here are the results:
+                                `Here are the results:
                             Incorrect guesses are represented by the cyan circles
                             `;
 
-
-
-
-                            if (totalMissed > 0){
+                            if (totalMissed > 0) {
                                 reportText = reportText.concat(`You missed: \n`);
-                                if (pitchErrorsMissed > 0){
+                                if (pitchErrorsMissed > 0) {
                                     reportText = reportText.concat(`${pitchErrorsMissed} pitch error`);
-                                    if (pitchErrorsMissed > 1){
+                                    if (pitchErrorsMissed > 1) {
                                         reportText = reportText.concat(`s`);
                                     }
                                     reportText = reportText.concat(`\n`);
 
                                 }
-                                if (rhythmErrorsMissed > 0){
-                                    reportText = reportText.concat(`${rhythmErrorsMissed} rythm error`);
-                                    if (rhythmErrorsMissed > 1){
+                                if (rhythmErrorsMissed > 0) {
+                                    reportText = reportText.concat(`${rhythmErrorsMissed} rhythm error`);
+                                    if (rhythmErrorsMissed > 1) {
                                         reportText = reportText.concat(`s`);
                                     }
                                     reportText = reportText.concat(`\n`);
 
                                 }
-                                if (intonationErrorsMissed > 0){
+                                if (intonationErrorsMissed > 0) {
                                     reportText = reportText.concat(`${intonationErrorsMissed} intonation error`);
-                                    if (intonationErrorsMissed > 1){
+                                    if (intonationErrorsMissed > 1) {
                                         reportText = reportText.concat(`s`);
                                     }
                                     reportText = reportText.concat(`\n`);
@@ -454,7 +475,7 @@ class Debug extends Component {
                                 }
 
                             }
-                            else{
+                            else {
                                 reportText = reportText.concat(`You correctly identified all errors!\n`);
                             }
                             document.getElementById("results").innerText = reportText;
@@ -491,6 +512,7 @@ class Debug extends Component {
                     Copy the generated JSON below
                 </div>
             </div>
+
         );
     }
 }
