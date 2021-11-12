@@ -18,18 +18,13 @@ var IMAGE_MAP = {
     areas: mapJSON
 };
 
-// The color for no error is yellow
+// The 80 at the end of a hex value means 50% transparency
 const COLOR_NO_ERROR = "#e3fc0080";
-// The color for a pitch error is red
 const COLOR_PITCH_ERROR = "#9013fe80";
-// The color for a rhythm  error is red
 const COLOR_RHYTHM_ERROR = "#d0021b80";
-// The color for an intonation  error is green
 const COLOR_INTONATION_ERROR = "#78e60080";
-
 // The color used for transparency
-const COLOR_TRANSPARENT = "#e3fc0000";
-
+const COLOR_TRANSPARENT = "#ffffff00";
 // The color used for incorrect answers
 const COLOR_INCORRECT = "#0eebb980";
 
@@ -283,9 +278,7 @@ class Debug extends Component {
 
                 <div>
                     <p>Color Coding Key</p>
-                    <p>Pitch errors are represented by RED, Hex is #fc110080 (80 means 50% transparency)</p>
-                    <p>Rhythm errors are represented by BLUE, Hex is #1500fc80 (80 means 50% transparency)</p>
-                    <p>Intonation errors are represented by GREEN, Hex is #00fc4380 (80 means 50% transparency)</p>
+                    <p>See the top of Debug.js for the color key</p>
                 </div>
 
                 <br></br>
@@ -422,8 +415,8 @@ class Debug extends Component {
                             const rythmErrors = rhythmErrorsCorrect + rhythmErrorsMissed;
                             const intonationErrors = intonationErrorsCorrect + intonationErrorsMissed;
 
-                            
-                            
+
+
 
                             let reportText =
                             `Here are the results:
@@ -431,8 +424,8 @@ class Debug extends Component {
                             `;
 
 
-                            
-                            
+
+
                             if (totalMissed > 0){
                                 reportText = reportText.concat(`You missed: \n`);
                                 if (pitchErrorsMissed > 0){
@@ -459,7 +452,7 @@ class Debug extends Component {
                                     reportText = reportText.concat(`\n`);
 
                                 }
-                                
+
                             }
                             else{
                                 reportText = reportText.concat(`You correctly identified all errors!\n`);
