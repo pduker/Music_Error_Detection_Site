@@ -169,9 +169,9 @@ class Debug extends Component {
         generatedJson += `"isError":${isError},`;
         generatedJson += `"errorType":"${errorType}",`;
         generatedJson += `"shape":"circle",`;
-        generatedJson += `"preFillColor":"${COLOR_NO_ERROR}",`;
+        generatedJson += `"preFillColor":"${COLOR_TRANSPARENT}",`;
         generatedJson += `"fillColor":"${COLOR_NO_ERROR}",`;
-        generatedJson += `"strokeColor":"black",`;
+        generatedJson += `"strokeColor":"${COLOR_TRANSPARENT}",`;
         generatedJson += `"coords":[${coordX},${coordY},20]`;
         generatedJson += `}`;
 
