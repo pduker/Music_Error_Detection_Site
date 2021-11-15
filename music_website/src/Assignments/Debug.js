@@ -5,10 +5,11 @@ import "./../Styles/assignment.css";
 import { withRouter } from "react-router-dom";
 import Tmp from "./../Resources/Audio/Example1.m4a";
 import ImageMapper from "react-img-mapper";
-import URL from "../Resources/Images/assignment-debug.jpg";
+import IMAGE_PATH from "../Resources/Images/assignment-debug.jpg";
 import mapJSON from "../Resources/JSON/debug.json";
 import SheetMusic from "../Components/SheetMusic";
 import { v4 as uuidv4 } from 'uuid';
+import { useEffect } from 'react'
 
 var count;
 var isPlaying = false;
@@ -19,17 +20,17 @@ var IMAGE_MAP = {
     areas: mapJSON
 };
 
-// The color for no error is yellow
+// The 80 at the end of a hex value means 50% transparency
 const COLOR_NO_ERROR = "#e3fc0080";
-// The color for a pitch error is red
-const COLOR_PITCH_ERROR = "#fc110080";
-// The color for a rhythm  error is red
-const COLOR_RHYTHM_ERROR = "#1500fc80";
-// The color for an intonation  error is green
-const COLOR_INTONATION_ERROR = "#00fc4380";
-
+const COLOR_PITCH_ERROR = "#9013fe80";
+const COLOR_RHYTHM_ERROR = "#d0021b80";
+const COLOR_INTONATION_ERROR = "#78e60080";
 // The color used for transparency
-const COLOR_TRANSPARENT = "#e3fc0000";
+const COLOR_TRANSPARENT = "#ffffff00";
+// The color used for incorrect answers
+const COLOR_INCORRECT = "#0eebb980";
+
+const MAX_PLAY_COUNT = 3;
 
 class Debug extends Component {
 
@@ -47,11 +48,34 @@ class Debug extends Component {
         // this.handleClickSheetMusic = this.handleClickSheetMusic.bind(this);
     }
 
-    async componentDidMount() {
+    /**
+     * Updates the windowWidth state to the current window width
+     */
+    updateWindowWidth = () => {
+        this.setState({ windowWidth: window.innerWidth });
+    };
+
+    /**
+     * Sets the initial state of the mapper and image width
+     */
+    async setInitialState() {
+        console.log(`setInitialState running`);
         this.setState({
             imageWidth: await this.getImageWidth(),
             theMap: this.state.allCurrentErrors
         });
+    }
+
+    /**
+     * Runs on component mount
+     */
+    async componentDidMount() {
+        console.log(`componentDidMount running`);
+        await this.setInitialState();
+        setTimeout(
+            () => this.setInitialState(),
+            1500
+        );
     }
 
     RenderButtonAndSound = () => {
@@ -63,18 +87,18 @@ class Debug extends Component {
         return (
             <Button
                 onClick={() => {
-                    if (count < 3) {
+                    if (count < MAX_PLAY_COUNT) {
                         if (!isPlaying) {
                             audio.play();
                             isPlaying = true;
                             console.log("playing");
                         }
                     }
-                    if (count === 2) {
-                        alert("You can only play this sound one more time")
+                    if (count === MAX_PLAY_COUNT - 1) {
+                        alert("You can only play this sound one more time");
                     }
-                    if (count === 3) {
-                        alert("You have maxed out your attempts to play this sound")
+                    if (count === MAX_PLAY_COUNT) {
+                        alert("You have maxed out your attempts to play this sound");
                     }
                 }
                 }
@@ -85,16 +109,16 @@ class Debug extends Component {
         );
     };
 
-    // moveOnImage(evt) {
-    //     const coords = { x: evt.nativeEvent.layerX, y: evt.nativeEvent.layerY };
-    //     this.setState({
-    //         coords: coords
-    //     });
-    // }
+    /**
+     * Given a mouse event, this updates the stored coordinates to where the cursor is
+     */
     updateCoordinates(evt) {
         this.setState({ coordinates: [evt.nativeEvent.layerX, evt.nativeEvent.layerY] });
     }
 
+    /**
+     * Given a mouse event, this updates the HTML and displays some information like the X and Y coordinates
+     */
     updateCoordinateHtml(evt) {
         this.updateCoordinates(evt);
         const coordX = this.state.coordinates[0];
@@ -105,10 +129,16 @@ class Debug extends Component {
         document.getElementById("coordinate-json").innerText = `Coordinate JSON is "coords": [${coordX},${coordY},20]`;
     }
 
+    /**
+     * This is triggered when the mouse is moved over the image (not a shape)
+     */
     moveOnImage(evt) {
         this.updateCoordinateHtml(evt);
     }
 
+    /**
+     * This is triggered when the mouse is moved over a shape
+     */
     moveOnArea(area, evt) {
         this.updateCoordinateHtml(evt);
         this.setState({ selectedArea: area });
@@ -120,6 +150,9 @@ class Debug extends Component {
         document.getElementById("shape-id").innerText = `Shape info: ID=${areaId}, isError=${areasIsError}, errorType=${areaErrorType}`;
     }
 
+    /**
+     * This is triggered when a click occurs on the image (not a shape)
+     */
     clickedOutside(evt) {
         this.updateCoordinates(evt);
         const newId = uuidv4();
@@ -137,9 +170,9 @@ class Debug extends Component {
         generatedJson += `"isError":${isError},`;
         generatedJson += `"errorType":"${errorType}",`;
         generatedJson += `"shape":"circle",`;
-        generatedJson += `"preFillColor":"${COLOR_NO_ERROR}",`;
+        generatedJson += `"preFillColor":"${COLOR_TRANSPARENT}",`;
         generatedJson += `"fillColor":"${COLOR_NO_ERROR}",`;
-        generatedJson += `"strokeColor":"black",`;
+        generatedJson += `"strokeColor":"${COLOR_TRANSPARENT}",`;
         generatedJson += `"coords":[${coordX},${coordY},20]`;
         generatedJson += `}`;
 
@@ -162,6 +195,9 @@ class Debug extends Component {
         // this.refreshMapper();
     }
 
+    /**
+     * This is triggered when a shape is clicked
+     */
     clicked(area) {
         for (const shape of this.state.allCurrentErrors) {
             if (shape.id === area.id) {
@@ -187,6 +223,9 @@ class Debug extends Component {
         this.refreshMapper();
     }
 
+    /**
+     * This gets the image's width and returns it
+     */
     async getImageWidth() {
         var img = new Image();
 
@@ -194,7 +233,7 @@ class Debug extends Component {
             return img.width;
         };
 
-        img.src = URL;
+        img.src = IMAGE_PATH;
         return img.onload();
     }
 
@@ -246,9 +285,7 @@ class Debug extends Component {
                 <h2>Debug</h2>
                 <div className="Instructions">
                     <h2>Instructions:  Click the "Play Sound" button to hear the music.
-                        You will only be able to play the sound 3 times. After listening to the music,
-                        place the hotspots over each note error. There are 3 different types of errors:
-                        Pitch Error (Red), Rhythm Error (Blue), and Intonation Error (Green).
+                        You will only be able to play the sound 3 times. After listening to the music, todo
                         <br></br>
                         <br></br>
                         How to select the errors:
@@ -272,12 +309,10 @@ class Debug extends Component {
                             // If the shape is transparent, make it visible
                             if (shape.preFillColor === COLOR_TRANSPARENT) {
                                 shape.preFillColor = COLOR_NO_ERROR;
-                                shape.strokeColor = "black";
                             }
                             // Otherwise make it transparent
                             else {
                                 shape.preFillColor = COLOR_TRANSPARENT;
-                                shape.strokeColor = COLOR_TRANSPARENT;
                             }
                         }
 
@@ -289,14 +324,26 @@ class Debug extends Component {
                     buttonSize="btn--medium"
                 >Toggle Transparency</Button>
 
+                <Button
+                    onClick={() => this.refreshMapper()}
+                    type="button"
+                    buttonStyle="btn--primary--solid-go-back"
+                    buttonSize="btn--medium"
+                >Refresh Mapper</Button>
+
+                <Button
+                    onClick={() => this.setInitialState()}
+                    type="button"
+                    buttonStyle="btn--primary--solid-go-back"
+                    buttonSize="btn--medium"
+                >Set State Test</Button>
+
                 <br></br>
                 <br></br>
 
                 <div>
                     <p>Color Coding Key</p>
-                    <p>Pitch errors are represented by RED, Hex is #fc110080 (80 means 50% transparency)</p>
-                    <p>Rhythm errors are represented by BLUE, Hex is #1500fc80 (80 means 50% transparency)</p>
-                    <p>Intonation errors are represented by GREEN, Hex is #00fc4380 (80 means 50% transparency)</p>
+                    <p>See the top of Debug.js for the color key</p>
                 </div>
 
                 <br></br>
@@ -335,8 +382,8 @@ class Debug extends Component {
                 <SheetMusic>
                     <ImageMapper
                         id="mapper-debug"
-                        src={URL}
-                        map={IMAGE_MAP}
+                        src={IMAGE_PATH}
+                        map={this.state.theMap}
                         onImageMouseMove={evt => this.moveOnImage(evt)}
                         onMouseMove={(area, _, evt) => this.moveOnArea(area, evt)}
                         onImageClick={evt => this.clickedOutside(evt)}
@@ -347,8 +394,8 @@ class Debug extends Component {
                     />
                 </SheetMusic>
                 <br></br>
-
                 <br></br>
+
                 <Button
                     onClick={() => {
                         history.push('/');
@@ -390,43 +437,91 @@ class Debug extends Component {
                                     pitchErrorsCorrect += 1;
                                 } else {
                                     pitchErrorsMissed += 1;
+                                    if (shape.fillColor != COLOR_NO_ERROR) {
+                                        shape.fillColor = COLOR_INCORRECT;
+                                        shape.preFillColor = COLOR_INCORRECT;
+                                    }
                                 }
                             } else if (shape.errorType === "intonationError") {
                                 if (shape.fillColor === COLOR_INTONATION_ERROR) {
                                     intonationErrorsCorrect += 1;
                                 } else {
                                     intonationErrorsMissed += 1;
+                                    if (shape.fillColor != COLOR_NO_ERROR) {
+                                        shape.fillColor = COLOR_INCORRECT;
+                                        shape.preFillColor = COLOR_INCORRECT;
+                                    }
                                 }
                             } else if (shape.errorType === "rhythmError") {
                                 if (shape.fillColor === COLOR_RHYTHM_ERROR) {
                                     rhythmErrorsCorrect += 1;
                                 } else {
                                     rhythmErrorsMissed += 1;
+                                    if (shape.fillColor != COLOR_NO_ERROR) {
+                                        shape.fillColor = COLOR_INCORRECT;
+                                        shape.preFillColor = COLOR_INCORRECT;
+                                    }
                                 }
                             } else if (shape.errorType === "noError") {
                                 if (shape.fillColor === COLOR_NO_ERROR) {
                                     noErrorsCorrect += 1;
+                                    shape.preFillColor = COLOR_TRANSPARENT;
+                                    shape.strokeColor = COLOR_TRANSPARENT;
                                 } else {
                                     noErrorsMissed += 1;
+                                    shape.fillColor = COLOR_INCORRECT;
+                                    shape.preFillColor = COLOR_INCORRECT;
                                 }
                             }
 
                             const totalCorrect = pitchErrorsCorrect + rhythmErrorsCorrect + intonationErrorsCorrect + noErrorsCorrect;
                             const totalMissed = pitchErrorsMissed + rhythmErrorsMissed + intonationErrorsMissed + noErrorsMissed;
+                            const pitchErrors = pitchErrorsCorrect + pitchErrorsMissed;
+                            const rythmErrors = rhythmErrorsCorrect + rhythmErrorsMissed;
+                            const intonationErrors = intonationErrorsCorrect + intonationErrorsMissed;
 
-                            const reportText =
-                            `Here are the results:
-                            There are ${this.state.allCurrentErrors.length} shapes
-                            pitchErrorsCorrect=${pitchErrorsCorrect}, pitchErrorsMissed=${pitchErrorsMissed}
-                            intonationErrorsCorrect=${intonationErrorsCorrect}, intonationErrorsMissed=${intonationErrorsMissed}
-                            rhythmErrorsCorrect=${rhythmErrorsCorrect}, rhythmErrorsMissed=${rhythmErrorsMissed}
-                            noErrorsCorrect=${noErrorsCorrect}, noErrorsMissed=${noErrorsMissed}
-                            totalCorrect=${totalCorrect}/${this.state.allCurrentErrors.length}\n totalMissed=${totalMissed}/${this.state.allCurrentErrors.length}
+                            let reportText =
+                                `Here are the results:
+                            Incorrect guesses are represented by the cyan circles
                             `;
 
+                            if (totalMissed > 0) {
+                                reportText = reportText.concat(`You missed: \n`);
+                                if (pitchErrorsMissed > 0) {
+                                    reportText = reportText.concat(`${pitchErrorsMissed} pitch error`);
+                                    if (pitchErrorsMissed > 1) {
+                                        reportText = reportText.concat(`s`);
+                                    }
+                                    reportText = reportText.concat(`\n`);
+
+                                }
+                                if (rhythmErrorsMissed > 0) {
+                                    reportText = reportText.concat(`${rhythmErrorsMissed} rhythm error`);
+                                    if (rhythmErrorsMissed > 1) {
+                                        reportText = reportText.concat(`s`);
+                                    }
+                                    reportText = reportText.concat(`\n`);
+
+                                }
+                                if (intonationErrorsMissed > 0) {
+                                    reportText = reportText.concat(`${intonationErrorsMissed} intonation error`);
+                                    if (intonationErrorsMissed > 1) {
+                                        reportText = reportText.concat(`s`);
+                                    }
+                                    reportText = reportText.concat(`\n`);
+
+                                }
+
+                            }
+                            else {
+                                reportText = reportText.concat(`You correctly identified all errors!\n`);
+                            }
                             document.getElementById("results").innerText = reportText;
+
                         }
+                        this.refreshMapper();
                     }
+
                     }
                     type="button"
                     buttonStyle="btn--primary--solid"
@@ -455,6 +550,7 @@ class Debug extends Component {
                     Copy the generated JSON below
                 </div>
             </div>
+
         );
     }
 }
