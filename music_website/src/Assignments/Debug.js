@@ -41,15 +41,16 @@ class Debug extends Component {
             imageWidth: 0,
             windowWidth: window.innerWidth,
             jsonGeneratorSelection: "noError",
-            toggle: true
+            toggle: true,
+            allCurrentErrors: mapJSON,
         };
-        this.handleClickSheetMusic = this.handleClickSheetMusic.bind(this);
+        // this.handleClickSheetMusic = this.handleClickSheetMusic.bind(this);
     }
 
     async componentDidMount() {
         this.setState({
             imageWidth: await this.getImageWidth(),
-            theMap: IMAGE_MAP.areas
+            theMap: this.state.allCurrentErrors
         });
     }
 
@@ -143,10 +144,26 @@ class Debug extends Component {
         generatedJson += `}`;
 
         document.getElementById("generated-json").innerText = generatedJson;
+
+        //testing stuff for adding errors onClick -- uncomment to use
+        // let newErrors = this.state.allCurrentErrors;
+        // let newError = {
+        //     "id" : newId,
+        //     "isError" : true,
+        //     "errorType" : "pitchError",
+        //     "shape" : "circle",
+        //     "preFillColor" : COLOR_PITCH_ERROR,
+        //     "fillColor" : COLOR_PITCH_ERROR,
+        //     "strokeColor" : "black",
+        //     "coords" : [coordX, coordY, 20],
+        // }
+        // newErrors.push(newError);
+        // this.setState({ allCurrentErrors: newErrors });
+        // this.refreshMapper();
     }
 
     clicked(area) {
-        for (const shape of IMAGE_MAP.areas) {
+        for (const shape of this.state.allCurrentErrors) {
             if (shape.id === area.id) {
                 if (area.fillColor === COLOR_PITCH_ERROR) {
                     shape.fillColor = COLOR_RHYTHM_ERROR;
@@ -181,29 +198,30 @@ class Debug extends Component {
         return img.onload();
     }
 
-    handleClickSheetMusic(){
-        console.log("component has been clicked at coordinates: (", this.state.coords.x, ",", this.state.coords.y,")");
-        let newAreas = this.state.imageMapAreas;
-        let newError = {
-            // "id": "azsexdcfvgbhawsexdrcvfgbhqwsedrf",
-            "isError": true,
-            "errorType": "pitchError",
-            "shape": "circle",
-            "preFillColor": "#e3fc0080",
-            "fillColor": "#e3fc0080",
-            "strokeColor": "black",
-            "coords": [
-                this.state.coords.x,
-                this.state.coords.y,
-                20
-            ]
-        };
-        newAreas.push(newError);
-        this.setState({ imageMapAreas: newAreas });
-    }
+    // handleClickSheetMusic(){
+    //     console.log("component has been clicked at coordinates: (", this.state.coords.x, ",", this.state.coords.y,")");
+    //     let newAreas = this.state.imageMapAreas;
+    //     let newError = {
+    //         // "id": "azsexdcfvgbhawsexdrcvfgbhqwsedrf",
+    //         "isError": true,
+    //         "errorType": "pitchError",
+    //         "shape": "circle",
+    //         "preFillColor": "#e3fc0080",
+    //         "fillColor": "#e3fc0080",
+    //         "strokeColor": "black",
+    //         "coords": [
+    //             this.state.coords.x,
+    //             this.state.coords.y,
+    //             20
+    //         ]
+    //     };
+    //     newAreas.push(newError);
+    //     this.setState({ imageMapAreas: newAreas });
+    // }
     /**
      * This is a temporary fix to make React refresh the mapper
      */
+    // a potential fix to this would be to use componentDidUpdate() for changing things immediately
     refreshMapper() {
         if (this.state.toggle === true) {
             this.setState({
@@ -250,7 +268,7 @@ class Debug extends Component {
 
                 <Button
                     onClick={() => {
-                        for (const shape of IMAGE_MAP.areas) {
+                        for (const shape of this.state.allCurrentErrors) {
                             // If the shape is transparent, make it visible
                             if (shape.preFillColor === COLOR_TRANSPARENT) {
                                 shape.preFillColor = COLOR_NO_ERROR;
@@ -365,7 +383,7 @@ class Debug extends Component {
                         let noErrorsCorrect = 0;
                         let noErrorsMissed = 0;
 
-                        for (const shape of IMAGE_MAP.areas) {
+                        for (const shape of this.state.allCurrentErrors) {
                             // Check if the shape's fill color is correct
                             if (shape.errorType === "pitchError") {
                                 if (shape.fillColor === COLOR_PITCH_ERROR) {
@@ -398,12 +416,12 @@ class Debug extends Component {
 
                             const reportText =
                             `Here are the results:
-                            There are ${IMAGE_MAP.areas.length} shapes
+                            There are ${this.state.allCurrentErrors.length} shapes
                             pitchErrorsCorrect=${pitchErrorsCorrect}, pitchErrorsMissed=${pitchErrorsMissed}
                             intonationErrorsCorrect=${intonationErrorsCorrect}, intonationErrorsMissed=${intonationErrorsMissed}
                             rhythmErrorsCorrect=${rhythmErrorsCorrect}, rhythmErrorsMissed=${rhythmErrorsMissed}
                             noErrorsCorrect=${noErrorsCorrect}, noErrorsMissed=${noErrorsMissed}
-                            totalCorrect=${totalCorrect}/${IMAGE_MAP.areas.length}\n totalMissed=${totalMissed}/${IMAGE_MAP.areas.length}
+                            totalCorrect=${totalCorrect}/${this.state.allCurrentErrors.length}\n totalMissed=${totalMissed}/${this.state.allCurrentErrors.length}
                             `;
 
                             document.getElementById("results").innerText = reportText;
