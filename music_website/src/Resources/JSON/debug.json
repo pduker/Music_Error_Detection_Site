@@ -218,5 +218,15 @@
     "fillColor": "#e3fc0080",
     "strokeColor": "#ffffff00",
     "coords": [362, 115, 20]
+  },
+  {
+    "id": "500dd060-0d5e-4ba5-9d7f-bef2f33b6b26",
+    "isError": true,
+    "errorType": "rhythmError",
+    "shape": "rect",
+    "preFillColor": "#ffffff00",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#ffffff00",
+    "coords": [831, 80, 1001, 60]
   }
 ]
