@@ -439,7 +439,7 @@ class Debug extends Component {
                         If you would like to start fresh before submitting, you can press the “Reset” button to clear the errors from the sheet music. 
                         <br></br>
                         <br></br>
-                        Once you are satisfied with your work, you can press the “Submit” button. At the bottom of the screen you will see how many errors you identified correctly. Each error that is not identified correctly will return a light blue circle. Try to identify the correct error again. </h2>
+                        Once you are satisfied with your work, you can press the “Submit” button. At the bottom of the screen you will see how many errors you identified correctly. Each error that is not identified correctly will return a light blue circle. Try to identify the correct error again.</h2>
                 </div>
 
                 {this.RenderButtonAndSound()}
