@@ -1,0 +1,8 @@
+Here are some helpful links
+https://www.npmjs.com/package/react-image-mapper
+https://github.com/coldiary/react-image-mapper
+https://coldiary.github.io/react-image-mapper/
+
+https://www.npmjs.com/package/react-img-mapper
+https://github.com/img-mapper/react-img-mapper
+https://img-mapper.github.io/react-docs/
