@@ -24,7 +24,7 @@ var IMAGE_MAP = {
 const COLOR_NO_ERROR = "#e3fc0080";
 const COLOR_PITCH_ERROR = "#9013fe80";
 const COLOR_RHYTHM_ERROR = "#d0021b80";
-const COLOR_INTONATION_ERROR = "#78e60080";
+const COLOR_INTONATION_ERROR = "#ffa50080";
 // The color used for transparency
 const COLOR_TRANSPARENT = "#ffffff00";
 // The color used for incorrect answers
@@ -416,10 +416,10 @@ class Debug extends Component {
             <div id="assignment-debug" className="assignment">
                 <h2>Debug</h2>
                 <div className="Instructions">
-                    <h2>This assignment is used to help students recognize pitch, intonation, and rhythm errors. 
+                    <h2>This assignment is used to help students recognize pitch, intonation, and rhythm errors.
                         <br></br>
                         <br></br>
-                        Hovering over each note, you will notice a yellow circle appear. When clicking the circle, you will be able to switch between purple, orange, and yellow colors. Each color is represented below: 
+                        Hovering over each note, you will notice a yellow circle appear. When clicking the circle, you will be able to switch between purple, orange, and yellow colors. Each color is represented below:
                         <br></br>
                         1. Pitch errors - purple
                         <br></br>
@@ -435,8 +435,8 @@ class Debug extends Component {
                         2. No error - yellow
                         <br></br>
                         <br></br>
-                        You may click the “Play Sound” button to hear the music from the blank sheet below. You will only be able to play the music a maximum of 3 times, so listen carefully. 
-                        If you would like to start fresh before submitting, you can press the “Reset” button to clear the errors from the sheet music. 
+                        You may click the “Play Sound” button to hear the music from the blank sheet below. You will only be able to play the music a maximum of 3 times, so listen carefully.
+                        If you would like to start fresh before submitting, you can press the “Reset” button to clear the errors from the sheet music.
                         <br></br>
                         <br></br>
                         Once you are satisfied with your work, you can press the “Submit” button. At the bottom of the screen you will see how many errors you identified correctly. Each error that is not identified correctly will return a light blue circle. Try to identify the correct error again.</h2>
