@@ -329,27 +329,42 @@ class Debug extends Component {
     /**
      * This is triggered when a shape is clicked
      */
-    clicked(area) {
-        for (const shape of this.state.allCurrentErrors) {
-            if (shape.id === area.id) {
-                if (area.fillColor === COLOR_PITCH_ERROR) {
-                    shape.fillColor = COLOR_RHYTHM_ERROR;
-                    shape.preFillColor = COLOR_RHYTHM_ERROR;
-                } else if (area.fillColor === COLOR_RHYTHM_ERROR) {
-                    shape.fillColor = COLOR_INTONATION_ERROR;
-                    shape.preFillColor = COLOR_INTONATION_ERROR;
-                } else if (area.fillColor === COLOR_INTONATION_ERROR) {
-                    shape.fillColor = COLOR_NO_ERROR;
-                    shape.preFillColor = COLOR_NO_ERROR;
-                } else if (area.fillColor === COLOR_NO_ERROR) {
-                    shape.fillColor = COLOR_PITCH_ERROR;
-                    shape.preFillColor = COLOR_PITCH_ERROR;
-                } else {
-                    shape.fillColor = COLOR_NO_ERROR;
-                    shape.preFillColor = COLOR_NO_ERROR;
+     clicked(area) {
+        for (const shape of IMAGE_MAP.areas) {
+            if (shape.errorType != "rhythmError"){
+                if (shape.id === area.id) {
+                    if (area.fillColor === COLOR_PITCH_ERROR) {
+                        shape.fillColor = COLOR_INTONATION_ERROR;
+                        shape.preFillColor = COLOR_INTONATION_ERROR;
+                    } else if (area.fillColor === COLOR_INTONATION_ERROR) {
+                        shape.fillColor = COLOR_NO_ERROR;
+                        shape.preFillColor = COLOR_TRANSPARENT;
+                    } else if (area.fillColor === COLOR_NO_ERROR) {
+                        shape.fillColor = COLOR_PITCH_ERROR;
+                        shape.preFillColor = COLOR_PITCH_ERROR;
+                    } else {
+                        shape.fillColor = COLOR_NO_ERROR;
+                        shape.preFillColor = COLOR_TRANSPARENT;
+                    }
                 }
             }
+            else{
+                if (shape.id === area.id) {
+                    if (area.fillColor === COLOR_NO_ERROR) {
+                        shape.fillColor = COLOR_RHYTHM_ERROR;
+                        shape.preFillColor = COLOR_RHYTHM_ERROR;
+                    } else if (area.fillColor === COLOR_RHYTHM_ERROR) {
+                        shape.fillColor = COLOR_NO_ERROR;
+                        shape.preFillColor = COLOR_TRANSPARENT;
+                    } else {
+                        shape.fillColor = COLOR_NO_ERROR;
+                        shape.preFillColor = COLOR_TRANSPARENT;
+                    }
+                }
+            }
+
         }
+
 
         this.refreshMapper();
         this.generateShapeInfo();
