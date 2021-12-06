@@ -5,11 +5,12 @@ import "./../Styles/assignment.css";
 import { withRouter } from "react-router-dom";
 import Tmp from "./../Resources/Audio/Example1.m4a";
 import ImageMapper from "react-img-mapper";
-import IMAGE_PATH from "../Resources/Images/assignment-debug.jpg";
-import mapJSON from "../Resources/JSON/debug.json";
 // import SheetMusic from "../Components/SheetMusic";
 import { v4 as uuidv4 } from 'uuid';
 import { useEffect } from 'react'
+
+import IMAGE_PATH from "../Resources/Images/assignment-debug.jpg";
+import mapJSON from "../Resources/JSON/debug.json";
 
 var count;
 var isPlaying = false;
@@ -40,8 +41,7 @@ var bottomrightY = 0;
 var previewEnabled = false;
 
 class Debug extends Component {
-
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
             coordinates: [0, 0],
@@ -163,11 +163,18 @@ class Debug extends Component {
             ${JSON.stringify(this.state.selectedArea)}`;
     }
 
+    /**
+     * This adds a shape to the mapper temporarily so the user
+     * can get a preview of where the shape will be placed
+     */
     addShapeToMapper(shapeObject) {
         IMAGE_MAP.areas.push(shapeObject);
         this.refreshMapper();
     }
 
+    /**
+     * This removes the temporary shape with id "tmp"
+     */
     removeShapeFromMapper() {
         // Remove "tmp"
         const removeIndex = IMAGE_MAP.areas.findIndex(item => item.id === "tmp");
@@ -271,6 +278,10 @@ class Debug extends Component {
         }
     }
 
+    /**
+     * This calculates the number of correct and incorrect selections
+     * and displays it on the webpage
+     */
     generateShapeInfo() {
         let pitchErrorsCorrect = 0;
         let pitchErrorsMissed = 0;
@@ -329,9 +340,9 @@ class Debug extends Component {
     /**
      * This is triggered when a shape is clicked
      */
-     clicked(area) {
+    clicked(area) {
         for (const shape of IMAGE_MAP.areas) {
-            if (shape.errorType != "rhythmError"){
+            if (shape.errorType != "rhythmError") {
                 if (shape.id === area.id) {
                     if (area.fillColor === COLOR_PITCH_ERROR) {
                         shape.fillColor = COLOR_INTONATION_ERROR;
@@ -348,7 +359,7 @@ class Debug extends Component {
                     }
                 }
             }
-            else{
+            else {
                 if (shape.id === area.id) {
                     if (area.fillColor === COLOR_NO_ERROR) {
                         shape.fillColor = COLOR_RHYTHM_ERROR;
@@ -362,9 +373,7 @@ class Debug extends Component {
                     }
                 }
             }
-
         }
-
 
         this.refreshMapper();
         this.generateShapeInfo();
@@ -404,6 +413,7 @@ class Debug extends Component {
     //     newAreas.push(newError);
     //     this.setState({ imageMapAreas: newAreas });
     // }
+
     /**
      * This is a temporary fix to make React refresh the mapper
      */
@@ -563,18 +573,18 @@ class Debug extends Component {
 
                 {/* <SheetMusic onInsideClick={this.handleClickSheetMusic}> */}
                 {/* <SheetMusic> */}
-                    <ImageMapper
-                        id="mapper-debug"
-                        src={IMAGE_PATH}
-                        map={this.state.theMap}
-                        onImageMouseMove={evt => this.moveOnImage(evt)}
-                        onMouseMove={(area, _, evt) => this.moveOnArea(area, evt)}
-                        onImageClick={evt => this.clickedOutside(evt)}
-                        onClick={area => this.clicked(area)}
-                        stayMultiHighlighted={true}
-                        width={this.state.windowWidth}
-                        imgWidth={this.state.imageWidth}
-                    />
+                <ImageMapper
+                    id="mapper-debug"
+                    src={IMAGE_PATH}
+                    map={this.state.theMap}
+                    onImageMouseMove={evt => this.moveOnImage(evt)}
+                    onMouseMove={(area, _, evt) => this.moveOnArea(area, evt)}
+                    onImageClick={evt => this.clickedOutside(evt)}
+                    onClick={area => this.clicked(area)}
+                    stayMultiHighlighted={true}
+                    width={this.state.windowWidth}
+                    imgWidth={this.state.imageWidth}
+                />
                 {/* </SheetMusic> */}
                 <br></br>
                 <br></br>
@@ -604,6 +614,10 @@ class Debug extends Component {
 
                 <Button id='submit'
                     onClick={() => {
+                        /*
+                        This generates a summary of correct/incorrect selections for the user
+                        */
+
                         let pitchErrorsCorrect = 0;
                         let pitchErrorsMissed = 0;
                         let rhythmErrorsCorrect = 0;
@@ -721,10 +735,10 @@ class Debug extends Component {
                 </div>
 
                 <div className="radio-buttons-error-type" style={{ marginTop: 20 + 'px' }}>
-                    <input type="radio" name="clickType" value="" onClick={() => this.setState({jsonGeneratorSelection: "noError"})} />No error
-                    <input type="radio" name="clickType" value="" onClick={() => this.setState({jsonGeneratorSelection: "pitchError"})} />Pitch error
+                    <input type="radio" name="clickType" value="" onClick={() => this.setState({ jsonGeneratorSelection: "noError" })} />No error
+                    <input type="radio" name="clickType" value="" onClick={() => this.setState({ jsonGeneratorSelection: "pitchError" })} />Pitch error
                     {/* <input type="radio" name="clickType" value="" onClick={() => this.setState({jsonGeneratorSelection: "rhythmError"})} />Rhythm error */}
-                    <input type="radio" name="clickType" value="" onClick={() => this.setState({jsonGeneratorSelection: "intonationError"})} />Intonation error
+                    <input type="radio" name="clickType" value="" onClick={() => this.setState({ jsonGeneratorSelection: "intonationError" })} />Intonation error
                     {/* <input type="radio" name="clickType" value="" onClick={() => this.state.jsonGeneratorSelection = "noError"} />No error */}
                     {/* <input type="radio" name="clickType" value="" onClick={() => this.state.jsonGeneratorSelection = "pitchError"} />Pitch error */}
                     {/* <input type="radio" name="clickType" value="" onClick={() => this.state.jsonGeneratorSelection = "rhythmError"} />Rhythm error */}
@@ -732,12 +746,12 @@ class Debug extends Component {
 
                     <br></br>
 
-                    <input type="radio" name="clickType" value="" onClick={() => this.setState({jsonGeneratorSelection: "rhythmError"})} />Rhythm error
+                    <input type="radio" name="clickType" value="" onClick={() => this.setState({ jsonGeneratorSelection: "rhythmError" })} />Rhythm error
                 </div>
 
                 <br></br>
 
-                <div id="generated-json" style={{ marginRight: 20 + 'px',  marginLeft: 20 + 'px' }}>
+                <div id="generated-json" style={{ marginRight: 20 + 'px', marginLeft: 20 + 'px' }}>
                     Copy the generated JSON below
                 </div>
 
