@@ -9,7 +9,8 @@ import ImageMapper from "react-img-mapper";
 import { v4 as uuidv4 } from 'uuid';
 import { useEffect } from 'react'
 
-import IMAGE_PATH from "../Resources/Images/assignment-debug.jpg";
+//import IMAGE_PATH from "../Resources/Images/assignment-debug.jpg";
+import IMAGE_PATH from "../Resources/Images/Ex1Display.png";
 import mapJSON from "../Resources/JSON/debug.json";
 
 var count;
@@ -55,6 +56,15 @@ class Debug extends Component {
             rhythmSide: "left"
         };
         // this.handleClickSheetMusic = this.handleClickSheetMusic.bind(this);
+
+        /*
+        This watches for when the window is resized and updates the
+        windowWidth so the mapper gets set to the width of the window
+        */
+        window.addEventListener('resize', () => {
+            console.log(`window resize detected, updating windowWidth`);
+            this.setState({ windowWidth: window.innerWidth });
+        });
     }
 
     /**
@@ -270,7 +280,7 @@ class Debug extends Component {
         // this.setState({ allCurrentErrors: newErrors });
         // this.refreshMapper();
         shapeObject.id = "tmp";
-        shapeObject.preFillColor = "black";
+        shapeObject.preFillColor = "#F012BE";
 
         if (previewEnabled) {
             this.removeShapeFromMapper();
