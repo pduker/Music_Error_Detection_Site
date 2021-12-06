@@ -9,8 +9,7 @@ import ImageMapper from "react-img-mapper";
 import { v4 as uuidv4 } from 'uuid';
 import { useEffect } from 'react'
 
-//import IMAGE_PATH from "../Resources/Images/assignment-debug.jpg";
-import IMAGE_PATH from "../Resources/Images/Ex1Display.png";
+import IMAGE_PATH from "../Resources/Images/assignment-debug.jpg";
 import mapJSON from "../Resources/JSON/debug.json";
 
 var count;
