@@ -2,6 +2,24 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Notes and Helpful Links
+
+The debug page for creating assignments is hidden by default. It can be accessed by adding /Debug to the end of the homepage's URL, or at http://localhost:3000/Debug if the program is being run locally.
+
+Here are some helpful resources for using the image mapper library:
+
+https://www.npmjs.com/package/react-img-mapper
+
+https://github.com/img-mapper/react-img-mapper
+
+https://img-mapper.github.io/react-docs/
+
+https://www.npmjs.com/package/react-image-mapper
+
+https://github.com/coldiary/react-image-mapper
+
+https://coldiary.github.io/react-image-mapper/
+
 ## Available Scripts
 
 In the project directory, you can run:

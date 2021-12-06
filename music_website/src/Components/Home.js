@@ -74,7 +74,8 @@ class Home extends Component {
             buttonSize="btn--large"
           >Assignment 5</Button>
         </div>
-        <div>
+
+        {/* <div>
           <Button
             onClick={() => {
               history.push('/AssignmentTemplate');
@@ -85,9 +86,9 @@ class Home extends Component {
             buttonStyle="home-page-button"
             buttonSize="btn--large"
           >New Assignment Template</Button>
-        </div>
+        </div> */}
 
-        <div>
+        {/* <div>
           <Button
             onClick={() => {
               history.push('/Debug');
@@ -98,7 +99,7 @@ class Home extends Component {
             buttonStyle="home-page-button"
             buttonSize="btn--large"
           >Debug</Button>
-        </div>
+        </div> */}
 
 
         <footer>
