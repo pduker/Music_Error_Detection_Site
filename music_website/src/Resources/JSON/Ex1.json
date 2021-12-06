@@ -1,0 +1,112 @@
+[
+  {
+    "id": "7377a05c-c8e9-4d2e-8646-b44e755d1092",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#ffffff00",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#ffffff00",
+    "coords": [226, 99, 20]
+  },
+  {
+    "id": "7118a0fe-7579-4f90-98c7-de283fbe294b",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#ffffff00",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#ffffff00",
+    "coords": [301, 60, 20]
+  },
+  {
+    "id": "43b7dad6-4d93-44f7-a4cc-e08e61453346",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#ffffff00",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#ffffff00",
+    "coords": [373, 63, 20]
+  },
+  {
+    "id": "e3108933-6648-442b-b19e-e1c5a0d97ec3",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#ffffff00",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#ffffff00",
+    "coords": [441, 98, 20]
+  },
+  {
+    "id": "f37f1f5a-5183-4a4e-8f48-408e01802054",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#ffffff00",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#ffffff00",
+    "coords": [512, 67, 20]
+  },
+  {
+    "id": "24151732-9de5-4e16-9a4e-3bd25550f7fd",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#ffffff00",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#ffffff00",
+    "coords": [586, 65, 20]
+  },
+  {
+    "id": "efd890bb-2afd-4f4c-b497-0bada0b3c0ac",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#ffffff00",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#ffffff00",
+    "coords": [694, 102, 20]
+  },
+  {
+    "id": "5b847aa5-0b48-4233-9cdc-7f9a8dff2d6e",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#ffffff00",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#ffffff00",
+    "coords": [817, 106, 20]
+  },
+  {
+    "id": "40c587fe-3bf3-4c99-a12e-4f3fb7676dec",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#ffffff00",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#ffffff00",
+    "coords": [983, 131, 20]
+  },
+  {
+    "id": "2fb3d46a-0688-4ed9-bf62-d3191a75f5db",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#ffffff00",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#ffffff00",
+    "coords": [1053, 120, 20]
+  },
+  {
+    "id": "bec41352-4ad6-47f1-9340-027b691a408b",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "preFillColor": "#ffffff00",
+    "fillColor": "#e3fc0080",
+    "strokeColor": "#ffffff00",
+    "coords": [1126, 111, 20]
+  }
+]

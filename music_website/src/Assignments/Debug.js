@@ -571,13 +571,6 @@ class Debug extends Component {
                 </div>
 
                 <br></br>
-
-                <div id="instructions">
-                    New Instructions
-                    <li>test</li>
-                    <li>test</li>
-                </div>
-
                 <br></br>
 
                 {/* <SheetMusic onInsideClick={this.handleClickSheetMusic}> */}
