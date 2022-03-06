@@ -33,12 +33,14 @@ const COLOR_INCORRECT = "#0eebb980";
 
 const MAX_PLAY_COUNT = 3;
 
-var topleftX = 0;
-var topleftY = 0;
-var bottomrightX = 0;
-var bottomrightY = 0;
+var topLeftX = 0;
+var topLeftY = 0;
+var bottomRightX = 0;
+var bottomRightY = 0;
 
-var previewEnabled = false;
+// This indicates whether a temporary shape should be created on clicking the image
+// Useful for creating an assignment
+var previewEnabled = true;
 
 class Debug extends Component {
     constructor(props) {
@@ -52,7 +54,7 @@ class Debug extends Component {
             toggle: true,
             allCurrentErrors: mapJSON,
             theMap: IMAGE_MAP,
-            rhythmSide: "left"
+            rhythmSide: "topLeft"
         };
         // this.handleClickSheetMusic = this.handleClickSheetMusic.bind(this);
 
@@ -61,7 +63,7 @@ class Debug extends Component {
         windowWidth so the mapper gets set to the width of the window
         */
         window.addEventListener('resize', () => {
-            console.log(`window resize detected, updating windowWidth`);
+            console.log(`window resize detected, updating windowWidth to ${window.innerWidth}`);
             this.setState({ windowWidth: window.innerWidth });
         });
     }
@@ -218,28 +220,30 @@ class Debug extends Component {
         if (this.state.jsonGeneratorSelection == "rhythmError") {
             console.log(`rhythm error selected`);
 
-            if (this.state.rhythmSide == "left") {
-                console.log(`pick the left side`);
-                this.setState({ rhythmSide: "right" });
-                topleftX = coordX;
-                topleftY = coordY;
+            if (this.state.rhythmSide == "topLeft") {
+                console.log(`picked the top left side`);
+                topLeftX = coordX;
+                topLeftY = coordY;
+                bottomRightX = topLeftX + 5;
+                bottomRightY = topLeftY + 5;
 
-                bottomrightX = topleftX + 5;
-                bottomrightY = topleftY + 5;
+                this.setState({ rhythmSide: "bottomRight" });
             }
 
-            if (this.state.rhythmSide == "right") {
-                console.log(`pick the right side`);
-                this.setState({ rhythmSide: "left" });
-                bottomrightX = coordX;
-                bottomrightY = topleftY;
-                topleftY = topleftY + 20;
+            if (this.state.rhythmSide == "bottomRight") {
+                console.log(`picked the bottom right side`);
+                bottomRightX = coordX;
+                //bottomRightY = topLeftY;
+                bottomRightY = coordY;
+                // topLeftY = topLeftY + 20;
+
+                this.setState({ rhythmSide: "topLeft" });
             }
 
             console.log(`rhythmSide=${this.state.rhythmSide}`);
 
             newShape = `"shape":"rect",`;
-            newCoords = `"coords":[${topleftX},${topleftY},${bottomrightX},${bottomrightY}]`;
+            newCoords = `"coords":[${topLeftX},${topLeftY},${bottomRightX},${bottomRightY}]`;
         } else {
             console.log(`non rhythm error detected`);
 
@@ -747,7 +751,11 @@ class Debug extends Component {
                 <p>
                     Use the below buttons and information to create an assignment
                     <br></br>
-                    You will likely want to click the "Toggle Preview" button at the top of this page
+                    If the preview shape isn't enabled. you will likely want to click the "Toggle Preview" button at the top of this page
+                    <br></br>
+                    When adding a rhythm error, click on the area where you want the TOP LEFT of the rectangle to be.
+                    <br></br>
+                    Then, click on the area where you want the BOTTOM RIGHT of the rectangle to be.
                 </p>
 
                 <div className="radio-buttons-error-type" style={{ marginTop: 20 + 'px' }}>
