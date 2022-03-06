@@ -143,9 +143,9 @@ class Debug extends Component {
         const coordX = this.state.coordinates[0];
         const coordY = this.state.coordinates[1];
 
-        document.getElementById("x-coordinate").innerText = `X coordinate is ${coordX}`;
-        document.getElementById("y-coordinate").innerText = `Y coordinate is ${coordY}`;
-        document.getElementById("coordinate-json").innerText = `Coordinate JSON is "coords": [${coordX},${coordY},20]`;
+        document.getElementById("x-coordinate").innerText = `X coordinate is ${coordX}\n`;
+        document.getElementById("y-coordinate").innerText = `Y coordinate is ${coordY}\n`;
+        document.getElementById("coordinate-json").innerText = `Coordinate JSON:\n"coords": [${coordX},${coordY},20]`;
     }
 
     /**
@@ -166,10 +166,12 @@ class Debug extends Component {
         const areasIsError = this.state.selectedArea.isError;
         const areaErrorType = this.state.selectedArea.errorType;
 
-        document.getElementById("shape-id").innerText =
-            `Shape info: ID=${areaId}, isError=${areasIsError}, errorType=${areaErrorType}
-            JSON =
-            ${JSON.stringify(this.state.selectedArea)}`;
+        document.getElementById("shape-id").innerText = ``;
+        document.getElementById("shape-id").innerText += `Shape info:\n`;
+        document.getElementById("shape-id").innerText += `ID: ${areaId}\n`;
+        document.getElementById("shape-id").innerText += `isError: ${areasIsError}\n`;
+        document.getElementById("shape-id").innerText += `errorType: ${areaErrorType}\n\n`;
+        document.getElementById("shape-id").innerText += `JSON:\n${JSON.stringify(this.state.selectedArea)}`;
     }
 
     /**
@@ -478,6 +480,9 @@ class Debug extends Component {
 
                 {this.RenderButtonAndSound()}
 
+                <br></br>
+                <br></br>
+
                 <Button
                     onClick={() => {
                         for (const shape of this.state.allCurrentErrors) {
@@ -499,9 +504,6 @@ class Debug extends Component {
                     buttonSize="btn--medium"
                 >Toggle Transparency</Button>
 
-                <br></br>
-                <br></br>
-
                 <Button
                     onClick={() => this.refreshMapper()}
                     type="button"
@@ -509,30 +511,20 @@ class Debug extends Component {
                     buttonSize="btn--medium"
                 >Refresh Mapper</Button>
 
-                <Button
+                {/* <Button
                     onClick={() => this.setInitialState()}
                     type="button"
                     buttonStyle="btn--primary--solid-go-back"
                     buttonSize="btn--medium"
-                >Set State Test</Button>
+                >Set State Test</Button> */}
 
-                <Button
-                    onClick={() => {
-                        console.log(`remove test pressed`);
-
-                        this.removeShapeFromMapper();
-                    }}
-                    type="button"
-                    buttonStyle="btn--primary--solid-go-back"
-                    buttonSize="btn--medium"
-                >Remove Test</Button>
+                <br></br>
+                <br></br>
 
                 <Button
                     onClick={() => {
                         console.log(`toggle preview pressed`);
-
                         previewEnabled = !previewEnabled;
-
                         console.log(`previewEnabled=${previewEnabled}`);
                     }}
                     type="button"
@@ -540,12 +532,20 @@ class Debug extends Component {
                     buttonSize="btn--medium"
                 >Toggle Preview</Button>
 
+                <Button
+                    onClick={() => {
+                        this.removeShapeFromMapper();
+                    }}
+                    type="button"
+                    buttonStyle="btn--primary--solid-go-back"
+                    buttonSize="btn--medium"
+                >Remove Preview Shape</Button>
+
                 <br></br>
                 <br></br>
 
                 <div>
-                    <p>Color Coding Key</p>
-                    <p>See the top of Debug.js for the color key</p>
+                    <p>See the top of Debug.js for the color coding key</p>
                 </div>
 
                 <br></br>
@@ -553,6 +553,8 @@ class Debug extends Component {
                 <div id="debug-information">
                     Debug Information
                 </div>
+
+                <br></br>
 
                 <div id="x-coordinate">
                     X coordinate is unknown
@@ -562,9 +564,13 @@ class Debug extends Component {
                     Y coordinate is unknown
                 </div>
 
+                <br></br>
+
                 <div id="coordinate-json">
                     Coordinate JSON is unknown
                 </div>
+
+                <br></br>
 
                 <div id="shape-id">
                     Shape info: unknown
@@ -736,19 +742,28 @@ class Debug extends Component {
                     Results
                 </div>
 
+                <br></br>
+
+                <p>
+                    Use the below buttons and information to create an assignment
+                    <br></br>
+                    You will likely want to click the "Toggle Preview" button at the top of this page
+                </p>
+
                 <div className="radio-buttons-error-type" style={{ marginTop: 20 + 'px' }}>
                     <input type="radio" name="clickType" value="" onClick={() => this.setState({ jsonGeneratorSelection: "noError" })} />No error
+                    <br></br>
                     <input type="radio" name="clickType" value="" onClick={() => this.setState({ jsonGeneratorSelection: "pitchError" })} />Pitch error
-                    {/* <input type="radio" name="clickType" value="" onClick={() => this.setState({jsonGeneratorSelection: "rhythmError"})} />Rhythm error */}
+                    <br></br>
                     <input type="radio" name="clickType" value="" onClick={() => this.setState({ jsonGeneratorSelection: "intonationError" })} />Intonation error
+                    <br></br>
+                    <input type="radio" name="clickType" value="" onClick={() => this.setState({ jsonGeneratorSelection: "rhythmError" })} />Rhythm error
+
+                    {/* <input type="radio" name="clickType" value="" onClick={() => this.setState({jsonGeneratorSelection: "rhythmError"})} />Rhythm error */}
                     {/* <input type="radio" name="clickType" value="" onClick={() => this.state.jsonGeneratorSelection = "noError"} />No error */}
                     {/* <input type="radio" name="clickType" value="" onClick={() => this.state.jsonGeneratorSelection = "pitchError"} />Pitch error */}
                     {/* <input type="radio" name="clickType" value="" onClick={() => this.state.jsonGeneratorSelection = "rhythmError"} />Rhythm error */}
                     {/* <input type="radio" name="clickType" value="" onClick={() => this.state.jsonGeneratorSelection = "intonationError"} />Intonation error */}
-
-                    <br></br>
-
-                    <input type="radio" name="clickType" value="" onClick={() => this.setState({ jsonGeneratorSelection: "rhythmError" })} />Rhythm error
                 </div>
 
                 <br></br>
