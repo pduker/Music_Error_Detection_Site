@@ -459,20 +459,20 @@ class Debug extends Component {
                     <h2>This assignment is used to help students recognize pitch, intonation, and rhythm errors.
                         <br></br>
                         <br></br>
-                        Hovering over each note, you will notice a yellow circle appear. When clicking the circle, you will be able to switch between purple, orange, and yellow colors. Each color is represented below:
+                        Hovering over each note, you will notice a yellow circle appear. The circles are used to help recognize where pitch and intonation errors are located. When clicking the circle, you will be able to switch between purple, orange, and transparent. Each color is represented below:
                         <br></br>
                         1. Pitch errors - purple
                         <br></br>
                         2. Intonation errors - orange
                         <br></br>
-                        3. No error - yellow
+                        3. No error - transparent
                         <br></br>
                         <br></br>
-                        Also, when hovering above some notes you will see a yellow rectangle appear. This rectangle is used to help recognize where rhythm errors are located. Each color in the rectangle is represented below:
+                        Also, when hovering above some notes you will see a yellow rectangle appear. The rectangles are used to help recognize where rhythm errors are located. When clicking the rectangle, you will be able to switch between red and transparent. Each color is represented below:
                         <br></br>
                         1. Rhythm errors - red
                         <br></br>
-                        2. No error - yellow
+                        2. No error - transparent
                         <br></br>
                         <br></br>
                         You may click the “Play Sound” button to hear the music from the blank sheet below. You will only be able to play the music a maximum of 3 times, so listen carefully.
