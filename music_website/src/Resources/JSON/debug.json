@@ -22,7 +22,7 @@
   {
     "id": "A9C8801C-0625-4A7B-A8C7-1C98F6C7C8B4",
     "isError": true,
-    "errorType": "rhythmError",
+    "errorType": "noError",
     "shape": "circle",
     "preFillColor": "#ffffff00",
     "fillColor": "#e3fc0080",

@@ -21,6 +21,38 @@ code {
   border-radius: 10px;
 }
 
+.Level1 {
+  text-align: center;
+  margin: 5px;
+  font-family: "Roboto", san-serif;
+  font-weight: 400;
+  border-radius: 10px;
+}
+
+.Level2 {
+  text-align: center;
+  margin: 5px;
+  font-family: "Roboto", san-serif;
+  font-weight: 400;
+  border-radius: 10px;
+}
+
+.Level3 {
+  text-align: center;
+  margin: 5px;
+  font-family: "Roboto", san-serif;
+  font-weight: 400;
+  border-radius: 10px;
+}
+
+.Level4 {
+  text-align: center;
+  margin: 5px;
+  font-family: "Roboto", san-serif;
+  font-weight: 400;
+  border-radius: 10px;
+}
+
 footer {
   position: fixed;
   bottom: 0;

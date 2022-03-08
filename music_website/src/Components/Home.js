@@ -14,7 +14,7 @@ class Home extends Component {
         </header>
         <h2 style={{ color: 'white' }}>Welcome to the Music Error Detection Practice Quiz!</h2>
         <h3 style={{ color: 'white' }}>Click on one of the assignments below to begin.</h3>
-        <div>
+        {/*<div>
           <Button
             onClick={() => {
               history.push('/Assignment1');
@@ -26,6 +26,7 @@ class Home extends Component {
             buttonSize="btn--large"
           >Assignment 1</Button>
         </div>
+        
         <div>
           <Button
             onClick={() => {
@@ -73,9 +74,9 @@ class Home extends Component {
             buttonStyle="home-page-button"
             buttonSize="btn--large"
           >Assignment 5</Button>
-        </div>
+          </div>*/}
 
-        {/* <div>
+         <div>
           <Button
             onClick={() => {
               history.push('/AssignmentTemplate');
@@ -86,7 +87,7 @@ class Home extends Component {
             buttonStyle="home-page-button"
             buttonSize="btn--large"
           >New Assignment Template</Button>
-        </div> */}
+        </div>
 
         <div>
           <Button
@@ -99,6 +100,58 @@ class Home extends Component {
             buttonStyle="home-page-button"
             buttonSize="btn--large"
           >Debug</Button>
+        </div>
+
+        <div>
+          <Button
+            onClick={() => {
+              history.push('/Level1');
+              history.go();
+            }
+            }
+            type="button"
+            buttonStyle="home-page-button"
+            buttonSize="btn--large"
+          >Level 1 - Rhythm</Button>
+        </div>
+
+        <div>
+          <Button
+            onClick={() => {
+              history.push('/Level2');
+              history.go();
+            }
+            }
+            type="button"
+            buttonStyle="home-page-button"
+            buttonSize="btn--large"
+          >Level 2 - Pitch</Button>
+        </div>
+
+        <div>
+          <Button
+            onClick={() => {
+              history.push('/Level3');
+              history.go();
+            }
+            }
+            type="button"
+            buttonStyle="home-page-button"
+            buttonSize="btn--large"
+          >Level 3 - Rhythm, Pitch, Intonation</Button>
+        </div>
+
+        <div>
+          <Button
+            onClick={() => {
+              history.push('/Level4');
+              history.go();
+            }
+            }
+            type="button"
+            buttonStyle="home-page-button"
+            buttonSize="btn--large"
+          >Level 4 - Rhythm, Pitch, Intonation</Button>
         </div>
 
 
