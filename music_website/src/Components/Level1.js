@@ -14,6 +14,20 @@ class Level1 extends Component {
         </header>
         <h2 style={{ color: 'white' }}>Welcome to the Music Error Detection Practice Quiz!</h2>
         <h3 style={{ color: 'white' }}>Click on one of the assignments below to begin.</h3>
+
+        <div>
+          <Button
+            onClick={() => {
+              history.push('/Example1');
+              history.go();
+            }
+            }
+            type="button"
+            buttonStyle="home-page-button"
+            buttonSize="btn--large"
+          >Level 1 - Example 1</Button>
+        </div>
+
         <div>
           <Button
             onClick={() => {
