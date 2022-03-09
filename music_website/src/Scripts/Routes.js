@@ -7,6 +7,15 @@ import Assignment2 from "../Assignments/Assignment2";
 import Assignment3 from "../Assignments/Assignment3";
 import Assignment4 from "../Assignments/Assignment4";
 import Assignment5 from "../Assignments/Assignment5";
+import Level1Question1 from "../Assignments/Level1Question1";
+import Level1Question2 from "../Assignments/Level1Question2";
+import Level2Question1 from "../Assignments/Level2Question1";
+import Level2Question2 from "../Assignments/Level2Question2";
+import Level2Question3 from "../Assignments/Level2Question3";
+import Level3Question1 from "../Assignments/Level3Question1";
+import Level3Question2 from "../Assignments/Level3Question2";
+import Level4Question1 from "../Assignments/Level4Question1";
+import Level4Question2 from "../Assignments/Level4Question2";
 import Debug from "../Assignments/Debug";
 import history from './history';
 import AssignmentTemplate from "../Components/AssignmentTemplate";
@@ -32,6 +41,15 @@ export default class Routes extends Component {
                     <Route path="/Level2" component={Level2} />
                     <Route path="/Level3" component={Level3} />
                     <Route path="/Level4" component={Level4} />
+                    <Route path="/Level1Question1" component={Level1Question1} />
+                    <Route path="/Level1Question2" component={Level1Question2} />
+                    <Route path="/Level2Question1" component={Level2Question1} />
+                    <Route path="/Level2Question2" component={Level2Question2} />
+                    <Route path="/Level2Question3" component={Level2Question3} />
+                    <Route path="/Level3Question1" component={Level3Question1} />
+                    <Route path="/Level3Question2" component={Level3Question2} />
+                    <Route path="/Level4Question1" component={Level4Question1} />
+                    <Route path="/Level4Question2" component={Level4Question2} />
                     <Route path="/Assignment1" component={Assignment1} />
                     <Route path="/Assignment2" component={Assignment2} />
                     <Route path="/Assignment3" component={Assignment3} />
