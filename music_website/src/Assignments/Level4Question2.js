@@ -42,6 +42,18 @@ class Level4Question2 extends Component {
                     <br></br>
                     Once you are satisfied with your work, you can press the “Submit” button. At the bottom of the screen you will see how many errors you identified correctly. Each error that is not identified correctly will return a light blue circle. Try to identify the correct error again.</h2>
             </div>
+
+            <Button
+                    onClick={() => {
+                        history.push('/');
+                        history.go();
+                    }
+                    }
+                    type="button"
+                    buttonStyle="btn--primary--solid-go-back"
+                    buttonSize="btn--medium"
+                >Back</Button>
+                
         </div>
         );
     }
