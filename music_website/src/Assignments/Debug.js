@@ -783,7 +783,7 @@ class Debug extends Component {
                 <br></br>
                 <br></br>
 
-                <div id="shapes-info" style={{ marginTop: 30 + 'px' }, { marginRight: 20 + 'px' }, { marginLeft: 20 + 'px' }}>
+                <div id="shapes-info" style={{ marginTop: 30 + 'px', marginRight: 20 + 'px', marginLeft: 20 + 'px' }}>
                     Shapes Info
                 </div>
             </div>
