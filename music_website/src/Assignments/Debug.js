@@ -81,8 +81,10 @@ class Debug extends Component {
     async setInitialState() {
         console.log(`setInitialState running`);
 
+        const imgData = await this.getImageWidthHeight();
+
         this.setState({
-            imageWidth: await this.getImageWidth(),
+            imageWidth: imgData.width,
             theMap: IMAGE_MAP
             // theMap: this.state.allCurrentErrors
         });
@@ -105,9 +107,9 @@ class Debug extends Component {
             200
         );
 
-        let width = await this.getImageWidth();
-        let height = await this.getImageHeight();
-        document.getElementById("image-properties").innerText = `Image width = ${width}\nImage height = ${height}`;
+        const imgData = await this.getImageWidthHeight();
+
+        document.getElementById("image-properties").innerText = `Image width = ${imgData.width}\nImage height = ${imgData.height}`;
     }
 
     RenderButtonAndSound = () => {
@@ -406,27 +408,14 @@ class Debug extends Component {
     }
 
     /**
-     * This gets the image's width and returns it
+     * This gets the image's width and height and returns it
      */
-    async getImageWidth() {
+    async getImageWidthHeight() {
         var img = new Image();
 
         img.onload = async function () {
-            return img.width;
-        };
-
-        img.src = IMAGE_PATH;
-        return img.onload();
-    }
-
-    /**
-     * This gets the image's height and returns it
-     */
-    async getImageHeight() {
-        var img = new Image();
-
-        img.onload = async function () {
-            return img.height;
+            const data = { "width": img.width, "height": img.height };
+            return data;
         };
 
         img.src = IMAGE_PATH;
@@ -823,9 +812,7 @@ class Debug extends Component {
                 <div id="shapes-info" style={{ marginTop: 30 + 'px', marginRight: 20 + 'px', marginLeft: 20 + 'px' }}>
                     Shapes Info
                 </div>
-
             </div >
-
         );
     }
 }
