@@ -80,6 +80,7 @@ class Debug extends Component {
      */
     async setInitialState() {
         console.log(`setInitialState running`);
+
         this.setState({
             imageWidth: await this.getImageWidth(),
             theMap: IMAGE_MAP
@@ -93,10 +94,20 @@ class Debug extends Component {
     async componentDidMount() {
         console.log(`componentDidMount running`);
         await this.setInitialState();
+
         setTimeout(
             () => this.setInitialState(),
             1500
         );
+
+        setTimeout(
+            () => this.refreshMapper(),
+            200
+        );
+
+        let width = await this.getImageWidth();
+        let height = await this.getImageHeight();
+        document.getElementById("image-properties").innerText = `Image width = ${width}\nImage height = ${height}`;
     }
 
     RenderButtonAndSound = () => {
@@ -408,6 +419,20 @@ class Debug extends Component {
         return img.onload();
     }
 
+    /**
+     * This gets the image's height and returns it
+     */
+    async getImageHeight() {
+        var img = new Image();
+
+        img.onload = async function () {
+            return img.height;
+        };
+
+        img.src = IMAGE_PATH;
+        return img.onload();
+    }
+
     // handleClickSheetMusic(){
     //     console.log("component has been clicked at coordinates: (", this.state.coords.x, ",", this.state.coords.y,")");
     //     let newAreas = this.state.imageMapAreas;
@@ -436,12 +461,12 @@ class Debug extends Component {
     refreshMapper() {
         if (this.state.toggle === true) {
             this.setState({
-                windowWidth: window.innerWidth + 1,
+                imageWidth: window.imageWidth + 1,
                 toggle: false
             });
         } else {
             this.setState({
-                windowWidth: window.innerWidth - 1,
+                imageWidth: window.imageWidth - 1,
                 toggle: true
             });
         }
@@ -453,7 +478,7 @@ class Debug extends Component {
         }
 
         return (
-            <div id="assignment-debug" className="assignment">
+            <div id="assignment-debug" className="assignment" >
                 <h2>Debug</h2>
                 <div className="Instructions">
                     <h2>This assignment is used to help students recognize pitch, intonation, and rhythm errors.
@@ -560,6 +585,12 @@ class Debug extends Component {
 
                 <br></br>
 
+                <div id="image-properties">
+                    ...
+                </div>
+
+                <br></br>
+
                 <div id="x-coordinate">
                     X coordinate is unknown
                 </div>
@@ -585,19 +616,23 @@ class Debug extends Component {
 
                 {/* <SheetMusic onInsideClick={this.handleClickSheetMusic}> */}
                 {/* <SheetMusic> */}
-                <ImageMapper
-                    id="mapper-debug"
-                    src={IMAGE_PATH}
-                    map={this.state.theMap}
-                    onImageMouseMove={evt => this.moveOnImage(evt)}
-                    onMouseMove={(area, _, evt) => this.moveOnArea(area, evt)}
-                    onImageClick={evt => this.clickedOutside(evt)}
-                    onClick={area => this.clicked(area)}
-                    stayMultiHighlighted={true}
-                    width={this.state.windowWidth}
-                    imgWidth={this.state.imageWidth}
-                />
+                <div id="mapper-container" style={{ display: "flex", alignItems: "center", flexDirection: "column" }}>
+                    <ImageMapper
+                        id="mapper-debug"
+                        src={IMAGE_PATH}
+                        map={this.state.theMap}
+                        onImageMouseMove={evt => this.moveOnImage(evt)}
+                        onMouseMove={(area, _, evt) => this.moveOnArea(area, evt)}
+                        onImageClick={evt => this.clickedOutside(evt)}
+                        onClick={area => this.clicked(area)}
+                        stayMultiHighlighted={true}
+                        width={this.state.imageWidth}
+                        imgWidth={this.state.imageWidth}
+                    />
+                </div>
+
                 {/* </SheetMusic> */}
+
                 <br></br>
                 <br></br>
 
@@ -758,7 +793,9 @@ class Debug extends Component {
                     Then, click on the area where you want the BOTTOM RIGHT of the rectangle to be.
                 </p>
 
-                <div className="radio-buttons-error-type" style={{ marginTop: 20 + 'px' }}>
+                <br></br>
+
+                <div className="radio-buttons-error-type">
                     <input type="radio" name="clickType" value="" onClick={() => this.setState({ jsonGeneratorSelection: "noError" })} />No error
                     <br></br>
                     <input type="radio" name="clickType" value="" onClick={() => this.setState({ jsonGeneratorSelection: "pitchError" })} />Pitch error
@@ -786,7 +823,8 @@ class Debug extends Component {
                 <div id="shapes-info" style={{ marginTop: 30 + 'px', marginRight: 20 + 'px', marginLeft: 20 + 'px' }}>
                     Shapes Info
                 </div>
-            </div>
+
+            </div >
 
         );
     }
