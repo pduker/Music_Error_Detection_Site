@@ -107,9 +107,7 @@ class Debug extends Component {
             200
         );
 
-        const imgData = await this.getImageWidthHeight();
-
-        document.getElementById("image-properties").innerText = `Image width = ${imgData.width}\nImage height = ${imgData.height}`;
+        this.getImageWidthHeight().then(data => document.getElementById("image-properties").innerText = `Image width = ${data.width}\nImage height = ${data.height}`);
     }
 
     RenderButtonAndSound = () => {
