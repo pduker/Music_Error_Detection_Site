@@ -95,23 +95,11 @@ class Debug extends Component {
      */
     async componentDidMount() {
         console.log(`componentDidMount running`);
-        await this.setInitialState();
 
-        setTimeout(
-            () => this.setInitialState(),
-            1500
-        );
-
-        setTimeout(
-            () => this.refreshMapper(),
-            200
-        );
-
-        setTimeout(
-            () => this.getImageWidthHeight().then(data => document.getElementById("image-properties").innerText = `Image width = ${data.width}\nImage height = ${data.height}`),
-            2000
-        );
-
+        this.setInitialState()
+            .then(this.getImageWidthHeight()
+                .then(data => document.getElementById("image-properties").innerText = `Image width = ${data.width}\nImage height = ${data.height}`))
+            .finally(() => { this.refreshMapper(); this.refreshMapper(); });
     }
 
     RenderButtonAndSound = () => {
