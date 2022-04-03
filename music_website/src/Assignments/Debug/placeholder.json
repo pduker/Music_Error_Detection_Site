@@ -1,0 +1,16 @@
+[
+    {
+        "id": "1B800C9D-39A4-4B2C-A107-29C56FDA4BEF",
+        "isError": true,
+        "errorType": "pitchError",
+        "shape": "circle",
+        "preFillColor": "#ffffff80",
+        "fillColor": "#e3fc0080",
+        "strokeColor": "#ffffff80",
+        "coords": [
+            0,
+            0,
+            300
+        ]
+    }
+]

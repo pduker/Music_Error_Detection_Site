@@ -120,10 +120,10 @@ class Debug extends Component {
                         }
                     }
                     if (count === MAX_PLAY_COUNT - 1) {
-                        alert("You can only play this sound one more time");
+                        swal("You can only play this sound one more time.");
                     }
                     if (count === MAX_PLAY_COUNT) {
-                        alert("You have maxed out your attempts to play this sound");
+                        swal("You have maxed out your attempts to play this sound.");
                     }
                 }
                 }
@@ -753,9 +753,7 @@ class Debug extends Component {
                         const results = this.generateResults();
                         swal(results);
                         this.refreshMapper();
-                    }
-
-                    }
+                    }}
                     type="button"
                     buttonStyle="btn--primary--solid"
                     buttonSize="btn--medium" f
