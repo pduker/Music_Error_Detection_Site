@@ -1,24 +1,25 @@
+import IMAGE_PATH from "../Assignments/Debug/display.png";
+import SHAPE_JSON from "../Assignments/Debug/shapes.json";
+import AUDIO_FILE from "../Assignments/Debug/sound.mp3";
+
 import React, { Component } from "react";
 import { Button } from "./../Components/Button";
 import history from "../Scripts/history";
 import "./../Styles/assignment.css";
 import { withRouter } from "react-router-dom";
-import Tmp from "./../Resources/Audio/Example1.m4a";
 import ImageMapper from "react-img-mapper";
-// import SheetMusic from "../Components/SheetMusic";
 import { v4 as uuidv4 } from 'uuid';
-import { useEffect } from 'react'
+import swal from 'sweetalert';
 
-import IMAGE_PATH from "../Resources/Images/assignment-debug.jpg";
-import mapJSON from "../Resources/JSON/debug.json";
+// import SheetMusic from "../Components/SheetMusic";
 
 var count;
 var isPlaying = false;
-var audio = new Audio(Tmp);
+var audio = new Audio(AUDIO_FILE);
 
 var IMAGE_MAP = {
     name: 'debug-map',
-    areas: mapJSON
+    areas: SHAPE_JSON
 };
 
 // The 80 at the end of a hex value means 50% transparency
@@ -52,7 +53,7 @@ class Debug extends Component {
             windowWidth: window.innerWidth,
             jsonGeneratorSelection: "noError",
             toggle: true,
-            allCurrentErrors: mapJSON,
+            allCurrentErrors: SHAPE_JSON,
             theMap: IMAGE_MAP,
             rhythmSide: "topLeft"
         };
@@ -451,6 +452,113 @@ class Debug extends Component {
         }
     }
 
+    /*
+    This returns a summary of correct/incorrect selections for the user
+    */
+    generateResults() {
+        let reportText = "";
+
+        let pitchErrorsCorrect = 0;
+        let pitchErrorsMissed = 0;
+        let rhythmErrorsCorrect = 0;
+        let rhythmErrorsMissed = 0;
+        let intonationErrorsCorrect = 0;
+        let intonationErrorsMissed = 0;
+        let noErrorsCorrect = 0;
+        let noErrorsMissed = 0;
+
+        for (const shape of this.state.allCurrentErrors) {
+            // Check if the shape's fill color is correct
+            if (shape.errorType === "pitchError") {
+                if (shape.fillColor === COLOR_PITCH_ERROR) {
+                    pitchErrorsCorrect += 1;
+                } else {
+                    pitchErrorsMissed += 1;
+                    if (shape.fillColor != COLOR_NO_ERROR) {
+                        shape.fillColor = COLOR_INCORRECT;
+                        shape.preFillColor = COLOR_INCORRECT;
+                    }
+                }
+            } else if (shape.errorType === "intonationError") {
+                if (shape.fillColor === COLOR_INTONATION_ERROR) {
+                    intonationErrorsCorrect += 1;
+                } else {
+                    intonationErrorsMissed += 1;
+                    if (shape.fillColor != COLOR_NO_ERROR) {
+                        shape.fillColor = COLOR_INCORRECT;
+                        shape.preFillColor = COLOR_INCORRECT;
+                    }
+                }
+            } else if (shape.errorType === "rhythmError") {
+                if (shape.fillColor === COLOR_RHYTHM_ERROR) {
+                    rhythmErrorsCorrect += 1;
+                } else {
+                    rhythmErrorsMissed += 1;
+                    if (shape.fillColor != COLOR_NO_ERROR) {
+                        shape.fillColor = COLOR_INCORRECT;
+                        shape.preFillColor = COLOR_INCORRECT;
+                    }
+                }
+            } else if (shape.errorType === "noError") {
+                if (shape.fillColor === COLOR_NO_ERROR) {
+                    noErrorsCorrect += 1;
+                    shape.preFillColor = COLOR_TRANSPARENT;
+                    shape.strokeColor = COLOR_TRANSPARENT;
+                } else {
+                    noErrorsMissed += 1;
+                    shape.fillColor = COLOR_INCORRECT;
+                    shape.preFillColor = COLOR_INCORRECT;
+                }
+            }
+
+            const totalCorrect = pitchErrorsCorrect + rhythmErrorsCorrect + intonationErrorsCorrect + noErrorsCorrect;
+            const totalMissed = pitchErrorsMissed + rhythmErrorsMissed + intonationErrorsMissed + noErrorsMissed;
+            const pitchErrors = pitchErrorsCorrect + pitchErrorsMissed;
+            const rhythmErrors = rhythmErrorsCorrect + rhythmErrorsMissed;
+            const intonationErrors = intonationErrorsCorrect + intonationErrorsMissed;
+
+            reportText = `Here are the results of your submission:\n\nIncorrect guesses are represented by the cyan circles.\n\n`;
+
+            reportText += `There are ${pitchErrors + rhythmErrors + intonationErrors} errors in this exercise.\n`;
+            reportText += `You found ${pitchErrorsCorrect + rhythmErrorsCorrect + intonationErrorsCorrect} errors and missed ${pitchErrorsMissed + rhythmErrorsMissed + intonationErrorsMissed} errors.\n\n`;
+
+            if (totalMissed > 0) {
+                reportText = reportText.concat(`You missed: \n`);
+                if (pitchErrorsMissed > 0) {
+                    reportText = reportText.concat(`${pitchErrorsMissed} pitch error`);
+                    if (pitchErrorsMissed > 1) {
+                        reportText = reportText.concat(`s`);
+                    }
+                    reportText = reportText.concat(`\n`);
+
+                }
+                if (rhythmErrorsMissed > 0) {
+                    reportText = reportText.concat(`${rhythmErrorsMissed} rhythm error`);
+                    if (rhythmErrorsMissed > 1) {
+                        reportText = reportText.concat(`s`);
+                    }
+                    reportText = reportText.concat(`\n`);
+
+                }
+                if (intonationErrorsMissed > 0) {
+                    reportText = reportText.concat(`${intonationErrorsMissed} intonation error`);
+                    if (intonationErrorsMissed > 1) {
+                        reportText = reportText.concat(`s`);
+                    }
+                    reportText = reportText.concat(`\n`);
+                }
+            }
+            else {
+                reportText = reportText.concat(`You correctly identified all errors!\n`);
+            }
+
+            reportText += "\n";
+            reportText += `You incorrectly labeled ${noErrorsMissed} shapes as being errors when they were not errors.\n\n`;
+        }
+
+        return reportText;
+    }
+
     render() {
         if (!count) {
             count = 0;
@@ -638,110 +746,12 @@ class Debug extends Component {
                     buttonSize="btn--medium"
                 >Reset</Button>
 
+                <br></br>
+
                 <Button id='submit'
                     onClick={() => {
-                        /*
-                        This generates a summary of correct/incorrect selections for the user
-                        */
-
-                        let pitchErrorsCorrect = 0;
-                        let pitchErrorsMissed = 0;
-                        let rhythmErrorsCorrect = 0;
-                        let rhythmErrorsMissed = 0;
-                        let intonationErrorsCorrect = 0;
-                        let intonationErrorsMissed = 0;
-                        let noErrorsCorrect = 0;
-                        let noErrorsMissed = 0;
-
-                        for (const shape of this.state.allCurrentErrors) {
-                            // Check if the shape's fill color is correct
-                            if (shape.errorType === "pitchError") {
-                                if (shape.fillColor === COLOR_PITCH_ERROR) {
-                                    pitchErrorsCorrect += 1;
-                                } else {
-                                    pitchErrorsMissed += 1;
-                                    if (shape.fillColor != COLOR_NO_ERROR) {
-                                        shape.fillColor = COLOR_INCORRECT;
-                                        shape.preFillColor = COLOR_INCORRECT;
-                                    }
-                                }
-                            } else if (shape.errorType === "intonationError") {
-                                if (shape.fillColor === COLOR_INTONATION_ERROR) {
-                                    intonationErrorsCorrect += 1;
-                                } else {
-                                    intonationErrorsMissed += 1;
-                                    if (shape.fillColor != COLOR_NO_ERROR) {
-                                        shape.fillColor = COLOR_INCORRECT;
-                                        shape.preFillColor = COLOR_INCORRECT;
-                                    }
-                                }
-                            } else if (shape.errorType === "rhythmError") {
-                                if (shape.fillColor === COLOR_RHYTHM_ERROR) {
-                                    rhythmErrorsCorrect += 1;
-                                } else {
-                                    rhythmErrorsMissed += 1;
-                                    if (shape.fillColor != COLOR_NO_ERROR) {
-                                        shape.fillColor = COLOR_INCORRECT;
-                                        shape.preFillColor = COLOR_INCORRECT;
-                                    }
-                                }
-                            } else if (shape.errorType === "noError") {
-                                if (shape.fillColor === COLOR_NO_ERROR) {
-                                    noErrorsCorrect += 1;
-                                    shape.preFillColor = COLOR_TRANSPARENT;
-                                    shape.strokeColor = COLOR_TRANSPARENT;
-                                } else {
-                                    noErrorsMissed += 1;
-                                    shape.fillColor = COLOR_INCORRECT;
-                                    shape.preFillColor = COLOR_INCORRECT;
-                                }
-                            }
-
-                            const totalCorrect = pitchErrorsCorrect + rhythmErrorsCorrect + intonationErrorsCorrect + noErrorsCorrect;
-                            const totalMissed = pitchErrorsMissed + rhythmErrorsMissed + intonationErrorsMissed + noErrorsMissed;
-                            const pitchErrors = pitchErrorsCorrect + pitchErrorsMissed;
-                            const rythmErrors = rhythmErrorsCorrect + rhythmErrorsMissed;
-                            const intonationErrors = intonationErrorsCorrect + intonationErrorsMissed;
-
-                            let reportText =
-                                `Here are the results:
-                            Incorrect guesses are represented by the cyan circles
-                            `;
-
-                            if (totalMissed > 0) {
-                                reportText = reportText.concat(`You missed: \n`);
-                                if (pitchErrorsMissed > 0) {
-                                    reportText = reportText.concat(`${pitchErrorsMissed} pitch error`);
-                                    if (pitchErrorsMissed > 1) {
-                                        reportText = reportText.concat(`s`);
-                                    }
-                                    reportText = reportText.concat(`\n`);
-
-                                }
-                                if (rhythmErrorsMissed > 0) {
-                                    reportText = reportText.concat(`${rhythmErrorsMissed} rhythm error`);
-                                    if (rhythmErrorsMissed > 1) {
-                                        reportText = reportText.concat(`s`);
-                                    }
-                                    reportText = reportText.concat(`\n`);
-
-                                }
-                                if (intonationErrorsMissed > 0) {
-                                    reportText = reportText.concat(`${intonationErrorsMissed} intonation error`);
-                                    if (intonationErrorsMissed > 1) {
-                                        reportText = reportText.concat(`s`);
-                                    }
-                                    reportText = reportText.concat(`\n`);
-
-                                }
-
-                            }
-                            else {
-                                reportText = reportText.concat(`You correctly identified all errors!\n`);
-                            }
-                            document.getElementById("results").innerText = reportText;
-
-                        }
+                        const results = this.generateResults();
+                        swal(results);
                         this.refreshMapper();
                     }
 
