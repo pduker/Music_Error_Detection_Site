@@ -756,7 +756,7 @@ class Debug extends Component {
                     }}
                     type="button"
                     buttonStyle="btn--primary--solid"
-                    buttonSize="btn--medium" f
+                    buttonSize="btn--medium"
                 >Submit</Button>
 
                 <br></br>

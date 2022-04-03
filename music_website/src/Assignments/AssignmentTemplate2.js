@@ -196,8 +196,8 @@ class AssignmentTemplate2 extends Component {
     }
 
     /*
-        This returns a summary of correct/incorrect selections for the user
-        */
+    This returns a summary of correct/incorrect selections for the user
+    */
     generateResults() {
         let reportText = "";
 
@@ -387,21 +387,11 @@ class AssignmentTemplate2 extends Component {
                     }}
                     type="button"
                     buttonStyle="btn--primary--solid"
-                    buttonSize="btn--medium" f
+                    buttonSize="btn--medium"
                 >Submit</Button>
 
                 <br></br>
                 <br></br>
-                <br></br>
-                <br></br>
-
-                <div id="results">
-                    Results
-                </div>
-
-                <br></br>
-                <br></br>
-
             </div >
         );
     }
