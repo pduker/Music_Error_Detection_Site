@@ -18,41 +18,26 @@ import sheetMusic1 from "../Resources/Images/example1.jpg";
 import AssignmentTemplate2 from "../Assignments/AssignmentTemplate2";
 
 // Level 1 Exercise 1
-import L1E1_SOUND from "../Assignments/Level_1/Exercise_1/sound.mp3";
-import L1E1_DISPLAY from "../Assignments/Level_1/Exercise_1/display.png";
-import L1E1_JSON from "../Assignments/Debug/placeholder.json";
+const L1E1_DATA = {
+    name: "Level 1 Exercise 1",
+    sound: require("../Assignments/Level_1/Exercise_1/sound.mp3"),
+    display: require("../Assignments/Level_1/Exercise_1/display.png"),
+    shapes: require("../Assignments/Debug/placeholder.json")
+};
 // Level 1 Exercise 2
-import L1E2_SOUND from "../Assignments/Level_1/Exercise_2/sound.mp3";
-import L1E2_DISPLAY from "../Assignments/Level_1/Exercise_2/display.png";
-import L1E2_JSON from "../Assignments/Debug/placeholder.json";
+const L1E2_DATA = {
+    name: "Level 1 Exercise 2",
+    sound: require("../Assignments/Level_1/Exercise_2/sound.mp3"),
+    display: require("../Assignments/Level_1/Exercise_2/display.png"),
+    shapes: require("../Assignments/Debug/placeholder.json")
+};
 // Level 2 Exercise 1
-import L2E1_SOUND from "../Assignments/Level_2/Exercise_1/sound.mp3";
-import L2E1_DISPLAY from "../Assignments/Level_2/Exercise_1/display.png";
-import L2E1_JSON from "../Assignments/Debug/placeholder.json";
 // Level 2 Exercise 2
-import L2E2_SOUND from "../Assignments/Level_2/Exercise_2/sound.mp3";
-import L2E2_DISPLAY from "../Assignments/Level_2/Exercise_2/display.png";
-import L2E2_JSON from "../Assignments/Debug/placeholder.json";
 // Level 2 Exercise 3
-import L2E3_SOUND from "../Assignments/Level_2/Exercise_1/sound.mp3";
-import L2E3_DISPLAY from "../Assignments/Level_2/Exercise_1/display.png";
-import L2E3_JSON from "../Assignments/Debug/placeholder.json";
 // Level 3 Exercise 1
-import L3E1_SOUND from "../Assignments/Level_3/Exercise_1/sound.mp3";
-import L3E1_DISPLAY from "../Assignments/Level_3/Exercise_1/display.png";
-import L3E1_JSON from "../Assignments/Debug/placeholder.json";
 // Level 3 Exercise 2
-import L3E2_SOUND from "../Assignments/Level_3/Exercise_2/sound.mp3";
-import L3E2_DISPLAY from "../Assignments/Level_3/Exercise_2/display.png";
-import L3E2_JSON from "../Assignments/Debug/placeholder.json";
 // Level 4 Exercise 1
-import L4E1_SOUND from "../Assignments/Level_4/Exercise_1/sound.m4a";
-import L4E1_DISPLAY from "../Assignments/Level_4/Exercise_1/display.png";
-import L4E1_JSON from "../Assignments/Debug/placeholder.json";
 // Level 5 Exercise 1
-import L5E1_SOUND from "../Assignments/Level_5/Exercise_1/sound.m4a";
-import L5E1_DISPLAY from "../Assignments/Level_5/Exercise_1/display.png";
-import L5E1_JSON from "../Assignments/Debug/placeholder.json";
 
 export default class Routes extends Component {
     render() {
@@ -70,8 +55,8 @@ export default class Routes extends Component {
                         <Route path="/Level3" component={Level3} />
                         <Route path="/Level4" component={Level4} />
 
-                        <Route path="/Level1Question1" render={props => <AssignmentTemplate2 {...props} name={"Level 1 Exercise 1"} sound={L1E1_SOUND} display={L1E1_DISPLAY} json={L1E1_JSON} />} />
-                        <Route path="/Level1Question2" render={props => <AssignmentTemplate2 {...props} name={"Level 1 Exercise 2"} sound={L1E2_SOUND} display={L1E2_DISPLAY} json={L1E2_JSON} />} />
+                        <Route path="/Level1Question1" render={props => <AssignmentTemplate2 {...props} data={L1E1_DATA} />} />
+                        <Route path="/Level1Question2" render={props => <AssignmentTemplate2 {...props} data={L1E2_DATA} />} />
                     </Switch>
                 </Router>
             </div>

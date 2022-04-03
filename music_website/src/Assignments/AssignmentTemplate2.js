@@ -25,10 +25,10 @@ class AssignmentTemplate2 extends Component {
     constructor(props) {
         super(props);
 
-        this.assignmentName = this.props.name;
-        this.sound = this.props.sound;
-        this.display = this.props.display;
-        this.shapes = this.props.json;
+        this.assignmentName = this.props.data.name;
+        this.sound = this.props.data.sound;
+        this.display = this.props.data.display;
+        this.shapes = this.props.data.shapes;
 
         this.audio = new Audio(this.sound);
         this.IMAGE_MAP = {
