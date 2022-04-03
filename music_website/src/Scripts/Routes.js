@@ -32,7 +32,19 @@ const L1E2_DATA = {
     shapes: require("../Assignments/Debug/placeholder.json")
 };
 // Level 2 Exercise 1
+const L2E1_DATA = {
+    name: "Level 2 Exercise 1",
+    sound: require("../Assignments/Level_2/Exercise_1/sound.mp3"),
+    display: require("../Assignments/Level_2/Exercise_1/display.png"),
+    shapes: require("../Assignments/Debug/placeholder.json")
+};
 // Level 2 Exercise 2
+const L2E2_DATA = {
+    name: "Level 2 Exercise 2",
+    sound: require("../Assignments/Level_2/Exercise_2/sound.mp3"),
+    display: require("../Assignments/Level_2/Exercise_2/display.png"),
+    shapes: require("../Assignments/Debug/placeholder.json")
+};
 // Level 2 Exercise 3
 // Level 3 Exercise 1
 // Level 3 Exercise 2
@@ -55,8 +67,11 @@ export default class Routes extends Component {
                         <Route path="/Level3" component={Level3} />
                         <Route path="/Level4" component={Level4} />
 
-                        <Route path="/Level1Question1" render={props => <AssignmentTemplate2 {...props} data={L1E1_DATA} />} />
-                        <Route path="/Level1Question2" render={props => <AssignmentTemplate2 {...props} data={L1E2_DATA} />} />
+                        <Route path="/Level1Exercise1" render={props => <AssignmentTemplate2 {...props} data={L1E1_DATA} />} />
+                        <Route path="/Level1Exercise2" render={props => <AssignmentTemplate2 {...props} data={L1E2_DATA} />} />
+
+                        <Route path="/Level2Exercise1" render={props => <AssignmentTemplate2 {...props} data={L2E1_DATA} />} />
+                        <Route path="/Level2Exercise2" render={props => <AssignmentTemplate2 {...props} data={L2E2_DATA} />} />
                     </Switch>
                 </Router>
             </div>

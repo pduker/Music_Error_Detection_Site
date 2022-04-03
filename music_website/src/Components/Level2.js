@@ -18,40 +18,40 @@ class Level2 extends Component {
         <div>
           <Button
             onClick={() => {
-              history.push('/Level2Question1');
+              history.push('/Level2Exercise1');
               history.go();
             }
             }
             type="button"
             buttonStyle="home-page-button"
             buttonSize="btn--large"
-          >Level 2 - Question 1</Button>
+          >Level 2 - Exercise 1</Button>
         </div>
 
         <div>
           <Button
             onClick={() => {
-              history.push('/Level2Question2');
+              history.push('/Level2Exercise2');
               history.go();
             }
             }
             type="button"
             buttonStyle="home-page-button"
             buttonSize="btn--large"
-          >Level 2 - Question 2</Button>
+          >Level 2 - Exercise 2</Button>
         </div>
 
         <div>
           <Button
             onClick={() => {
-              history.push('/Level2Question3');
+              history.push('/Level2Exercise3');
               history.go();
             }
             }
             type="button"
             buttonStyle="home-page-button"
             buttonSize="btn--large"
-          >Level 2 - Question 3</Button>
+          >Level 2 - Exercise 3</Button>
         </div>
 
         <div>

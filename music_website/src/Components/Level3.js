@@ -18,27 +18,27 @@ class Level3 extends Component {
         <div>
           <Button
             onClick={() => {
-              history.push('/Level3Question1');
+              history.push('/Level3Exercise1');
               history.go();
             }
             }
             type="button"
             buttonStyle="home-page-button"
             buttonSize="btn--large"
-          >Level 3 - Question 1</Button>
+          >Level 3 - Exercise 1</Button>
         </div>
 
         <div>
           <Button
             onClick={() => {
-              history.push('/Level3Question2');
+              history.push('/Level3Exercise2');
               history.go();
             }
             }
             type="button"
             buttonStyle="home-page-button"
             buttonSize="btn--large"
-          >Level 3 - Question 2</Button>
+          >Level 3 - Exercise 2</Button>
         </div>
 
         <div>
