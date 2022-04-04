@@ -22,6 +22,10 @@ var IMAGE_MAP = {
     areas: SHAPE_JSON
 };
 
+const INITIAL_PREFILL_COLOR = "#ffffff00";
+const INITIAL_FILL_COLOR = "#e3fc0080";
+const INITIAL_STROKE_COLOR = "#ffffff00";
+
 const PITCH_ERROR = "pitchError";
 const INTONATION_ERROR = "intonationError";
 const RHYTHM_ERROR = "rhythmError";
@@ -51,6 +55,7 @@ var previewEnabled = true;
 class Debug extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             coordinates: [0, 0],
             selectedArea: { "id": "0", "isError": false, "errorType": "noError" },
@@ -74,6 +79,17 @@ class Debug extends Component {
         });
     }
 
+    /*
+    This sets the initial color of each shape
+    */
+    setInitialShapeColors(someShapes) {
+        for (let shape of someShapes) {
+            shape["preFillColor"] = INITIAL_PREFILL_COLOR;
+            shape["fillColor"] = INITIAL_FILL_COLOR;
+            shape["strokeColor"] = INITIAL_STROKE_COLOR;
+        }
+    }
+
     /**
      * Updates the windowWidth state to the current window width
      */
@@ -89,11 +105,13 @@ class Debug extends Component {
 
         const imgData = await this.getImageWidthHeight();
 
+        this.setInitialShapeColors(SHAPE_JSON);
+
         this.setState({
             imageWidth: imgData.width,
             theMap: IMAGE_MAP
-            // theMap: this.state.allCurrentErrors
         });
+
     }
 
     /**
@@ -263,9 +281,6 @@ class Debug extends Component {
             "errorType": errorType,
             "shape": newShape,
             "coords": newCoords,
-            "preFillColor": COLOR_TRANSPARENT,
-            "fillColor": COLOR_NO_ERROR,
-            "strokeColor": COLOR_TRANSPARENT
         };
 
         let formatted = JSON.stringify(generated, null, 4);

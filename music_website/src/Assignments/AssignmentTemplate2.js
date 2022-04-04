@@ -13,6 +13,10 @@ const INTONATION_ERROR = "intonationError";
 const RHYTHM_ERROR = "rhythmError";
 const NO_ERROR = "noError";
 
+const INITIAL_PREFILL_COLOR = "#ffffff00";
+const INITIAL_FILL_COLOR = "#e3fc0080";
+const INITIAL_STROKE_COLOR = "#ffffff00";
+
 // The 80 at the end of a hex value means 50% transparency
 const COLOR_NO_ERROR = "#e3fc0080";
 const COLOR_PITCH_ERROR = "#9013fe80";
@@ -33,6 +37,8 @@ class AssignmentTemplate2 extends Component {
         this.assignmentName = this.props.data.name;
         this.sound = this.props.data.sound;
         this.display = this.props.data.display;
+
+        this.setInitialShapeColors(this.props.data.shapes);
         this.shapes = this.props.data.shapes;
 
         this.audio = new Audio(this.sound);
@@ -61,6 +67,17 @@ class AssignmentTemplate2 extends Component {
             console.log(`window resize detected, updating windowWidth to ${window.innerWidth}`);
             this.setState({ windowWidth: window.innerWidth });
         });
+    }
+
+    /*
+    This sets the initial color of each shape
+    */
+    setInitialShapeColors(someShapes) {
+        for (let shape of someShapes) {
+            shape["preFillColor"] = INITIAL_PREFILL_COLOR;
+            shape["fillColor"] = INITIAL_FILL_COLOR;
+            shape["strokeColor"] = INITIAL_STROKE_COLOR;
+        }
     }
 
     /**
