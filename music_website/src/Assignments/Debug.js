@@ -22,6 +22,11 @@ var IMAGE_MAP = {
     areas: SHAPE_JSON
 };
 
+const PITCH_ERROR = "pitchError";
+const INTONATION_ERROR = "intonationError";
+const RHYTHM_ERROR = "rhythmError";
+const NO_ERROR = "noError";
+
 // The 80 at the end of a hex value means 50% transparency
 const COLOR_NO_ERROR = "#e3fc0080";
 const COLOR_PITCH_ERROR = "#9013fe80";
@@ -184,7 +189,7 @@ class Debug extends Component {
      * This adds a shape to the mapper temporarily so the user
      * can get a preview of where the shape will be placed
      */
-    addShapeToMapper(shapeObject) {
+    addTempShape(shapeObject) {
         IMAGE_MAP.areas.push(shapeObject);
         this.refreshMapper();
     }
@@ -192,11 +197,10 @@ class Debug extends Component {
     /**
      * This removes the temporary shape with id "tmp"
      */
-    removeShapeFromMapper() {
-        // Remove "tmp"
+    removeTempShape() {
         const removeIndex = IMAGE_MAP.areas.findIndex(item => item.id === "tmp");
 
-        if (removeIndex != -1) {
+        if (removeIndex !== -1) {
             IMAGE_MAP.areas.splice(removeIndex, 1);
         }
 
@@ -237,63 +241,43 @@ class Debug extends Component {
             if (this.state.rhythmSide == "bottomRight") {
                 console.log(`picked the bottom right side`);
                 bottomRightX = coordX;
-                //bottomRightY = topLeftY;
                 bottomRightY = coordY;
-                // topLeftY = topLeftY + 20;
 
                 this.setState({ rhythmSide: "topLeft" });
             }
 
             console.log(`rhythmSide=${this.state.rhythmSide}`);
 
-            newShape = `"shape":"rect",`;
-            newCoords = `"coords":[${topLeftX},${topLeftY},${bottomRightX},${bottomRightY}]`;
+            newShape = `rect`;
+            newCoords = [topLeftX, topLeftY, bottomRightX, bottomRightY];
         } else {
             console.log(`non rhythm error detected`);
 
-            newShape = `"shape":"circle",`;
-            newCoords = `"coords":[${coordX},${coordY},20]`;
+            newShape = `circle`;
+            newCoords = [coordX, coordY, 20];
         }
 
-        let generatedJson = `{`;
-        generatedJson += `"id":"${newId}",`;
-        generatedJson += `"isError":${isError},`;
-        generatedJson += `"errorType":"${errorType}",`;
-        generatedJson += newShape;
-        generatedJson += `"preFillColor":"${COLOR_TRANSPARENT}",`;
-        generatedJson += `"fillColor":"${COLOR_NO_ERROR}",`;
-        generatedJson += `"strokeColor":"${COLOR_TRANSPARENT}",`;
-        generatedJson += newCoords;
-        generatedJson += `}`;
+        let generated = {
+            "id": newId,
+            "isError": isError,
+            "errorType": errorType,
+            "shape": newShape,
+            "coords": newCoords,
+            "preFillColor": COLOR_TRANSPARENT,
+            "fillColor": COLOR_NO_ERROR,
+            "strokeColor": COLOR_TRANSPARENT
+        };
 
-        let shapeObject = JSON.parse(generatedJson);
-        let formatted = JSON.stringify(shapeObject, null, 4);
+        let formatted = JSON.stringify(generated, null, 4);
 
-        console.log(`shapeObject=${formatted}`);
+        document.getElementById("generated-json").innerText = formatted;
 
-        document.getElementById("generated-json").innerText = generatedJson;
-
-        //testing stuff for adding errors onClick -- uncomment to use
-        // let newErrors = this.state.allCurrentErrors;
-        // let newError = {
-        //     "id" : newId,
-        //     "isError" : true,
-        //     "errorType" : "pitchError",
-        //     "shape" : "circle",
-        //     "preFillColor" : COLOR_PITCH_ERROR,
-        //     "fillColor" : COLOR_PITCH_ERROR,
-        //     "strokeColor" : "black",
-        //     "coords" : [coordX, coordY, 20],
-        // }
-        // newErrors.push(newError);
-        // this.setState({ allCurrentErrors: newErrors });
-        // this.refreshMapper();
-        shapeObject.id = "tmp";
-        shapeObject.preFillColor = "#F012BE";
+        generated.id = "tmp";
+        generated.preFillColor = "#F012BE";
 
         if (previewEnabled) {
-            this.removeShapeFromMapper();
-            this.addShapeToMapper(shapeObject);
+            this.removeTempShape();
+            this.addTempShape(generated);
         }
     }
 
@@ -313,25 +297,25 @@ class Debug extends Component {
 
         for (const shape of IMAGE_MAP.areas) {
             // Check if the shape's fill color is correct
-            if (shape.errorType == "pitchError") {
+            if (shape.errorType == PITCH_ERROR) {
                 if (shape.fillColor == COLOR_PITCH_ERROR) {
                     pitchErrorsCorrect += 1;
                 } else {
                     pitchErrorsMissed += 1;
                 }
-            } else if (shape.errorType == "intonationError") {
+            } else if (shape.errorType == INTONATION_ERROR) {
                 if (shape.fillColor == COLOR_INTONATION_ERROR) {
                     intonationErrorsCorrect += 1;
                 } else {
                     intonationErrorsMissed += 1;
                 }
-            } else if (shape.errorType == "rhythmError") {
+            } else if (shape.errorType == RHYTHM_ERROR) {
                 if (shape.fillColor == COLOR_RHYTHM_ERROR) {
                     rhythmErrorsCorrect += 1;
                 } else {
                     rhythmErrorsMissed += 1;
                 }
-            } else if (shape.errorType == "noError") {
+            } else if (shape.errorType == NO_ERROR) {
                 if (shape.fillColor == COLOR_NO_ERROR) {
                     noErrorsCorrect += 1;
                 } else {
@@ -469,7 +453,7 @@ class Debug extends Component {
 
         for (const shape of this.state.allCurrentErrors) {
             // Check if the shape's fill color is correct
-            if (shape.errorType === "pitchError") {
+            if (shape.errorType === PITCH_ERROR) {
                 if (shape.fillColor === COLOR_PITCH_ERROR) {
                     pitchErrorsCorrect += 1;
                 } else {
@@ -479,7 +463,7 @@ class Debug extends Component {
                         shape.preFillColor = COLOR_INCORRECT;
                     }
                 }
-            } else if (shape.errorType === "intonationError") {
+            } else if (shape.errorType === INTONATION_ERROR) {
                 if (shape.fillColor === COLOR_INTONATION_ERROR) {
                     intonationErrorsCorrect += 1;
                 } else {
@@ -489,7 +473,7 @@ class Debug extends Component {
                         shape.preFillColor = COLOR_INCORRECT;
                     }
                 }
-            } else if (shape.errorType === "rhythmError") {
+            } else if (shape.errorType === RHYTHM_ERROR) {
                 if (shape.fillColor === COLOR_RHYTHM_ERROR) {
                     rhythmErrorsCorrect += 1;
                 } else {
@@ -499,7 +483,7 @@ class Debug extends Component {
                         shape.preFillColor = COLOR_INCORRECT;
                     }
                 }
-            } else if (shape.errorType === "noError") {
+            } else if (shape.errorType === NO_ERROR) {
                 if (shape.fillColor === COLOR_NO_ERROR) {
                     noErrorsCorrect += 1;
                     shape.preFillColor = COLOR_TRANSPARENT;
@@ -613,8 +597,7 @@ class Debug extends Component {
                         }
 
                         this.refreshMapper();
-                    }
-                    }
+                    }}
                     type="button"
                     buttonStyle="btn--primary--solid-go-back"
                     buttonSize="btn--medium"
@@ -627,21 +610,44 @@ class Debug extends Component {
                     buttonSize="btn--medium"
                 >Refresh Mapper</Button>
 
-                {/* <Button
-                    onClick={() => this.setInitialState()}
+                <Button
+                    onClick={() => {
+                        for (const shape of this.state.allCurrentErrors) {
+                            switch (shape.errorType) {
+                                case PITCH_ERROR:
+                                    shape.fillColor = COLOR_PITCH_ERROR;
+                                    shape.preFillColor = COLOR_PITCH_ERROR;
+                                    break;
+                                case INTONATION_ERROR:
+                                    shape.fillColor = COLOR_INTONATION_ERROR;
+                                    shape.preFillColor = COLOR_INTONATION_ERROR;
+                                    break;
+                                case RHYTHM_ERROR:
+                                    shape.fillColor = COLOR_RHYTHM_ERROR;
+                                    shape.preFillColor = COLOR_RHYTHM_ERROR;
+                                    break;
+                                case NO_ERROR:
+                                    shape.fillColor = COLOR_NO_ERROR;
+                                    shape.preFillColor = COLOR_NO_ERROR;
+                                    break;
+                                default:
+                                    console.log(`Unknown error type`);
+                            }
+                        }
+
+                        this.refreshMapper();
+                    }}
                     type="button"
                     buttonStyle="btn--primary--solid-go-back"
                     buttonSize="btn--medium"
-                >Set State Test</Button> */}
+                >Select All Correct Answers</Button>
 
                 <br></br>
                 <br></br>
 
                 <Button
                     onClick={() => {
-                        console.log(`toggle preview pressed`);
                         previewEnabled = !previewEnabled;
-                        console.log(`previewEnabled=${previewEnabled}`);
                     }}
                     type="button"
                     buttonStyle="btn--primary--solid-go-back"
@@ -650,7 +656,7 @@ class Debug extends Component {
 
                 <Button
                     onClick={() => {
-                        this.removeShapeFromMapper();
+                        this.removeTempShape();
                     }}
                     type="button"
                     buttonStyle="btn--primary--solid-go-back"
@@ -762,13 +768,6 @@ class Debug extends Component {
                 <br></br>
                 <br></br>
                 <br></br>
-                <br></br>
-
-                <div id="results">
-                    Results
-                </div>
-
-                <br></br>
 
                 <p>
                     Use the below buttons and information to create an assignment
@@ -783,19 +782,10 @@ class Debug extends Component {
                 <br></br>
 
                 <div className="radio-buttons-error-type">
-                    <input type="radio" name="clickType" value="" onClick={() => this.setState({ jsonGeneratorSelection: "noError" })} />No error
-                    <br></br>
-                    <input type="radio" name="clickType" value="" onClick={() => this.setState({ jsonGeneratorSelection: "pitchError" })} />Pitch error
-                    <br></br>
-                    <input type="radio" name="clickType" value="" onClick={() => this.setState({ jsonGeneratorSelection: "intonationError" })} />Intonation error
-                    <br></br>
-                    <input type="radio" name="clickType" value="" onClick={() => this.setState({ jsonGeneratorSelection: "rhythmError" })} />Rhythm error
-
-                    {/* <input type="radio" name="clickType" value="" onClick={() => this.setState({jsonGeneratorSelection: "rhythmError"})} />Rhythm error */}
-                    {/* <input type="radio" name="clickType" value="" onClick={() => this.state.jsonGeneratorSelection = "noError"} />No error */}
-                    {/* <input type="radio" name="clickType" value="" onClick={() => this.state.jsonGeneratorSelection = "pitchError"} />Pitch error */}
-                    {/* <input type="radio" name="clickType" value="" onClick={() => this.state.jsonGeneratorSelection = "rhythmError"} />Rhythm error */}
-                    {/* <input type="radio" name="clickType" value="" onClick={() => this.state.jsonGeneratorSelection = "intonationError"} />Intonation error */}
+                    <input type="radio" name="clickType" value="" onClick={() => this.setState({ jsonGeneratorSelection: NO_ERROR })} />No error <br></br>
+                    <input type="radio" name="clickType" value="" onClick={() => this.setState({ jsonGeneratorSelection: PITCH_ERROR })} />Pitch error <br></br>
+                    <input type="radio" name="clickType" value="" onClick={() => this.setState({ jsonGeneratorSelection: INTONATION_ERROR })} />Intonation error <br></br>
+                    <input type="radio" name="clickType" value="" onClick={() => this.setState({ jsonGeneratorSelection: RHYTHM_ERROR })} />Rhythm error
                 </div>
 
                 <br></br>

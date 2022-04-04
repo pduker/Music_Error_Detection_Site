@@ -8,6 +8,11 @@ import swal from 'sweetalert';
 var count;
 var isPlaying = false;
 
+const PITCH_ERROR = "pitchError";
+const INTONATION_ERROR = "intonationError";
+const RHYTHM_ERROR = "rhythmError";
+const NO_ERROR = "noError";
+
 // The 80 at the end of a hex value means 50% transparency
 const COLOR_NO_ERROR = "#e3fc0080";
 const COLOR_PITCH_ERROR = "#9013fe80";
@@ -212,7 +217,7 @@ class AssignmentTemplate2 extends Component {
 
         for (const shape of this.state.ALL_SHAPES) {
             // Check if the shape's fill color is correct
-            if (shape.errorType === "pitchError") {
+            if (shape.errorType === PITCH_ERROR) {
                 if (shape.fillColor === COLOR_PITCH_ERROR) {
                     pitchErrorsCorrect += 1;
                 } else {
@@ -222,7 +227,7 @@ class AssignmentTemplate2 extends Component {
                         shape.preFillColor = COLOR_INCORRECT;
                     }
                 }
-            } else if (shape.errorType === "intonationError") {
+            } else if (shape.errorType === INTONATION_ERROR) {
                 if (shape.fillColor === COLOR_INTONATION_ERROR) {
                     intonationErrorsCorrect += 1;
                 } else {
@@ -232,7 +237,7 @@ class AssignmentTemplate2 extends Component {
                         shape.preFillColor = COLOR_INCORRECT;
                     }
                 }
-            } else if (shape.errorType === "rhythmError") {
+            } else if (shape.errorType === RHYTHM_ERROR) {
                 if (shape.fillColor === COLOR_RHYTHM_ERROR) {
                     rhythmErrorsCorrect += 1;
                 } else {
@@ -242,7 +247,7 @@ class AssignmentTemplate2 extends Component {
                         shape.preFillColor = COLOR_INCORRECT;
                     }
                 }
-            } else if (shape.errorType === "noError") {
+            } else if (shape.errorType === NO_ERROR) {
                 if (shape.fillColor === COLOR_NO_ERROR) {
                     noErrorsCorrect += 1;
                     shape.preFillColor = COLOR_TRANSPARENT;
