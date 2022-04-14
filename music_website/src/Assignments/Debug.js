@@ -30,12 +30,14 @@ const PITCH_ERROR = "pitchError";
 const INTONATION_ERROR = "intonationError";
 const RHYTHM_ERROR = "rhythmError";
 const NO_ERROR = "noError";
+const ERROR_SIGN = "errorSign"
 
 // The 80 at the end of a hex value means 50% transparency
 const COLOR_NO_ERROR = "#e3fc0080";
 const COLOR_PITCH_ERROR = "#9013fe80";
 const COLOR_RHYTHM_ERROR = "#d0021b80";
 const COLOR_INTONATION_ERROR = "#ffa50080";
+const COLOR_ERROR_SIGN = "#d0021b80";
 // The color used for transparency
 const COLOR_TRANSPARENT = "#ffffff00";
 // The color used for incorrect answers
@@ -295,6 +297,37 @@ class Debug extends Component {
             this.addTempShape(generated);
         }
     }
+    /**
+     * Takes in the shape id of an error sign and turns its color to red
+     */
+    turnErrorSignON(errorSignID) {
+        for (const sign of IMAGE_MAP.areas){
+            if (sign.id == errorSignID){
+                sign.fillColor = COLOR_ERROR_SIGN;
+                sign.preFillColor = COLOR_ERROR_SIGN;
+            }
+        }
+    }
+    /**
+     * Determines which error sign is associated with the given shape then
+     * calls the turnErrorSignON function to turn the correct error sign red
+     */
+    whichErrorSign(shape) {
+        let closest = 10000;
+        let errorSignID;
+        for (const sign of IMAGE_MAP.areas){
+            if (sign.errorType == ERROR_SIGN){
+                let diff = Math.abs(shape.coords[0] - sign.coords[0]);
+                if (diff < closest){
+                    closest = diff;
+                    errorSignID = sign.id;
+                }
+            }
+        }
+        this.turnErrorSignON(errorSignID);
+    }
+
+    
 
     /**
      * This calculates the number of correct and incorrect selections
@@ -360,7 +393,10 @@ class Debug extends Component {
      */
     clicked(area) {
         for (const shape of IMAGE_MAP.areas) {
-            if (shape.errorType != "rhythmError") {
+            if (shape.errorType == "errorSign"){
+                //do nothing
+            }
+            else if (shape.errorType != "rhythmError") {
                 if (shape.id === area.id) {
                     if (area.fillColor === COLOR_PITCH_ERROR) {
                         shape.fillColor = COLOR_INTONATION_ERROR;
@@ -390,12 +426,15 @@ class Debug extends Component {
                         shape.preFillColor = COLOR_TRANSPARENT;
                     }
                 }
+                
             }
         }
 
         this.refreshMapper();
         this.generateShapeInfo();
     }
+
+
 
     /**
      * This gets the image's width and height and returns it
@@ -473,6 +512,7 @@ class Debug extends Component {
                     pitchErrorsCorrect += 1;
                 } else {
                     pitchErrorsMissed += 1;
+                    this.whichErrorSign(shape);
                     if (shape.fillColor != COLOR_NO_ERROR) {
                         shape.fillColor = COLOR_INCORRECT;
                         shape.preFillColor = COLOR_INCORRECT;
@@ -483,6 +523,7 @@ class Debug extends Component {
                     intonationErrorsCorrect += 1;
                 } else {
                     intonationErrorsMissed += 1;
+                    this.whichErrorSign(shape);
                     if (shape.fillColor != COLOR_NO_ERROR) {
                         shape.fillColor = COLOR_INCORRECT;
                         shape.preFillColor = COLOR_INCORRECT;
@@ -493,6 +534,7 @@ class Debug extends Component {
                     rhythmErrorsCorrect += 1;
                 } else {
                     rhythmErrorsMissed += 1;
+                    this.whichErrorSign(shape);
                     if (shape.fillColor != COLOR_NO_ERROR) {
                         shape.fillColor = COLOR_INCORRECT;
                         shape.preFillColor = COLOR_INCORRECT;
@@ -505,6 +547,7 @@ class Debug extends Component {
                     shape.strokeColor = COLOR_TRANSPARENT;
                 } else {
                     noErrorsMissed += 1;
+                    this.whichErrorSign(shape);
                     shape.fillColor = COLOR_INCORRECT;
                     shape.preFillColor = COLOR_INCORRECT;
                 }
@@ -772,7 +815,7 @@ class Debug extends Component {
                 <Button id='submit'
                     onClick={() => {
                         const results = this.generateResults();
-                        swal(results);
+                        //swal(results);
                         this.refreshMapper();
                     }}
                     type="button"

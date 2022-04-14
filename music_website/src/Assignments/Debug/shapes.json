@@ -159,5 +159,27 @@
     "errorType": "rhythmError",
     "shape": "rect",
     "coords": [831, 80, 1001, 60]
+  },
+  {
+    "id": "351b016a-5666-4509-91c4-9648dd62b938",
+    "isError": false,
+    "errorType": "errorSign",
+    "shape": "poly",
+    "coords": [1250,5,1030,45,1470,45,1250,5]
+  },
+  {
+    "id": "9b35ab55-da06-463a-9920-6f56ed85231c",
+    "isError": false,
+    "errorType": "errorSign",
+    "shape": "poly",
+    "coords": [840,5,690,45,1010,45,840,5]
+  },
+  {
+    "id": "4b197d28-fe8b-4cda-8bec-5c04c4f9bd67",
+    "isError": false,
+    "errorType": "errorSign",
+    "shape": "poly",
+    "coords": [465,5,260,45,670,45,465,5]
   }
+
 ]
