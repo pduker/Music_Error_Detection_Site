@@ -29,6 +29,7 @@ const COLOR_INCORRECT = "#0eebb980";
 
 const MAX_PLAY_COUNT = 3;
 
+const WINDOW_WIDTH_OFFSET = 90;
 
 class AssignmentTemplate2 extends Component {
     constructor(props) {
@@ -65,7 +66,7 @@ class AssignmentTemplate2 extends Component {
         */
         window.addEventListener('resize', () => {
             console.log(`window resize detected, updating windowWidth to ${window.innerWidth}`);
-            this.setState({ windowWidth: window.innerWidth });
+            this.setState({ windowWidth: window.innerWidth - WINDOW_WIDTH_OFFSET });
         });
     }
 
@@ -84,7 +85,7 @@ class AssignmentTemplate2 extends Component {
      * Updates the windowWidth state to the current window width
      */
     updateWindowWidth = () => {
-        this.setState({ windowWidth: window.innerWidth });
+        this.setState({ windowWidth: window.innerWidth - WINDOW_WIDTH_OFFSET });
     };
 
     /**
@@ -99,6 +100,8 @@ class AssignmentTemplate2 extends Component {
             imageWidth: imgData.width,
             theMap: this.IMAGE_MAP
         });
+
+        this.updateWindowWidth();
     }
 
     /**
