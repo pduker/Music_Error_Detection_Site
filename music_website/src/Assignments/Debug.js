@@ -1,4 +1,4 @@
-import IMAGE_PATH from "../Assignments/Debug/display.png";
+import IMAGE_PATH from "../Assignments/Debug/display2.png";
 import SHAPE_JSON from "../Assignments/Debug/shapes.json";
 import AUDIO_FILE from "../Assignments/Debug/sound.mp3";
 
@@ -327,7 +327,7 @@ class Debug extends Component {
         this.turnErrorSignON(errorSignID);
     }
 
-    
+
 
     /**
      * This calculates the number of correct and incorrect selections
@@ -426,7 +426,7 @@ class Debug extends Component {
                         shape.preFillColor = COLOR_TRANSPARENT;
                     }
                 }
-                
+
             }
         }
 
