@@ -12,8 +12,8 @@ import Level3 from "../Components/Level3";
 import Level4 from "../Components/Level4";
 
 //there has to be a better way than individually importing each file
-import audio1 from "../Resources/Audio/Example1.m4a";
-import sheetMusic1 from "../Resources/Images/example1.jpg";
+//import audio1 from "../Resources/Audio/Example1.m4a";
+//import sheetMusic1 from "../Resources/Images/example1.jpg";
 
 import AssignmentTemplate2 from "../Assignments/AssignmentTemplate2";
 
@@ -90,7 +90,7 @@ export default class Routes extends Component {
                         <Route path="/" exact component={Home} />
 
                         <Route path="/Debug" component={Debug} />
-                        <Route path="/AssignmentTemplate" render={(props) => <AssignmentTemplate {...props} audioUrl={audio1} sheetMusic={sheetMusic1} />} />
+                        {/* <Route path="/AssignmentTemplate" render={(props) => <AssignmentTemplate {...props} audioUrl={audio1} sheetMusic={sheetMusic1} />} /> */}
 
                         <Route path="/Level1" component={Level1} />
                         <Route path="/Level2" component={Level2} />

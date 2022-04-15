@@ -3,14 +3,14 @@ import { Button } from "./../Components/Button";
 import history from "../Scripts/history";
 import "./../Styles/assignment.css";
 import { withRouter } from "react-router-dom";
-import Tmp from "./../Resources/Audio/Example1.m4a";
+//import Tmp from "./../Resources/Audio/Example1.m4a";
 import ImageMapper from "react-img-mapper";
 // import SheetMusic from "../Components/SheetMusic";
 import { v4 as uuidv4 } from 'uuid';
 import { useEffect } from 'react'
 
-import IMAGE_PATH from "../Resources/Images/assignment-debug.jpg";
-import mapJSON from "../Resources/JSON/debug.json";
+//import IMAGE_PATH from "../Resources/Images/assignment-debug.jpg";
+//import mapJSON from "../Resources/JSON/debug.json";
 
 var count;
 var isPlaying = false;
@@ -449,7 +449,7 @@ class Debug extends Component {
                 </div>
 
                 {this.RenderButtonAndSound()}
-        
+
                 <ImageMapper
                     id="mapper-debug"
                     src={IMAGE_PATH}

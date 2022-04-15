@@ -3,8 +3,8 @@ import IntonationErrorButton from './IntonationButton';
 import Music from './Music';
 import PitchErrorButton from './PitchErrorButton';
 import RythmErrorButton from './RythmErrorButton';
-import musicSheetExample1 from "./../Resources/Images/Example1Display.png";
-import audioExample1 from "./../Resources/Audio/Example1.m4a";
+//import musicSheetExample1 from "./../Resources/Images/Example1Display.png";
+//import audioExample1 from "./../Resources/Audio/Example1.m4a";
 import history from "./../Scripts/history";
 import './../Styles/assignmentTemplate.css';
 
@@ -39,14 +39,14 @@ class AssignmentTemplate extends Component {
         this.setState({ currentErrorType: newErrorType });
     }
 
-    render() { 
+    render() {
         return (
         <div className="assignment-template">
             <h1 className="assignment-header">Assignment Template {this.props.assignmentNumber}</h1>
             <div className="instructions">
                 <p>{/*Styling should be done with CSS and not HTML tags*/}
-                Instruction: Click the "Play Sound" button to hear the music. 
-                You will only be able to play the sound 3 times. After listening to the music, 
+                Instruction: Click the "Play Sound" button to hear the music.
+                You will only be able to play the sound 3 times. After listening to the music,
                 place the hotspots over each note error. There are 3 differnt types of error:
                 Pitch Error (Purple), Rhythm Error (Red), and Intonation Error (Green).
                 <br></br>
@@ -77,5 +77,5 @@ class AssignmentTemplate extends Component {
         );
     }
 }
- 
+
 export default AssignmentTemplate;
