@@ -122,10 +122,10 @@ class Debug extends Component {
     async componentDidMount() {
         console.log(`componentDidMount running`);
 
-        this.setInitialState()
-            .then(this.getImageWidthHeight()
-                .then(data => document.getElementById("image-properties").innerText = `Image width = ${data.width}\nImage height = ${data.height}`))
-            .finally(() => { this.refreshMapper(); this.refreshMapper(); });
+        await this.setInitialState()
+            .then(await this.getImageWidthHeight()
+                .then(data => document.getElementById("image-properties").innerText = `Image width = ${data.width}\nImage height = ${data.height}`)
+                .then(() => { this.refreshMapper(); this.refreshMapper(); }));
     }
 
     RenderButtonAndSound = () => {
@@ -301,8 +301,8 @@ class Debug extends Component {
      * Takes in the shape id of an error sign and turns its color to red
      */
     turnErrorSignON(errorSignID) {
-        for (const sign of IMAGE_MAP.areas){
-            if (sign.id == errorSignID){
+        for (const sign of IMAGE_MAP.areas) {
+            if (sign.id == errorSignID) {
                 sign.fillColor = COLOR_ERROR_SIGN;
                 sign.preFillColor = COLOR_ERROR_SIGN;
             }
@@ -315,10 +315,10 @@ class Debug extends Component {
     whichErrorSign(shape) {
         let closest = 10000;
         let errorSignID;
-        for (const sign of IMAGE_MAP.areas){
-            if (sign.errorType == ERROR_SIGN){
+        for (const sign of IMAGE_MAP.areas) {
+            if (sign.errorType == ERROR_SIGN) {
                 let diff = Math.abs(shape.coords[0] - sign.coords[0]);
-                if (diff < closest){
+                if (diff < closest) {
                     closest = diff;
                     errorSignID = sign.id;
                 }
@@ -393,7 +393,7 @@ class Debug extends Component {
      */
     clicked(area) {
         for (const shape of IMAGE_MAP.areas) {
-            if (shape.errorType == "errorSign"){
+            if (shape.errorType == "errorSign") {
                 //do nothing
             }
             else if (shape.errorType != "rhythmError") {
