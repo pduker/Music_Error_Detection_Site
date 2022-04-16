@@ -1,0 +1,145 @@
+[
+  {
+    "id": "fe2b5c21-005b-4533-98f5-d9078097bd12",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "coords": [154, 70, 20]
+  },
+
+  {
+    "id": "d34addab-56ad-4f88-b6f9-9b49141ffba3",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "coords": [203, 44, 20]
+  },
+
+  {
+    "id": "80ce3330-1ba5-4854-af00-2a6e83e6a95d",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "coords": [250, 41, 20]
+  },
+
+  {
+    "id": "04700a23-976e-46f2-b16e-5d0c4990c00a",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "coords": [296, 71, 20]
+  },
+
+  {
+    "id": "0763603c-a872-4670-91fe-8737a6e7f882",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "coords": [346, 51, 20]
+  },
+
+  {
+    "id": "6bb0e4c3-2ffe-4221-90bf-a96dfc6ca03e",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "coords": [396, 51, 20]
+  },
+
+  {
+    "id": "8b1c040a-abc3-48fb-bd2c-d4ba2f7eff50",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "coords": [464, 70, 20]
+  },
+
+  {
+    "id": "0ac734e3-80b6-40d9-885c-4a8a15153a7d",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "coords": [557, 67, 20]
+  },
+
+  {
+    "id": "11de572a-184a-4dc9-b7a8-d1ddffcc0d36",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "coords": [663, 92, 20]
+  },
+
+  {
+    "id": "eafb2385-0b40-42ab-ba9a-98d9f7928604",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "coords": [708, 87, 20]
+  },
+
+  {
+    "id": "151c5fc8-755d-4abf-a38a-2d01a8910d49",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "coords": [756, 72, 20]
+  },
+
+  {
+    "id": "fcfc81d2-5eb7-4800-8606-095ae70ba2af",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "coords": [805, 68, 20]
+  },
+
+  {
+    "id": "fbcba338-6e97-4bfb-b4db-eb77462a0a06",
+    "isError": true,
+    "errorType": "pitchError",
+    "shape": "circle",
+    "coords": [868, 53, 20]
+  },
+
+  {
+    "id": "02a3b942-9a74-46b6-bdc2-73fa4b035ceb",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "coords": [939, 48, 20]
+  },
+
+  {
+    "id": "15ca7dd0-964d-4f54-b2e5-f998fbacfab8",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "coords": [1035, 55, 20]
+  },
+
+  {
+    "id": "de808ee2-466a-4197-bed7-11fee22ce69f",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "coords": [1085, 66, 20]
+  },
+
+  {
+    "id": "d0df2dff-e332-44e5-ac98-0434bbbc10da",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "coords": [1131, 75, 20]
+  },
+
+  {
+    "id": "6b8b8d2d-6c72-48d2-b053-69532a5cfba6",
+    "isError": false,
+    "errorType": "noError",
+    "shape": "circle",
+    "coords": [1181, 70, 20]
+  }
+]
