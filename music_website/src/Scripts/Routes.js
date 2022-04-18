@@ -22,14 +22,14 @@ const L1E1_DATA = {
   name: "Level 1 Exercise 1",
   sound: require("../Assignments/Level_1/Exercise_1/sound.mp3"),
   display: require("../Assignments/Level_1/Exercise_1/display2.png"),
-  shapes: require("../Assignments/Debug/placeholder.json"),
+  shapes: require("../Assignments/Level_1/Exercise_1/shapes.json"),
 };
 // Level 1 Exercise 2
 const L1E2_DATA = {
   name: "Level 1 Exercise 2",
   sound: require("../Assignments/Level_1/Exercise_2/sound.mp3"),
   display: require("../Assignments/Level_1/Exercise_2/display2.png"),
-  shapes: require("../Assignments/Debug/placeholder.json"),
+  shapes: require("../Assignments/Level_1/Exercise_2/shapes.json"),
 };
 // Level 2 Exercise 1
 const L2E1_DATA = {
@@ -57,14 +57,14 @@ const L3E1_DATA = {
   name: "Level 3 Exercise 1",
   sound: require("../Assignments/Level_3/Exercise_1/sound.mp3"),
   display: require("../Assignments/Level_3/Exercise_1/display2.png"),
-  shapes: require("../Assignments/Debug/placeholder.json"),
+  shapes: require("../Assignments/Level_3/Exercise_1/shapes.json"),
 };
 // Level 3 Exercise 2
 const L3E2_DATA = {
   name: "Level 3 Exercise 2",
   sound: require("../Assignments/Level_3/Exercise_2/sound.mp3"),
   display: require("../Assignments/Level_3/Exercise_2/display2.png"),
-  shapes: require("../Assignments/Debug/placeholder.json"),
+  shapes: require("../Assignments/Level_3/Exercise_2/shapes.json"),
 };
 // Level 4 Exercise 1
 const L4E1_DATA = {
