@@ -1,0 +1,18 @@
+[
+    {
+      "id": "c5379200-c910-4c29-8806-62e2b7a1eb48",
+      "isError": true,
+      "errorType": "rhythmError",
+      "shape": "rect",
+      "coords": [805,3,913,25]
+      },
+    
+    {
+    "id": "015a72cb-9141-49e5-8191-ef1aa3e0b9d8",
+    "isError": true,
+    "errorType": "rhythmError",
+    "shape": "rect",
+    "coords": [1094,9,1206,27]
+    }
+  
+  ]
