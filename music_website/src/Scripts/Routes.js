@@ -97,64 +97,19 @@ export default class Routes extends Component {
             <Route path="/Level3" component={Level3} />
             <Route path="/Level4" component={Level4} />
 
-            <Route
-              path="/Level1Exercise1"
-              render={(props) => (
-                <AssignmentTemplate2 {...props} data={L1E1_DATA} />
-              )}
-            />
-            <Route
-              path="/Level1Exercise2"
-              render={(props) => (
-                <AssignmentTemplate2 {...props} data={L1E2_DATA} />
-              )}
-            />
+            <Route path="/Level1Exercise1" render={(props) => (<AssignmentTemplate2 {...props} data={L1E1_DATA} />)} />
+            <Route path="/Level1Exercise2" render={(props) => (<AssignmentTemplate2 {...props} data={L1E2_DATA} />)} />
 
-            <Route
-              path="/Level2Exercise1"
-              render={(props) => (
-                <AssignmentTemplate2 {...props} data={L2E1_DATA} />
-              )}
-            />
-            <Route
-              path="/Level2Exercise2"
-              render={(props) => (
-                <AssignmentTemplate2 {...props} data={L2E2_DATA} />
-              )}
-            />
-            <Route
-              path="/Level2Exercise3"
-              render={(props) => (
-                <AssignmentTemplate2 {...props} data={L2E3_DATA} />
-              )}
-            />
+            <Route path="/Level2Exercise1" render={(props) => (<AssignmentTemplate2 {...props} data={L2E1_DATA} />)} />
+            <Route path="/Level2Exercise2" render={(props) => (<AssignmentTemplate2 {...props} data={L2E2_DATA} />)} />
+            <Route path="/Level2Exercise3" render={(props) => (<AssignmentTemplate2 {...props} data={L2E3_DATA} />)} />
 
-            <Route
-              path="/Level3Exercise1"
-              render={(props) => (
-                <AssignmentTemplate2 {...props} data={L3E1_DATA} />
-              )}
-            />
-            <Route
-              path="/Level3Exercise2"
-              render={(props) => (
-                <AssignmentTemplate2 {...props} data={L3E2_DATA} />
-              )}
-            />
+            <Route path="/Level3Exercise1" render={(props) => (<AssignmentTemplate2 {...props} data={L3E1_DATA} />)} />
+            <Route path="/Level3Exercise2" render={(props) => (<AssignmentTemplate2 {...props} data={L3E2_DATA} />)} />
 
-            <Route
-              path="/Level4Exercise1"
-              render={(props) => (
-                <AssignmentTemplate2 {...props} data={L4E1_DATA} />
-              )}
-            />
+            <Route path="/Level4Exercise1" render={(props) => (<AssignmentTemplate2 {...props} data={L4E1_DATA} />)} />
 
-            <Route
-              path="/Level5Exercise1"
-              render={(props) => (
-                <AssignmentTemplate2 {...props} data={L5E1_DATA} />
-              )}
-            />
+            <Route path="/Level5Exercise1" render={(props) => (<AssignmentTemplate2 {...props} data={L5E1_DATA} />)} />
           </Switch>
         </Router>
       </div>
