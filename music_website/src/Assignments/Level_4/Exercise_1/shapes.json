@@ -176,12 +176,123 @@
   },
 
   {
-    "id": "ee2935ad-0046-4da9-b0bc-55df27beac84",
+    "id": "3add6120-e48b-4556-ace8-c55d3a415adf",
+    "isError": false,
+    "errorType": "rhythmError",
+    "shape": "rect",
+    "coords": [
+    256,
+    79,
+    375,
+    94
+    ]
+    },
+
+  {
+    "id": "6162d2c1-5f02-4f1b-bc65-3515e125db6b",
+    "isError": false,
+    "errorType": "rhythmError",
+    "shape": "rect",
+    "coords": [
+    393,
+    78,
+    527,
+    91
+    ]
+    },
+
+  {
+    "id": "3cc0a123-66e0-43fd-9de6-e1463f544c8c",
+    "isError": false,
+    "errorType": "rhythmError",
+    "shape": "rect",
+    "coords": [
+    558,
+    75,
+    658,
+    91
+    ]
+    },
+
+  {
+    "id": "7c7f4f53-09be-426e-9f6a-9ca670515263",
+    "isError": false,
+    "errorType": "rhythmError",
+    "shape": "rect",
+    "coords": [
+    675,
+    74,
+    769,
+    89
+    ]
+    },
+
+  {
+    "id": "8d1e8f31-6fe6-423d-af4c-d580529519d9",
+    "isError": false,
+    "errorType": "rhythmError",
+    "shape": "rect",
+    "coords": [
+    837,
+    67,
+    925,
+    81
+    ]
+    },
+
+  {
+    "id": "619b45ac-f9fb-4c9c-9b78-7302349ae4fc",
     "isError": true,
     "errorType": "rhythmError",
     "shape": "rect",
-    "coords": [931, 79, 996, 88]
-  },
+    "coords": [
+    935,
+    71,
+    1005,
+    87
+    ]
+    },
+
+  {
+    "id": "fb67d995-146a-41ec-82ea-4b91b322565b",
+    "isError": false,
+    "errorType": "rhythmError",
+    "shape": "rect",
+    "coords": [
+    255,
+    222,
+    362,
+    239
+    ]
+    },
+
+  {
+    "id": "f148c868-921c-4774-ba4b-7fa1260c2ff9",
+    "isError": false,
+    "errorType": "rhythmError",
+    "shape": "rect",
+    "coords": [
+    369,
+    221,
+    467,
+    240
+    ]
+    },
+
+  {
+    "id": "0190ae09-ea53-4953-b5a9-0a575c4f2340",
+    "isError": false,
+    "errorType": "rhythmError",
+    "shape": "rect",
+    "coords": [
+    583,
+    221,
+    700,
+    233
+    ]
+    },
+
+
 
   {
     "id": "71d69e5b-50a0-4444-8e8a-b89f83e21a86",
@@ -189,5 +300,31 @@
     "errorType": "rhythmError",
     "shape": "rect",
     "coords": [738, 232, 801, 245]
-  }
+  },
+
+  {
+    "id": "c573eacf-2c8f-4c58-b10c-b48c6422ce9a",
+    "isError": false,
+    "errorType": "rhythmError",
+    "shape": "rect",
+    "coords": [
+    840,
+    218,
+    944,
+    236
+    ]
+    },
+
+  {
+    "id": "b01a2eac-d154-402d-b611-abc9dbb437e3",
+    "isError": false,
+    "errorType": "rhythmError",
+    "shape": "rect",
+    "coords": [
+    962,
+    218,
+    1061,
+    236
+    ]
+    }
 ]
