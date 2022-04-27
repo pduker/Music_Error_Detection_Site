@@ -53,6 +53,14 @@ code {
   border-radius: 10px;
 }
 
+.Level5 {
+  text-align: center;
+  margin: 5px;
+  font-family: "Roboto", san-serif;
+  font-weight: 400;
+  border-radius: 10px;
+}
+
 footer {
   position: fixed;
   bottom: 0;

@@ -154,6 +154,19 @@ class Home extends Component {
           >Level 4 - Rhythm, Pitch, Intonation</Button>
         </div>
 
+        <div>
+          <Button
+            onClick={() => {
+              history.push('/Level5');
+              history.go();
+            }
+            }
+            type="button"
+            buttonStyle="home-page-button"
+            buttonSize="btn--large"
+          >Level 5 - Rhythm, Pitch, Intonation</Button>
+        </div>
+
 
         <footer>
           <address>
