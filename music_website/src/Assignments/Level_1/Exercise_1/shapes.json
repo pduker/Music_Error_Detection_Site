@@ -1,5 +1,83 @@
 [
     {
+        "id": "c7eda1e3-aa4b-40a7-adb0-e25a6d77ae3c",
+        "isError": false,
+        "errorType": "rhythmError",
+        "shape": "rect",
+        "coords": [
+        125,
+        10,
+        259,
+        27
+        ]
+        },
+
+    {
+        "id": "2acf64bd-bf22-4ed8-b653-cfa081a5edd7",
+        "isError": false,
+        "errorType": "rhythmError",
+        "shape": "rect",
+        "coords": [
+        273,
+        11,
+        418,
+        33
+        ]
+        },
+
+    {
+        "id": "10ef8e5b-896d-4e15-bf3b-60e9d5bdc16e",
+        "isError": false,
+        "errorType": "rhythmError",
+        "shape": "rect",
+        "coords": [
+        437,
+        20,
+        524,
+        38
+        ]
+        },
+
+    {
+        "id": "8f1d371d-461c-4f65-bc0c-48ccda5acbac",
+        "isError": false,
+        "errorType": "rhythmError",
+        "shape": "rect",
+        "coords": [
+        538,
+        21,
+        631,
+        42
+        ]
+        },
+
+    {
+        "id": "69a61242-bf31-4e44-822c-3b82b04b0321",
+        "isError": false,
+        "errorType": "rhythmError",
+        "shape": "rect",
+        "coords": [
+        647,
+        14,
+        775,
+        39
+        ]
+        },
+
+    {
+        "id": "124f2317-5624-44a0-9e8c-076329fbcd0d",
+        "isError": false,
+        "errorType": "rhythmError",
+        "shape": "rect",
+        "coords": [
+        797,
+        18,
+        921,
+        41
+        ]
+        },
+
+    {
         "id": "85815bad-d3e6-494a-a45f-8f86be277f42",
         "isError": true,
         "errorType": "rhythmError",
@@ -9,6 +87,18 @@
         10,
         1044,
         27
+        ]
+        },
+    {
+        "id": "5b2fb8ed-c313-49ec-90b6-d201482e19a2",
+        "isError": false,
+        "errorType": "rhythmError",
+        "shape": "rect",
+        "coords": [
+        1061,
+        20,
+        1192,
+        40
         ]
         }
 ]
