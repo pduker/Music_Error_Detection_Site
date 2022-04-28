@@ -1,5 +1,5 @@
-import IMAGE_PATH from "../Assignments/Debug/display2.png";
-import SHAPE_JSON from "../Assignments/Debug/placeholder.json";
+import IMAGE_PATH from "../Assignments/Debug/placeholder.json";
+import SHAPE_JSON from "../Assignments/Debug/shapes.json";
 import AUDIO_FILE from "../Assignments/Debug/sound.mp3";
 
 import React, { Component } from "react";

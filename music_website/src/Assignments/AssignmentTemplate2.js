@@ -8,10 +8,13 @@ import swal from "sweetalert";
 var count;
 var isPlaying = false;
 
+let allCorrect = false;
+
 const PITCH_ERROR = "pitchError";
 const INTONATION_ERROR = "intonationError";
 const RHYTHM_ERROR = "rhythmError";
 const NO_ERROR = "noError";
+const ERROR_SIGN = "errorSign"
 
 const INITIAL_PREFILL_COLOR = "#ffffff00";
 const INITIAL_FILL_COLOR = "#e3fc0080";
@@ -22,6 +25,7 @@ const COLOR_NO_ERROR = "#e3fc0080";
 const COLOR_PITCH_ERROR = "#9013fe80";
 const COLOR_RHYTHM_ERROR = "#d0021b80";
 const COLOR_INTONATION_ERROR = "#ffa50080";
+const COLOR_ERROR_SIGN = "#0eebb980";
 // The color used for transparency
 const COLOR_TRANSPARENT = "#ffffff00";
 // The color used for incorrect answers
@@ -152,12 +156,50 @@ class AssignmentTemplate2 extends Component {
     );
   };
 
+  turnErrorSignON(errorSignID) {
+    for (const sign of this.IMAGE_MAP.areas){
+        if (sign.id == errorSignID){
+            sign.fillColor = COLOR_ERROR_SIGN;
+            sign.preFillColor = COLOR_ERROR_SIGN;
+        }
+    }
+  }
+  turnErrorSignOFF(errorSignID){
+    for (const sign of this.IMAGE_MAP.areas){
+      if (sign.shape == 'poly'){
+          sign.fillColor = COLOR_TRANSPARENT;
+          sign.preFillColor = COLOR_TRANSPARENT;
+      }
+    }  
+  }
+/**
+ * Determines which error sign is associated with the given shape then
+ * calls the turnErrorSignON function to turn the correct error sign red
+ */
+  whichErrorSign(shape) {
+      let closest = 10000;
+      let errorSignID;
+      for (const sign of this.IMAGE_MAP.areas){
+          if (sign.errorType == ERROR_SIGN){
+              let diff = Math.abs(shape.coords[0] - sign.coords[0]);
+              if (diff < closest){
+                  closest = diff;
+                  errorSignID = sign.id;
+              }
+          }
+      }
+      this.turnErrorSignON(errorSignID);
+  }
+
   /**
    * This is triggered when a shape is clicked
    */
   clicked(area) {
     for (const shape of this.IMAGE_MAP.areas) {
-      if (shape.errorType != "rhythmError") {
+      if (shape.errorType == "errorSign"){
+        //do nothing
+      }
+      else if (shape.errorType != "rhythmError") {
         if (shape.id === area.id) {
           if (area.fillColor === COLOR_PITCH_ERROR) {
             shape.fillColor = COLOR_INTONATION_ERROR;
@@ -247,30 +289,21 @@ class AssignmentTemplate2 extends Component {
           pitchErrorsCorrect += 1;
         } else {
           pitchErrorsMissed += 1;
-          if (shape.fillColor != COLOR_NO_ERROR) {
-            shape.fillColor = COLOR_INCORRECT;
-            shape.preFillColor = COLOR_INCORRECT;
-          }
+          this.whichErrorSign(shape);
         }
       } else if (shape.errorType === INTONATION_ERROR) {
         if (shape.fillColor === COLOR_INTONATION_ERROR) {
           intonationErrorsCorrect += 1;
         } else {
           intonationErrorsMissed += 1;
-          if (shape.fillColor != COLOR_NO_ERROR) {
-            shape.fillColor = COLOR_INCORRECT;
-            shape.preFillColor = COLOR_INCORRECT;
-          }
+          this.whichErrorSign(shape);
         }
       } else if (shape.errorType === RHYTHM_ERROR) {
         if (shape.fillColor === COLOR_RHYTHM_ERROR) {
           rhythmErrorsCorrect += 1;
         } else {
           rhythmErrorsMissed += 1;
-          if (shape.fillColor != COLOR_NO_ERROR) {
-            shape.fillColor = COLOR_INCORRECT;
-            shape.preFillColor = COLOR_INCORRECT;
-          }
+          this.whichErrorSign(shape);
         }
       } else if (shape.errorType === NO_ERROR) {
         if (shape.fillColor === COLOR_NO_ERROR) {
@@ -279,8 +312,7 @@ class AssignmentTemplate2 extends Component {
           shape.strokeColor = COLOR_TRANSPARENT;
         } else {
           noErrorsMissed += 1;
-          shape.fillColor = COLOR_INCORRECT;
-          shape.preFillColor = COLOR_INCORRECT;
+          this.whichErrorSign(shape);
         }
       }
 
@@ -310,6 +342,7 @@ class AssignmentTemplate2 extends Component {
       } errors.\n\n`;
 
       if (totalMissed > 0) {
+        allCorrect = false;
         reportText = reportText.concat(`You missed: \n`);
         if (pitchErrorsMissed > 0) {
           reportText = reportText.concat(`${pitchErrorsMissed} pitch error`);
@@ -338,6 +371,7 @@ class AssignmentTemplate2 extends Component {
         reportText = reportText.concat(
           `You correctly identified all errors!\n`
         );
+        allCorrect = true;
       }
 
       reportText += "\n";
@@ -456,7 +490,9 @@ class AssignmentTemplate2 extends Component {
           id="submit"
           onClick={() => {
             const results = this.generateResults();
-            swal(results);
+            if (allCorrect === true){
+              swal(results);
+            }
             this.refreshMapper();
           }}
           type="button"

@@ -141,5 +141,37 @@
     "errorType": "noError",
     "shape": "circle",
     "coords": [1181, 70, 20]
+  },
+
+  {
+    "id": "351b016a-5666-4509-91c4-9648dd62b938",
+    "isError": false,
+    "errorType": "errorSign",
+    "shape": "poly",
+    "coords": [275,0,130,25,420,25,275,0]
+  },
+  
+  {
+    "id": "f3730d4c-1d10-425c-96d0-ef67b5733378",
+    "isError": false,
+    "errorType": "errorSign",
+    "shape": "poly",
+    "coords": [529,0,435,25,623,25,529,0]
+  },
+
+  {
+    "id": "bbf08d36-94ae-4ca2-9e18-50bcd829209d",
+    "isError": false,
+    "errorType": "errorSign",
+    "shape": "poly",
+    "coords": [767,0,635,25,900,25,767,0]
+  },
+
+  {
+    "id": "01a54fab-da14-41c4-b61c-8ec518bb6e74",
+    "isError": false,
+    "errorType": "errorSign",
+    "shape": "poly",
+    "coords": [1062,0,915,25,1210,25,1062,0]
   }
 ]
