@@ -70,14 +70,14 @@ const L3E2_DATA = {
 // Level 4 Exercise 1
 const L4E1_DATA = {
   name: "Level 4 Exercise 1",
-  sound: require("../Assignments/Level_4/Exercise_1/sound.m4a"),
+  sound: require("../Assignments/Level_4/Exercise_1/sound.mp3"),
   display: require("../Assignments/Level_4/Exercise_1/display2.png"),
   shapes: require("../Assignments/Level_4/Exercise_1/shapes.json"),
 };
 // Level 5 Exercise 1
 const L5E1_DATA = {
   name: "Level 5 Exercise 1",
-  sound: require("../Assignments/Level_5/Exercise_1/sound.m4a"),
+  sound: require("../Assignments/Level_5/Exercise_1/sound.mp3"),
   display: require("../Assignments/Level_5/Exercise_1/display2.png"),
   shapes: require("../Assignments/Debug/placeholder.json"),
 };
