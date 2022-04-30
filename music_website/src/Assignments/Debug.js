@@ -641,10 +641,8 @@ class Debug extends Component {
             <br></br>
             See AssignmentTemplate2.js to view or modify the instructions and text that is shown on every assignment.
             <br></br>
-            You can also open any assignment in a new tab to view the color coding key.
             <br></br>
-            <br></br>
-            How to create an assignment:
+            Look in the Google Drive folder for assignment creation instructions.
             <br></br>
             <br></br>
           </h2>
