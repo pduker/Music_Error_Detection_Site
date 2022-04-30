@@ -42,6 +42,7 @@ class AssignmentTemplate2 extends Component {
     this.assignmentName = this.props.data.name;
     this.sound = this.props.data.sound;
     this.display = this.props.data.display;
+    this.maxRecommendedPlays = this.props.data.maxRecommendedPlays;
 
     this.setInitialShapeColors(this.props.data.shapes);
     this.shapes = this.props.data.shapes;
@@ -170,7 +171,7 @@ class AssignmentTemplate2 extends Component {
           sign.fillColor = COLOR_TRANSPARENT;
           sign.preFillColor = COLOR_TRANSPARENT;
       }
-    }  
+    }
   }
 /**
  * Determines which error sign is associated with the given shape then
@@ -420,8 +421,8 @@ class AssignmentTemplate2 extends Component {
             <br></br>
             <br></br>
             You may click the “Play Sound” button to hear the music from the
-            blank sheet below. You will only be able to play the music a maximum
-            of 3 times, so listen carefully. If you would like to start fresh
+            blank sheet below. Normally in class, you will only be able to play the music
+            a maximum of {this.maxRecommendedPlays} times, so listen carefully. If you would like to start fresh
             before submitting, you can press the “Reset” button to clear the
             errors from the sheet music.
             <br></br>
