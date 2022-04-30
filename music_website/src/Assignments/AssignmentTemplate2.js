@@ -31,8 +31,6 @@ const COLOR_TRANSPARENT = "#ffffff00";
 // The color used for incorrect answers
 const COLOR_INCORRECT = "#0eebb980";
 
-const MAX_PLAY_COUNT = 3;
-
 const WINDOW_WIDTH_OFFSET = 90;
 
 class AssignmentTemplate2 extends Component {
@@ -63,6 +61,7 @@ class AssignmentTemplate2 extends Component {
       ALL_SHAPES: this.shapes,
       theMap: this.IMAGE_MAP,
       rhythmSide: "topLeft",
+      audioButtonText: "Play Sound"
     };
 
     /*
@@ -127,69 +126,83 @@ class AssignmentTemplate2 extends Component {
 
   RenderButtonAndSound = () => {
     this.audio.onended = function () {
-      count++;
       isPlaying = false;
-      console.log(count);
     };
+
     return (
       <Button
         onClick={() => {
-          if (count < MAX_PLAY_COUNT) {
-            if (!isPlaying) {
-              this.audio.play();
-              isPlaying = true;
-              console.log("playing");
-            }
+          // Check if the audio is playing
+          if (isPlaying) {
+            swal("Wait for the audio to finish playing.");
+            return;
           }
-          if (count === MAX_PLAY_COUNT - 1) {
-            swal("You can only play this sound one more time.");
+
+          // Play the audio
+          if (!isPlaying) {
+            this.audio.play();
+            count++;
+            isPlaying = true;
           }
-          if (count === MAX_PLAY_COUNT) {
-            swal("You have maxed out your attempts to play this sound.");
+
+          // Check maxRecommendedPlays
+          const RECOMMENDED_PLAY_COUNT = this.maxRecommendedPlays;
+
+          if (count === RECOMMENDED_PLAY_COUNT - 1) {
+            const MESSAGE = `You have played the audio ${count} time(s). In class you will only be able to listen to the audio one more time.`;
+
+            swal(MESSAGE);
+          }
+          else if (count === RECOMMENDED_PLAY_COUNT) {
+            const MESSAGE = `You have played the audio the recommended maximum of ${count} time(s). In class you would not be able to listen to the audio again.`;
+
+            this.setState({ audioButtonText: "Play Sound (extra)" });
+
+            swal(MESSAGE);
           }
         }}
         type="button"
         buttonStyle="btn--primary--solid"
         buttonSize="btn--medium"
       >
-        Play Sound
+        {this.state.audioButtonText}
       </Button>
     );
   };
 
   turnErrorSignON(errorSignID) {
-    for (const sign of this.IMAGE_MAP.areas){
-        if (sign.id == errorSignID){
-            sign.fillColor = COLOR_ERROR_SIGN;
-            sign.preFillColor = COLOR_ERROR_SIGN;
-        }
-    }
-  }
-  turnErrorSignOFF(errorSignID){
-    for (const sign of this.IMAGE_MAP.areas){
-      if (sign.shape == 'poly'){
-          sign.fillColor = COLOR_TRANSPARENT;
-          sign.preFillColor = COLOR_TRANSPARENT;
+    for (const sign of this.IMAGE_MAP.areas) {
+      if (sign.id == errorSignID) {
+        sign.fillColor = COLOR_ERROR_SIGN;
+        sign.preFillColor = COLOR_ERROR_SIGN;
       }
     }
   }
-/**
- * Determines which error sign is associated with the given shape then
- * calls the turnErrorSignON function to turn the correct error sign red
- */
+  turnErrorSignOFF(errorSignID) {
+    for (const sign of this.IMAGE_MAP.areas) {
+      if (sign.shape == 'poly') {
+        sign.fillColor = COLOR_TRANSPARENT;
+        sign.preFillColor = COLOR_TRANSPARENT;
+      }
+    }
+  }
+  /**
+   * Determines which error sign is associated with the given shape then
+   * calls the turnErrorSignON function to turn the correct error sign red
+   */
   whichErrorSign(shape) {
-      let closest = 10000;
-      let errorSignID;
-      for (const sign of this.IMAGE_MAP.areas){
-          if (sign.errorType == ERROR_SIGN){
-              let diff = Math.abs(shape.coords[0] - sign.coords[0]);
-              if (diff < closest){
-                  closest = diff;
-                  errorSignID = sign.id;
-              }
-          }
+    let closest = 10000;
+    let errorSignID;
+    for (const sign of this.IMAGE_MAP.areas) {
+      if (sign.errorType == ERROR_SIGN) {
+        let diff = Math.abs(shape.coords[0] - sign.coords[0]);
+        if (diff < closest) {
+          closest = diff;
+          errorSignID = sign.id;
+        }
       }
-      this.turnErrorSignON(errorSignID);
+    }
+    this.turnErrorSignON(errorSignID);
   }
 
   /**
@@ -197,7 +210,7 @@ class AssignmentTemplate2 extends Component {
    */
   clicked(area) {
     for (const shape of this.IMAGE_MAP.areas) {
-      if (shape.errorType == "errorSign"){
+      if (shape.errorType == "errorSign") {
         //do nothing
       }
       else if (shape.errorType != "rhythmError") {
@@ -333,14 +346,11 @@ class AssignmentTemplate2 extends Component {
 
       reportText = `Here are the results of your submission:\n\nIncorrect guesses are represented by the cyan circles.\n\n`;
 
-      reportText += `There are ${
-        pitchErrors + rhythmErrors + intonationErrors
-      } errors in this exercise.\n`;
-      reportText += `You found ${
-        pitchErrorsCorrect + rhythmErrorsCorrect + intonationErrorsCorrect
-      } errors and missed ${
-        pitchErrorsMissed + rhythmErrorsMissed + intonationErrorsMissed
-      } errors.\n\n`;
+      reportText += `There are ${pitchErrors + rhythmErrors + intonationErrors
+        } errors in this exercise.\n`;
+      reportText += `You found ${pitchErrorsCorrect + rhythmErrorsCorrect + intonationErrorsCorrect
+        } errors and missed ${pitchErrorsMissed + rhythmErrorsMissed + intonationErrorsMissed
+        } errors.\n\n`;
 
       if (totalMissed > 0) {
         allCorrect = false;
@@ -491,7 +501,7 @@ class AssignmentTemplate2 extends Component {
           id="submit"
           onClick={() => {
             const results = this.generateResults();
-            if (allCorrect === true){
+            if (allCorrect === true) {
               swal(results);
             }
             this.refreshMapper();

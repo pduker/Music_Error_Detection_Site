@@ -43,8 +43,6 @@ const COLOR_TRANSPARENT = "#ffffff00";
 // The color used for incorrect answers
 const COLOR_INCORRECT = "#0eebb980";
 
-const MAX_PLAY_COUNT = 3;
-
 var topLeftX = 0;
 var topLeftY = 0;
 var bottomRightX = 0;
@@ -127,9 +125,9 @@ class Debug extends Component {
       await this.getImageWidthHeight()
         .then(
           (data) =>
-            (document.getElementById(
-              "image-properties"
-            ).innerText = `Image width = ${data.width}\nImage height = ${data.height}`)
+          (document.getElementById(
+            "image-properties"
+          ).innerText = `Image width = ${data.width}\nImage height = ${data.height}`)
         )
         .then(() => {
           this.refreshMapper();
@@ -147,18 +145,9 @@ class Debug extends Component {
     return (
       <Button
         onClick={() => {
-          if (count < MAX_PLAY_COUNT) {
-            if (!isPlaying) {
-              audio.play();
-              isPlaying = true;
-              console.log("playing");
-            }
-          }
-          if (count === MAX_PLAY_COUNT - 1) {
-            swal("You can only play this sound one more time.");
-          }
-          if (count === MAX_PLAY_COUNT) {
-            swal("You have maxed out your attempts to play this sound.");
+          if (!isPlaying) {
+            audio.play();
+            isPlaying = true;
           }
         }}
         type="button"
@@ -594,14 +583,11 @@ class Debug extends Component {
 
       reportText = `Here are the results of your submission:\n\nIncorrect guesses are represented by the cyan circles.\n\n`;
 
-      reportText += `There are ${
-        pitchErrors + rhythmErrors + intonationErrors
-      } errors in this exercise.\n`;
-      reportText += `You found ${
-        pitchErrorsCorrect + rhythmErrorsCorrect + intonationErrorsCorrect
-      } errors and missed ${
-        pitchErrorsMissed + rhythmErrorsMissed + intonationErrorsMissed
-      } errors.\n\n`;
+      reportText += `There are ${pitchErrors + rhythmErrors + intonationErrors
+        } errors in this exercise.\n`;
+      reportText += `You found ${pitchErrorsCorrect + rhythmErrorsCorrect + intonationErrorsCorrect
+        } errors and missed ${pitchErrorsMissed + rhythmErrorsMissed + intonationErrorsMissed
+        } errors.\n\n`;
 
       if (totalMissed > 0) {
         reportText = reportText.concat(`You missed: \n`);
