@@ -501,9 +501,12 @@ class AssignmentTemplate2 extends Component {
           id="submit"
           onClick={() => {
             const results = this.generateResults();
-            if (allCorrect === true) {
+
+            swal(results);
+
+            /*if (allCorrect === true) {
               swal(results);
-            }
+            }*/
             this.refreshMapper();
           }}
           type="button"

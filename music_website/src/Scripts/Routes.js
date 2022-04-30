@@ -5,7 +5,6 @@ import Home from "../Components/Home";
 
 import Debug from "../Assignments/Debug";
 import history from "./history";
-import AssignmentTemplate from "../Components/AssignmentTemplate";
 import Level1 from "../Components/Level1";
 import Level2 from "../Components/Level2";
 import Level3 from "../Components/Level3";
