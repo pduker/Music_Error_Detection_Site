@@ -346,11 +346,12 @@ class AssignmentTemplate2 extends Component {
 
       reportText = `Here are the results of your submission:\n\nIncorrect guesses are represented by the cyan circles.\n\n`;
 
-      reportText += `There are ${pitchErrors + rhythmErrors + intonationErrors
-        } errors in this exercise.\n`;
-      reportText += `You found ${pitchErrorsCorrect + rhythmErrorsCorrect + intonationErrorsCorrect
-        } errors and missed ${pitchErrorsMissed + rhythmErrorsMissed + intonationErrorsMissed
-        } errors.\n\n`;
+      reportText += `There are ${pitchErrors + rhythmErrors + intonationErrors} errors in this exercise.\n`;
+      reportText += `You found ${pitchErrorsCorrect + rhythmErrorsCorrect + intonationErrorsCorrect} error(s) and missed ${pitchErrorsMissed + rhythmErrorsMissed + intonationErrorsMissed} error(s).\n\n`;
+
+      if (noErrorsMissed > 0) {
+        reportText += `You incorrectly labeled ${noErrorsMissed} shape(s) as being errors when they were not errors.\n\n`;
+      }
 
       if (totalMissed > 0) {
         allCorrect = false;
@@ -384,9 +385,6 @@ class AssignmentTemplate2 extends Component {
         );
         allCorrect = true;
       }
-
-      reportText += "\n";
-      reportText += `You incorrectly labeled ${noErrorsMissed} shapes as being errors when they were not errors.\n\n`;
     }
 
     return reportText;
