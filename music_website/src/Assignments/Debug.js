@@ -1,4 +1,4 @@
-import IMAGE_PATH from "../Assignments/Debug/placeholder.json";
+import IMAGE_PATH from "../Assignments/Debug/display2.png";
 import SHAPE_JSON from "../Assignments/Debug/shapes.json";
 import AUDIO_FILE from "../Assignments/Debug/sound.mp3";
 
@@ -637,45 +637,16 @@ class Debug extends Component {
         <h2>Debug</h2>
         <div className="Instructions">
           <h2>
-            This assignment is used to help students recognize pitch,
-            intonation, and rhythm errors.
+            This page is used to create assignments.
+            <br></br>
+            See AssignmentTemplate2.js to view or modify the instructions and text that is shown on every assignment.
+            <br></br>
+            You can also open any assignment in a new tab to view the color coding key.
             <br></br>
             <br></br>
-            Hovering over each note, you will notice a yellow circle appear. The
-            circles are used to help recognize where pitch and intonation errors
-            are located. When clicking the circle, you will be able to switch
-            between purple, orange, and transparent. Each color is represented
-            below:
-            <br></br>
-            1. Pitch errors - purple
-            <br></br>
-            2. Intonation errors - orange
-            <br></br>
-            3. No error - transparent
+            How to create an assignment:
             <br></br>
             <br></br>
-            Also, when hovering above some notes you will see a yellow rectangle
-            appear. The rectangles are used to help recognize where rhythm
-            errors are located. When clicking the rectangle, you will be able to
-            switch between red and transparent. Each color is represented below:
-            <br></br>
-            1. Rhythm errors - red
-            <br></br>
-            2. No error - transparent
-            <br></br>
-            <br></br>
-            You may click the “Play Sound” button to hear the music from the
-            blank sheet below. You will only be able to play the music a maximum
-            of 3 times, so listen carefully. If you would like to start fresh
-            before submitting, you can press the “Reset” button to clear the
-            errors from the sheet music.
-            <br></br>
-            <br></br>
-            Once you are satisfied with your work, you can press the “Submit”
-            button. At the bottom of the screen you will see how many errors you
-            identified correctly. Each error that is not identified correctly
-            will return a light blue circle. Try to identify the correct error
-            again.
           </h2>
         </div>
 
@@ -778,7 +749,29 @@ class Debug extends Component {
         <br></br>
 
         <div>
-          <p>See the top of Debug.js for the color coding key</p>
+          <p>To see the color coding key, look at the top of Debug.js or AssignmentTemplate2.js or open any exercise.</p>
+        </div>
+
+        <div
+          id="mapper-container"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <ImageMapper
+            id="mapper-debug"
+            src={IMAGE_PATH}
+            map={this.state.theMap}
+            onImageMouseMove={(evt) => this.moveOnImage(evt)}
+            onMouseMove={(area, _, evt) => this.moveOnArea(area, evt)}
+            onImageClick={(evt) => this.clickedOutside(evt)}
+            onClick={(area) => this.clicked(area)}
+            stayMultiHighlighted={true}
+            width={this.state.imageWidth}
+            imgWidth={this.state.imageWidth}
+          />
         </div>
 
         <br></br>
@@ -808,28 +801,6 @@ class Debug extends Component {
 
         {/* <SheetMusic onInsideClick={this.handleClickSheetMusic}> */}
         {/* <SheetMusic> */}
-        <div
-          id="mapper-container"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
-          <ImageMapper
-            id="mapper-debug"
-            src={IMAGE_PATH}
-            map={this.state.theMap}
-            onImageMouseMove={(evt) => this.moveOnImage(evt)}
-            onMouseMove={(area, _, evt) => this.moveOnArea(area, evt)}
-            onImageClick={(evt) => this.clickedOutside(evt)}
-            onClick={(area) => this.clicked(area)}
-            stayMultiHighlighted={true}
-            width={this.state.imageWidth}
-            imgWidth={this.state.imageWidth}
-          />
-        </div>
-
         {/* </SheetMusic> */}
 
         <br></br>
@@ -860,8 +831,6 @@ class Debug extends Component {
         >
           Reset
         </Button>
-
-        <br></br>
 
         <Button
           id="submit"
