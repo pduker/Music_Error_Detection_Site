@@ -92,6 +92,35 @@
     "errorType": "rhythmError",
     "shape": "rect",
     "coords": [1094,9,1206,27]
+    },
+
+    {
+      "id": "326d86aa-f958-483d-9e16-06023a949f60",
+      "isError": false,
+      "errorType": "errorSign",
+      "shape": "poly",
+      "coords": [280,0,130,15,430,15,280,0]
+    },
+    {
+      "id": "6f1f311a-8df2-4d6e-aafc-b36d4c58b972",
+      "isError": false,
+      "errorType": "errorSign",
+      "shape": "poly",
+      "coords": [535,0,440,15,630,15,535,0]
+    },
+    {
+      "id": "4269f32b-d09d-4d01-af1f-5081f03d17f0",
+      "isError": false,
+      "errorType": "errorSign",
+      "shape": "poly",
+      "coords": [785,0,650,15,920,15,785,0]
+    },
+    {
+      "id": "2e570544-32fa-4d87-962d-46e376aab459",
+      "isError": false,
+      "errorType": "errorSign",
+      "shape": "poly",
+      "coords": [1070,0,930,15,1210,15,1070,0]
     }
   
   ]

@@ -100,5 +100,33 @@
         1192,
         40
         ]
+        },
+        {
+            "id": "a5eb899f-522f-494c-94df-7d1da56c9924",
+            "isError": false,
+            "errorType": "errorSign",
+            "shape": "poly",
+            "coords": [270,0,120,15,420,15,270,0]
+        },
+        {
+            "id": "28b8c18a-fad9-40d9-a9f9-70dcede5d3f4",
+            "isError": false,
+            "errorType": "errorSign",
+            "shape": "poly",
+            "coords": [530,0,430,15,630,15,530,0]
+        },
+        {
+            "id": "68e8a87a-cfde-4b54-bdc3-f209c0dd232d",
+            "isError": false,
+            "errorType": "errorSign",
+            "shape": "poly",
+            "coords": [780,0,640,15,920,15,780,0]
+        },
+        {
+            "id": "48ccba3f-f223-4849-b7f8-382451410ada",
+            "isError": false,
+            "errorType": "errorSign",
+            "shape": "poly",
+            "coords": [1065,0,930,15,1200,15,1065,0]
         }
 ]

@@ -326,5 +326,47 @@
     1061,
     236
     ]
+    },
+    {
+      "id": "441273e0-90f9-47df-a272-094a9f9810f7",
+      "isError": false,
+      "errorType": "errorSign",
+      "shape": "poly",
+      "coords": [385,20,240,65,530,65,385,20]
+    },
+    {
+      "id": "9a610b17-c1db-442e-9871-c0747248ec35",
+      "isError": false,
+      "errorType": "errorSign",
+      "shape": "poly",
+      "coords": [685,20,550,65,820,65,685,20]
+    },
+    {
+      "id": "d9f14df1-c167-4139-96cb-e74b5b44286a",
+      "isError": false,
+      "errorType": "errorSign",
+      "shape": "poly",
+      "coords": [977,20,835,65,1120,65,977,20]
+    },
+    {
+      "id": "838127bf-9ba1-4b0c-8817-45aef2138196",
+      "isError": false,
+      "errorType": "errorSign",
+      "shape": "poly",
+      "coords": [385,170,240,215,530,215,385,170]
+    },
+    {
+      "id": "e734b32f-2e36-4a9c-91d7-36c6ccc87ba9",
+      "isError": false,
+      "errorType": "errorSign",
+      "shape": "poly",
+      "coords": [685,170,550,215,820,215,685,170]
+    },
+    {
+      "id": "2a310610-5eb8-4773-ba8c-a733cfdc4e07",
+      "isError": false,
+      "errorType": "errorSign",
+      "shape": "poly",
+      "coords": [977,170,835,215,1120,215,977,170]
     }
 ]
