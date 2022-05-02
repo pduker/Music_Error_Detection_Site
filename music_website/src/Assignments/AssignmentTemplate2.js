@@ -463,6 +463,8 @@ class AssignmentTemplate2 extends Component {
             stayMultiHighlighted={true}
             width={this.state.imageWidth}
             imgWidth={this.state.imageWidth}
+            responsive={true}
+            parentWidth={this.state.windowWidth}
           />
         </div>
 
