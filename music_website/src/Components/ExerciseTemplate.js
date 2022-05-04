@@ -115,7 +115,10 @@ class ExerciseTemplate extends Component {
       .then(this.getImageWidthHeight())
       .finally(() => {
         this.refreshMapper();
-        this.refreshMapper();
+        // Temporary fix for the occasional issue where the shapes won't appear
+        setTimeout(() => {  this.refreshMapper(); }, 500);
+        setTimeout(() => {  this.refreshMapper(); }, 2000);
+        setTimeout(() => {  this.refreshMapper(); }, 10000);
       });
   }
 
@@ -263,12 +266,12 @@ class ExerciseTemplate extends Component {
     if (this.state.toggle === true) {
       this.setState({
         imageWidth: window.imageWidth + 1,
-        toggle: false,
+        toggle: false
       });
     } else {
       this.setState({
         imageWidth: window.imageWidth - 1,
-        toggle: true,
+        toggle: true
       });
     }
   }
@@ -440,29 +443,6 @@ class ExerciseTemplate extends Component {
         <br></br>
         <br></br>
 
-        <div
-          id="mapper-container"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
-          <ImageMapper
-            src={this.display}
-            map={this.state.theMap}
-            onClick={(area) => this.clicked(area)}
-            stayMultiHighlighted={true}
-            width={this.state.imageWidth}
-            imgWidth={this.state.imageWidth}
-            responsive={true}
-            parentWidth={this.state.windowWidth}
-          />
-        </div>
-
-        <br></br>
-        <br></br>
-
         <Button
           onClick={() => {
             history.goBack();
@@ -506,6 +486,32 @@ class ExerciseTemplate extends Component {
         >
           Submit
         </Button>
+
+        <br></br>
+        <br></br>
+
+        <div
+          id="mapper-container"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <ImageMapper
+            src={this.display}
+            map={this.state.theMap}
+            onClick={(area) => this.clicked(area)}
+            stayMultiHighlighted={true}
+            width={this.state.imageWidth}
+            imgWidth={this.state.imageWidth}
+            responsive={true}
+            parentWidth={this.state.windowWidth}
+          />
+        </div>
+
+        <br></br>
+        <br></br>
 
         <br></br>
         <br></br>
