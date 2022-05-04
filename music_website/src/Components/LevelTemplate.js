@@ -44,7 +44,6 @@ class LevelTemplate extends Component {
                             <Button
                                 onClick={() => {
                                     history.push(`/Level${this.levelNumber}Exercise${exerciseData.number}`);
-                                    history.go();
                                 }
                                 }
                                 type="button"

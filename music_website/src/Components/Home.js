@@ -21,7 +21,6 @@ class Home extends Component {
           <Button
             onClick={() => {
               history.push('/Debug');
-              history.go();
             }
             }
             type="button"
@@ -36,7 +35,6 @@ class Home extends Component {
               <Button
                 onClick={() => {
                   history.push(`/Level${data.number}`);
-                  history.go();
                 }
                 }
                 type="button"
