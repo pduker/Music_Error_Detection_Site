@@ -639,7 +639,7 @@ class Debug extends Component {
           <h2>
             This page is used to create assignments.
             <br></br>
-            See AssignmentTemplate2.js to view or modify the instructions and text that is shown on every assignment.
+            See ExerciseTemplate.js to view or modify the instructions and text that is shown on every assignment.
             <br></br>
             <br></br>
             Look in the Google Drive folder for assignment creation instructions.
@@ -747,7 +747,7 @@ class Debug extends Component {
         <br></br>
 
         <div>
-          <p>To see the color coding key, look at the top of Debug.js or AssignmentTemplate2.js or open any exercise.</p>
+          <p>To see the color coding key, look at the top of Debug.js or ExerciseTemplate.js or open any exercise.</p>
         </div>
 
         <div
@@ -806,8 +806,7 @@ class Debug extends Component {
 
         <Button
           onClick={() => {
-            history.push("/");
-            history.go();
+            history.goBack();
           }}
           type="button"
           buttonStyle="btn--primary--solid-go-back"

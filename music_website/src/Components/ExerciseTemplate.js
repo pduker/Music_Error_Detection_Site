@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button } from "./../Components/Button";
+import { Button } from "./Button";
 import history from "../Scripts/history";
 import "./../Styles/assignment.css";
 import ImageMapper from "react-img-mapper";
@@ -33,7 +33,7 @@ const COLOR_INCORRECT = "#0eebb980";
 
 const WINDOW_WIDTH_OFFSET = 90;
 
-class AssignmentTemplate2 extends Component {
+class ExerciseTemplate extends Component {
   constructor(props) {
     super(props);
 
@@ -69,9 +69,6 @@ class AssignmentTemplate2 extends Component {
         windowWidth so the mapper gets set to the width of the window
         */
     window.addEventListener("resize", () => {
-      console.log(
-        `window resize detected, updating windowWidth to ${window.innerWidth}`
-      );
       this.setState({ windowWidth: window.innerWidth - WINDOW_WIDTH_OFFSET });
     });
   }
@@ -98,8 +95,6 @@ class AssignmentTemplate2 extends Component {
    * Sets the initial state of the mapper and image width
    */
   async setInitialState() {
-    console.log(`setInitialState running`);
-
     const imgData = await this.getImageWidthHeight();
 
     this.setState({
@@ -114,8 +109,6 @@ class AssignmentTemplate2 extends Component {
    * Runs on component mount
    */
   async componentDidMount() {
-    console.log(`componentDidMount running`);
-
     this.setInitialState()
       .then(this.getImageWidthHeight())
       .finally(() => {
@@ -150,14 +143,11 @@ class AssignmentTemplate2 extends Component {
 
           if (count === RECOMMENDED_PLAY_COUNT - 1) {
             const MESSAGE = `You have played the audio ${count} time(s). In class you will only be able to listen to the audio one more time.`;
-
             swal(MESSAGE);
           }
           else if (count === RECOMMENDED_PLAY_COUNT) {
             const MESSAGE = `You have played the audio the recommended maximum of ${count} time(s). In class you would not be able to listen to the audio again.`;
-
             this.setState({ audioButtonText: "Play Sound (extra)" });
-
             swal(MESSAGE);
           }
         }}
@@ -473,8 +463,7 @@ class AssignmentTemplate2 extends Component {
 
         <Button
           onClick={() => {
-            history.push("/");
-            history.go();
+            history.goBack();
           }}
           type="button"
           buttonStyle="btn--primary--solid-go-back"
@@ -523,4 +512,4 @@ class AssignmentTemplate2 extends Component {
   }
 }
 
-export default AssignmentTemplate2;
+export default ExerciseTemplate;
