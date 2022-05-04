@@ -33,7 +33,7 @@ class LevelTemplate extends Component {
                     }}
                     type="button"
                     buttonStyle="home-page-button"
-                    buttonSize="btn--medium"
+                    buttonSize="btn--large"
                 >
                     Back
                 </Button>

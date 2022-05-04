@@ -118,7 +118,7 @@ class ExerciseTemplate extends Component {
         // Temporary fix for the occasional issue where the shapes won't appear
         setTimeout(() => {  this.refreshMapper(); }, 500);
         setTimeout(() => {  this.refreshMapper(); }, 2000);
-        setTimeout(() => {  this.refreshMapper(); }, 10000);
+        setTimeout(() => {  this.refreshMapper(); }, 5000);
       });
   }
 
