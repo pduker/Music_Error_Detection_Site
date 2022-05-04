@@ -5,7 +5,7 @@ import "./../Styles/home.css";
 import { withRouter } from "react-router-dom";
 import headerImg from "./../Resources/Images/Header.png";
 
-import { LEVEL_DATA } from "../Assignments/LevelData";
+import { LEVEL_DATA } from "../Exercises/LevelData";
 
 class Home extends Component {
   render() {

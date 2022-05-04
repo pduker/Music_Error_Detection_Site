@@ -1,11 +1,11 @@
-import IMAGE_PATH from "../Assignments/Debug/display2.png";
-import SHAPE_JSON from "../Assignments/Debug/shapes.json";
-import AUDIO_FILE from "../Assignments/Debug/sound.mp3";
+import IMAGE_PATH from "../Exercises/Debug/display2.png";
+import SHAPE_JSON from "../Exercises/Debug/shapes.json";
+import AUDIO_FILE from "../Exercises/Debug/sound.mp3";
 
 import React, { Component } from "react";
 import { Button } from "./../Components/Button";
 import history from "../Scripts/history";
-import "./../Styles/assignment.css";
+import "./../Styles/exercise.css";
 import { withRouter } from "react-router-dom";
 import ImageMapper from "react-img-mapper";
 import { v4 as uuidv4 } from "uuid";
@@ -49,7 +49,7 @@ var bottomRightX = 0;
 var bottomRightY = 0;
 
 // This indicates whether a temporary shape should be created on clicking the image
-// Useful for creating an assignment
+// Useful for creating an exercise
 var previewEnabled = true;
 
 class Debug extends Component {
@@ -633,16 +633,16 @@ class Debug extends Component {
     }
 
     return (
-      <div id="assignment-debug" className="assignment">
+      <div id="exercise-debug" className="exercise">
         <h2>Debug</h2>
         <div className="Instructions">
           <h2>
-            This page is used to create assignments.
+            This page is used to create exercises.
             <br></br>
-            See ExerciseTemplate.js to view or modify the instructions and text that is shown on every assignment.
+            See ExerciseTemplate.js to view or modify the instructions and text that is shown on every exercise.
             <br></br>
             <br></br>
-            Look in the Google Drive folder for assignment creation instructions.
+            Look in the Google Drive folder for exercise creation instructions.
             <br></br>
             <br></br>
           </h2>
@@ -848,7 +848,7 @@ class Debug extends Component {
         <br></br>
 
         <p>
-          Use the below buttons and information to create an assignment
+          Use the below buttons and information to create an exercise
           <br></br>
           If the preview shape isn't enabled. you will likely want to click the
           "Toggle Preview" button at the top of this page

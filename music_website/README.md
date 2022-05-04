@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Notes and Helpful Links
 
-The debug page for creating assignments is hidden by default. It can be accessed by adding /Debug to the end of the homepage's URL, or at http://localhost:3000/Debug if the program is being run locally.
+The debug page for creating exercises is hidden by default. It can be accessed by adding /Debug to the end of the homepage's URL, or at http://localhost:3000/Debug if the program is being run locally.
 
 Here are some helpful resources for using the image mapper library:
 

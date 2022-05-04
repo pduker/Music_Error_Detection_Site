@@ -3,13 +3,13 @@ import { Router, Switch, Route } from "react-router-dom";
 
 import Home from "../Components/Home";
 
-import Debug from "../Assignments/Debug";
+import Debug from "../Exercises/Debug";
 import history from "./history";
 
 import LevelTemplate from "../Components/LevelTemplate";
 import ExerciseTemplate from "../Components/ExerciseTemplate";
 
-import { LEVEL_DATA } from "../Assignments/LevelData";
+import { LEVEL_DATA } from "../Exercises/LevelData";
 
 export default class Routes extends Component {
   render() {
@@ -32,7 +32,7 @@ export default class Routes extends Component {
             {
               LEVEL_DATA.map((levelData) => (
                 levelData.exercises.map((exerciseData) => (
-                  <Route path={`/Level${levelData.number}Exercise${exerciseData.number}`} render={(props) => (<ExerciseTemplate {...props} data={exerciseData} />)} />
+                  <Route path={`/Level${levelData.number}Exercise${exerciseData.number}`} render={(props) => (<ExerciseTemplate {...props} data={exerciseData} levelData={levelData} />)} />
                 ))
               )
               )

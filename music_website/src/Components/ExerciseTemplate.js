@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button } from "./Button";
 import history from "../Scripts/history";
-import "./../Styles/assignment.css";
+import "./../Styles/exercise.css";
 import ImageMapper from "react-img-mapper";
 import swal from "sweetalert";
 
@@ -37,7 +37,9 @@ class ExerciseTemplate extends Component {
   constructor(props) {
     super(props);
 
-    this.assignmentName = this.props.data.name;
+    this.levelNumber = this.props.levelData.number;
+
+    this.exerciseNumber = this.props.data.number;
     this.sound = this.props.data.sound;
     this.display = this.props.data.display;
     this.maxRecommendedPlays = this.props.data.maxRecommendedPlays;
@@ -386,12 +388,12 @@ class ExerciseTemplate extends Component {
     }
 
     return (
-      <div id="assignment-debug" className="assignment">
-        <h2>{this.assignmentName}</h2>
+      <div id="exercise-debug" className="exercise">
+        <h2>Level {this.levelNumber} Exercise {this.exerciseNumber}</h2>
 
         <div className="Instructions">
           <h2>
-            This assignment is used to help students recognize pitch,
+            This exercise is used to help students recognize pitch,
             intonation, and rhythm errors.
             <br></br>
             <br></br>
