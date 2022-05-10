@@ -11,7 +11,9 @@ import ImageMapper from "react-img-mapper";
 import { v4 as uuidv4 } from "uuid";
 import swal from "sweetalert";
 
-// import SheetMusic from "../Components/SheetMusic";
+import * as Constants from "../Components/Constants";
+
+import { LEVEL_DATA } from "../Exercises/LevelData";
 
 var count;
 var isPlaying = false;
@@ -21,27 +23,6 @@ var IMAGE_MAP = {
   name: "debug-map",
   areas: SHAPE_JSON,
 };
-
-const INITIAL_PREFILL_COLOR = "#ffffff00";
-const INITIAL_FILL_COLOR = "#e3fc0080";
-const INITIAL_STROKE_COLOR = "#ffffff00";
-
-const PITCH_ERROR = "pitchError";
-const INTONATION_ERROR = "intonationError";
-const RHYTHM_ERROR = "rhythmError";
-const NO_ERROR = "noError";
-const ERROR_SIGN = "errorSign";
-
-// The 80 at the end of a hex value means 50% transparency
-const COLOR_NO_ERROR = "#e3fc0080";
-const COLOR_PITCH_ERROR = "#9013fe80";
-const COLOR_RHYTHM_ERROR = "#d0021b80";
-const COLOR_INTONATION_ERROR = "#ffa50080";
-const COLOR_ERROR_SIGN = "#d0021b80";
-// The color used for transparency
-const COLOR_TRANSPARENT = "#ffffff00";
-// The color used for incorrect answers
-const COLOR_INCORRECT = "#0eebb980";
 
 var topLeftX = 0;
 var topLeftY = 0;
@@ -58,14 +39,16 @@ class Debug extends Component {
 
     this.state = {
       coordinates: [0, 0],
-      selectedArea: { id: "0", isError: false, errorType: "noError" },
+      selectedArea: { id: "0", errorType: "noError" },
       imageWidth: 0,
       windowWidth: window.innerWidth,
-      jsonGeneratorSelection: "noError",
+      shapeToGenerate: "noError",
       toggle: true,
       allCurrentErrors: SHAPE_JSON,
       theMap: IMAGE_MAP,
       rhythmSide: "topLeft",
+      errorIndicatorSide: "topLeft",
+      noErrorRectSide: "topLeft"
     };
     // this.handleClickSheetMusic = this.handleClickSheetMusic.bind(this);
 
@@ -86,9 +69,9 @@ class Debug extends Component {
     */
   setInitialShapeColors(someShapes) {
     for (let shape of someShapes) {
-      shape["preFillColor"] = INITIAL_PREFILL_COLOR;
-      shape["fillColor"] = INITIAL_FILL_COLOR;
-      shape["strokeColor"] = INITIAL_STROKE_COLOR;
+      shape["preFillColor"] = Constants.INITIAL_PREFILL_COLOR;
+      shape["fillColor"] = Constants.INITIAL_FILL_COLOR;
+      shape["strokeColor"] = Constants.INITIAL_STROKE_COLOR;
     }
   }
 
@@ -132,6 +115,22 @@ class Debug extends Component {
         .then(() => {
           this.refreshMapper();
           this.refreshMapper();
+          this.refreshMapper();
+        })
+        .then(() => {
+          for (const someLevel of LEVEL_DATA) {
+            console.log(`someLevel:`, someLevel);
+            const levelName = someLevel.number;
+
+            for (const someExercise of someLevel.exercises) {
+              console.log(`someExercise:`, someExercise);
+
+              let optionText = `Level ${someLevel.number} Exercise ${someExercise.number}`;
+              let optionElement = `<option value="8">${optionText}</option>`;
+
+              document.getElementById("exercise_picker").innerHTML += optionElement;
+            }
+          }
         })
     );
   }
@@ -158,6 +157,13 @@ class Debug extends Component {
       </Button>
     );
   };
+
+  /*
+  This is triggered when a drop down option is selected in the exercise picker
+  */
+  handleExercisePicker() {
+    console.log(`handleExercisePicker`);
+  }
 
   /**
    * Given a mouse event, this updates the stored coordinates to where the cursor is
@@ -202,21 +208,14 @@ class Debug extends Component {
     this.setState({ selectedArea: area });
 
     const areaId = this.state.selectedArea.id;
-    const areasIsError = this.state.selectedArea.isError;
     const areaErrorType = this.state.selectedArea.errorType;
 
     document.getElementById("shape-id").innerText = ``;
     document.getElementById("shape-id").innerText += `Shape info:\n`;
     document.getElementById("shape-id").innerText += `ID: ${areaId}\n`;
-    document.getElementById(
-      "shape-id"
-    ).innerText += `isError: ${areasIsError}\n`;
-    document.getElementById(
-      "shape-id"
-    ).innerText += `errorType: ${areaErrorType}\n\n`;
-    document.getElementById("shape-id").innerText += `JSON:\n${JSON.stringify(
-      this.state.selectedArea
-    )}`;
+    document.getElementById("shape-id").innerText += `errorType: ${areaErrorType}\n\n`;
+
+    document.getElementById("shape-json").innerText = `${JSON.stringify(this.state.selectedArea)}`;
   }
 
   /**
@@ -250,95 +249,102 @@ class Debug extends Component {
     const coordX = this.state.coordinates[0];
     const coordY = this.state.coordinates[1];
 
-    let isError = false;
-    if (this.state.jsonGeneratorSelection !== "noError") {
-      isError = true;
+    let isError = true;
+
+    if (this.state.shapeToGenerate == Constants.NO_ERROR) {
+      isError = false;
     }
-    let errorType = this.state.jsonGeneratorSelection;
+
+    if (this.state.shapeToGenerate == Constants.NO_ERROR_RECT) {
+      isError = false;
+    }
+
+    if (this.state.shapeToGenerate == Constants.ERROR_INDICATOR) {
+      isError = false;
+    }
+
+    let errorType = this.state.shapeToGenerate;
 
     let newShape = "";
     let newCoords = "";
 
-    if (this.state.jsonGeneratorSelection == "rhythmError") {
-      console.log(`rhythm error selected`);
-
+    if (this.state.shapeToGenerate == Constants.RHYTHM_ERROR) {
       if (this.state.rhythmSide == "topLeft") {
-        console.log(`picked the top left side`);
         topLeftX = coordX;
         topLeftY = coordY;
         bottomRightX = topLeftX + 5;
         bottomRightY = topLeftY + 5;
-
         this.setState({ rhythmSide: "bottomRight" });
       }
 
       if (this.state.rhythmSide == "bottomRight") {
-        console.log(`picked the bottom right side`);
         bottomRightX = coordX;
         bottomRightY = coordY;
-
         this.setState({ rhythmSide: "topLeft" });
       }
 
-      console.log(`rhythmSide=${this.state.rhythmSide}`);
+      newShape = `rect`;
+      newCoords = [topLeftX, topLeftY, bottomRightX, bottomRightY];
+    }
+    else if (this.state.shapeToGenerate == Constants.ERROR_INDICATOR) {
+      if (this.state.errorIndicatorSide == "topLeft") {
+        topLeftX = coordX;
+        topLeftY = coordY;
+        bottomRightX = topLeftX + 5;
+        bottomRightY = topLeftY + 5;
+        this.setState({ errorIndicatorSide: "bottomRight" });
+      }
+
+      if (this.state.errorIndicatorSide == "bottomRight") {
+        bottomRightX = coordX;
+        bottomRightY = coordY;
+        this.setState({ errorIndicatorSide: "topLeft" });
+      }
 
       newShape = `rect`;
       newCoords = [topLeftX, topLeftY, bottomRightX, bottomRightY];
-    } else {
-      console.log(`non rhythm error detected`);
+    }
+    else if (this.state.shapeToGenerate == Constants.NO_ERROR_RECT) {
+      if (this.state.noErrorRectSide == "topLeft") {
+        topLeftX = coordX;
+        topLeftY = coordY;
+        bottomRightX = topLeftX + 5;
+        bottomRightY = topLeftY + 5;
+        this.setState({ noErrorRectSide: "bottomRight" });
+      }
 
+      if (this.state.noErrorRectSide == "bottomRight") {
+        bottomRightX = coordX;
+        bottomRightY = coordY;
+        this.setState({ noErrorRectSide: "topLeft" });
+      }
+
+      newShape = `rect`;
+      newCoords = [topLeftX, topLeftY, bottomRightX, bottomRightY];
+    }
+    else {
       newShape = `circle`;
       newCoords = [coordX, coordY, 20];
     }
 
     let generated = {
       id: newId,
-      isError: isError,
       errorType: errorType,
       shape: newShape,
       coords: newCoords,
     };
 
-    let formatted = JSON.stringify(generated, null, 4);
+    let formatted = JSON.stringify(generated, null, 0);
 
     document.getElementById("generated-json").innerText = formatted;
 
     generated.id = "tmp";
-    generated.preFillColor = "#F012BE";
+    generated.preFillColor = "#F012BE80";
 
     if (previewEnabled) {
       this.removeTempShape();
       this.addTempShape(generated);
     }
-  }
-  /**
-   * Takes in the shape id of an error sign and turns its color to red
-   */
-  turnErrorSignON(errorSignID) {
-    for (const sign of IMAGE_MAP.areas) {
-      if (sign.id == errorSignID) {
-        sign.fillColor = COLOR_ERROR_SIGN;
-        sign.preFillColor = COLOR_ERROR_SIGN;
-      }
-    }
-  }
-  /**
-   * Determines which error sign is associated with the given shape then
-   * calls the turnErrorSignON function to turn the correct error sign red
-   */
-  whichErrorSign(shape) {
-    let closest = 10000;
-    let errorSignID;
-    for (const sign of IMAGE_MAP.areas) {
-      if (sign.errorType == ERROR_SIGN) {
-        let diff = Math.abs(shape.coords[0] - sign.coords[0]);
-        if (diff < closest) {
-          closest = diff;
-          errorSignID = sign.id;
-        }
-      }
-    }
-    this.turnErrorSignON(errorSignID);
   }
 
   /**
@@ -355,32 +361,36 @@ class Debug extends Component {
     let noErrorsCorrect = 0;
     let noErrorsMissed = 0;
 
+    let errorIndicators = 0;
+
     for (const shape of IMAGE_MAP.areas) {
       // Check if the shape's fill color is correct
-      if (shape.errorType == PITCH_ERROR) {
-        if (shape.fillColor == COLOR_PITCH_ERROR) {
+      if (shape.errorType == Constants.PITCH_ERROR) {
+        if (shape.fillColor == Constants.COLOR_PITCH_ERROR) {
           pitchErrorsCorrect += 1;
         } else {
           pitchErrorsMissed += 1;
         }
-      } else if (shape.errorType == INTONATION_ERROR) {
-        if (shape.fillColor == COLOR_INTONATION_ERROR) {
+      } else if (shape.errorType == Constants.INTONATION_ERROR) {
+        if (shape.fillColor == Constants.COLOR_INTONATION_ERROR) {
           intonationErrorsCorrect += 1;
         } else {
           intonationErrorsMissed += 1;
         }
-      } else if (shape.errorType == RHYTHM_ERROR) {
-        if (shape.fillColor == COLOR_RHYTHM_ERROR) {
+      } else if (shape.errorType == Constants.RHYTHM_ERROR) {
+        if (shape.fillColor == Constants.COLOR_RHYTHM_ERROR) {
           rhythmErrorsCorrect += 1;
         } else {
           rhythmErrorsMissed += 1;
         }
-      } else if (shape.errorType == NO_ERROR) {
-        if (shape.fillColor == COLOR_NO_ERROR) {
+      } else if (shape.errorType == Constants.NO_ERROR) {
+        if (shape.fillColor == Constants.COLOR_NO_ERROR) {
           noErrorsCorrect += 1;
         } else {
           noErrorsMissed += 1;
         }
+      } else if (shape.errorType == Constants.ERROR_INDICATOR) {
+        errorIndicators += 1;
       }
 
       const totalCorrect =
@@ -401,6 +411,8 @@ class Debug extends Component {
                 rhythmErrorsCorrect=${rhythmErrorsCorrect}, rhythmErrorsMissed=${rhythmErrorsMissed}
                 noErrorsCorrect=${noErrorsCorrect}, noErrorsMissed=${noErrorsMissed}
                 totalCorrect=${totalCorrect}/${IMAGE_MAP.areas.length}\n totalMissed=${totalMissed}/${IMAGE_MAP.areas.length}
+
+                errorIndicators=${errorIndicators}
                 `;
 
       document.getElementById("shapes-info").innerText = reportText;
@@ -411,36 +423,38 @@ class Debug extends Component {
    * This is triggered when a shape is clicked
    */
   clicked(area) {
-    for (const shape of IMAGE_MAP.areas) {
-      if (shape.errorType == "errorSign") {
-        //do nothing
-      } else if (shape.errorType != "rhythmError") {
+    for (const shape of this.IMAGE_MAP.areas) {
+      if (shape.errorType == Constants.ERROR_INDICATOR) {
+        continue;
+      }
+      else if (shape.errorType == Constants.RHYTHM_ERROR) {
         if (shape.id === area.id) {
-          if (area.fillColor === COLOR_PITCH_ERROR) {
-            shape.fillColor = COLOR_INTONATION_ERROR;
-            shape.preFillColor = COLOR_INTONATION_ERROR;
-          } else if (area.fillColor === COLOR_INTONATION_ERROR) {
-            shape.fillColor = COLOR_NO_ERROR;
-            shape.preFillColor = COLOR_TRANSPARENT;
-          } else if (area.fillColor === COLOR_NO_ERROR) {
-            shape.fillColor = COLOR_PITCH_ERROR;
-            shape.preFillColor = COLOR_PITCH_ERROR;
+          if (area.fillColor === Constants.COLOR_NO_ERROR) {
+            shape.fillColor = Constants.COLOR_RHYTHM_ERROR;
+            shape.preFillColor = Constants.COLOR_RHYTHM_ERROR;
+          } else if (area.fillColor === Constants.COLOR_RHYTHM_ERROR) {
+            shape.fillColor = Constants.COLOR_NO_ERROR;
+            shape.preFillColor = Constants.COLOR_TRANSPARENT;
           } else {
-            shape.fillColor = COLOR_NO_ERROR;
-            shape.preFillColor = COLOR_TRANSPARENT;
+            shape.fillColor = Constants.COLOR_NO_ERROR;
+            shape.preFillColor = Constants.COLOR_TRANSPARENT;
           }
         }
-      } else {
+      }
+      else {
         if (shape.id === area.id) {
-          if (area.fillColor === COLOR_NO_ERROR) {
-            shape.fillColor = COLOR_RHYTHM_ERROR;
-            shape.preFillColor = COLOR_RHYTHM_ERROR;
-          } else if (area.fillColor === COLOR_RHYTHM_ERROR) {
-            shape.fillColor = COLOR_NO_ERROR;
-            shape.preFillColor = COLOR_TRANSPARENT;
+          if (area.fillColor === Constants.COLOR_PITCH_ERROR) {
+            shape.fillColor = Constants.COLOR_INTONATION_ERROR;
+            shape.preFillColor = Constants.COLOR_INTONATION_ERROR;
+          } else if (area.fillColor === Constants.COLOR_INTONATION_ERROR) {
+            shape.fillColor = Constants.COLOR_NO_ERROR;
+            shape.preFillColor = Constants.COLOR_TRANSPARENT;
+          } else if (area.fillColor === Constants.COLOR_NO_ERROR) {
+            shape.fillColor = Constants.COLOR_PITCH_ERROR;
+            shape.preFillColor = Constants.COLOR_PITCH_ERROR;
           } else {
-            shape.fillColor = COLOR_NO_ERROR;
-            shape.preFillColor = COLOR_TRANSPARENT;
+            shape.fillColor = Constants.COLOR_NO_ERROR;
+            shape.preFillColor = Constants.COLOR_TRANSPARENT;
           }
         }
       }
@@ -464,27 +478,6 @@ class Debug extends Component {
     img.src = IMAGE_PATH;
     return img.onload();
   }
-
-  // handleClickSheetMusic(){
-  //     console.log("component has been clicked at coordinates: (", this.state.coords.x, ",", this.state.coords.y,")");
-  //     let newAreas = this.state.imageMapAreas;
-  //     let newError = {
-  //         // "id": "azsexdcfvgbhawsexdrcvfgbhqwsedrf",
-  //         "isError": true,
-  //         "errorType": "pitchError",
-  //         "shape": "circle",
-  //         "preFillColor": "#e3fc0080",
-  //         "fillColor": "#e3fc0080",
-  //         "strokeColor": "black",
-  //         "coords": [
-  //             this.state.coords.x,
-  //             this.state.coords.y,
-  //             20
-  //         ]
-  //     };
-  //     newAreas.push(newError);
-  //     this.setState({ imageMapAreas: newAreas });
-  // }
 
   /**
    * This is a temporary fix to make React refresh the mapper
@@ -521,49 +514,45 @@ class Debug extends Component {
 
     for (const shape of this.state.allCurrentErrors) {
       // Check if the shape's fill color is correct
-      if (shape.errorType === PITCH_ERROR) {
-        if (shape.fillColor === COLOR_PITCH_ERROR) {
+      if (shape.errorType === Constants.PITCH_ERROR) {
+        if (shape.fillColor === Constants.COLOR_PITCH_ERROR) {
           pitchErrorsCorrect += 1;
         } else {
           pitchErrorsMissed += 1;
-          this.whichErrorSign(shape);
-          if (shape.fillColor != COLOR_NO_ERROR) {
-            shape.fillColor = COLOR_INCORRECT;
-            shape.preFillColor = COLOR_INCORRECT;
+          if (shape.fillColor != Constants.COLOR_NO_ERROR) {
+            shape.fillColor = Constants.COLOR_INCORRECT;
+            shape.preFillColor = Constants.COLOR_INCORRECT;
           }
         }
-      } else if (shape.errorType === INTONATION_ERROR) {
-        if (shape.fillColor === COLOR_INTONATION_ERROR) {
+      } else if (shape.errorType === Constants.INTONATION_ERROR) {
+        if (shape.fillColor === Constants.COLOR_INTONATION_ERROR) {
           intonationErrorsCorrect += 1;
         } else {
           intonationErrorsMissed += 1;
-          this.whichErrorSign(shape);
-          if (shape.fillColor != COLOR_NO_ERROR) {
-            shape.fillColor = COLOR_INCORRECT;
-            shape.preFillColor = COLOR_INCORRECT;
+          if (shape.fillColor != Constants.COLOR_NO_ERROR) {
+            shape.fillColor = Constants.COLOR_INCORRECT;
+            shape.preFillColor = Constants.COLOR_INCORRECT;
           }
         }
-      } else if (shape.errorType === RHYTHM_ERROR) {
-        if (shape.fillColor === COLOR_RHYTHM_ERROR) {
+      } else if (shape.errorType === Constants.RHYTHM_ERROR) {
+        if (shape.fillColor === Constants.COLOR_RHYTHM_ERROR) {
           rhythmErrorsCorrect += 1;
         } else {
           rhythmErrorsMissed += 1;
-          this.whichErrorSign(shape);
-          if (shape.fillColor != COLOR_NO_ERROR) {
-            shape.fillColor = COLOR_INCORRECT;
-            shape.preFillColor = COLOR_INCORRECT;
+          if (shape.fillColor != Constants.COLOR_NO_ERROR) {
+            shape.fillColor = Constants.COLOR_INCORRECT;
+            shape.preFillColor = Constants.COLOR_INCORRECT;
           }
         }
-      } else if (shape.errorType === NO_ERROR) {
-        if (shape.fillColor === COLOR_NO_ERROR) {
+      } else if (shape.errorType === Constants.NO_ERROR) {
+        if (shape.fillColor === Constants.COLOR_NO_ERROR) {
           noErrorsCorrect += 1;
-          shape.preFillColor = COLOR_TRANSPARENT;
-          shape.strokeColor = COLOR_TRANSPARENT;
+          shape.preFillColor = Constants.COLOR_TRANSPARENT;
+          shape.strokeColor = Constants.COLOR_TRANSPARENT;
         } else {
           noErrorsMissed += 1;
-          this.whichErrorSign(shape);
-          shape.fillColor = COLOR_INCORRECT;
-          shape.preFillColor = COLOR_INCORRECT;
+          shape.fillColor = Constants.COLOR_INCORRECT;
+          shape.preFillColor = Constants.COLOR_INCORRECT;
         }
       }
 
@@ -657,12 +646,12 @@ class Debug extends Component {
           onClick={() => {
             for (const shape of this.state.allCurrentErrors) {
               // If the shape is transparent, make it visible
-              if (shape.preFillColor === COLOR_TRANSPARENT) {
-                shape.preFillColor = COLOR_NO_ERROR;
+              if (shape.preFillColor === Constants.COLOR_TRANSPARENT) {
+                shape.preFillColor = Constants.COLOR_NO_ERROR;
               }
               // Otherwise make it transparent
               else {
-                shape.preFillColor = COLOR_TRANSPARENT;
+                shape.preFillColor = Constants.COLOR_TRANSPARENT;
               }
             }
 
@@ -688,21 +677,29 @@ class Debug extends Component {
           onClick={() => {
             for (const shape of this.state.allCurrentErrors) {
               switch (shape.errorType) {
-                case PITCH_ERROR:
-                  shape.fillColor = COLOR_PITCH_ERROR;
-                  shape.preFillColor = COLOR_PITCH_ERROR;
+                case Constants.PITCH_ERROR:
+                  shape.fillColor = Constants.COLOR_PITCH_ERROR;
+                  shape.preFillColor = Constants.COLOR_PITCH_ERROR;
                   break;
-                case INTONATION_ERROR:
-                  shape.fillColor = COLOR_INTONATION_ERROR;
-                  shape.preFillColor = COLOR_INTONATION_ERROR;
+                case Constants.INTONATION_ERROR:
+                  shape.fillColor = Constants.COLOR_INTONATION_ERROR;
+                  shape.preFillColor = Constants.COLOR_INTONATION_ERROR;
                   break;
-                case RHYTHM_ERROR:
-                  shape.fillColor = COLOR_RHYTHM_ERROR;
-                  shape.preFillColor = COLOR_RHYTHM_ERROR;
+                case Constants.RHYTHM_ERROR:
+                  shape.fillColor = Constants.COLOR_RHYTHM_ERROR;
+                  shape.preFillColor = Constants.COLOR_RHYTHM_ERROR;
                   break;
-                case NO_ERROR:
-                  shape.fillColor = COLOR_NO_ERROR;
-                  shape.preFillColor = COLOR_NO_ERROR;
+                case Constants.NO_ERROR:
+                  shape.fillColor = Constants.COLOR_NO_ERROR;
+                  shape.preFillColor = Constants.COLOR_NO_ERROR;
+                  break;
+                case Constants.NO_ERROR_RECT:
+                  shape.fillColor = Constants.COLOR_NO_ERROR;
+                  shape.preFillColor = Constants.COLOR_NO_ERROR;
+                  break;
+                case Constants.ERROR_INDICATOR:
+                  shape.fillColor = Constants.COLOR_ERROR_INDICATOR;
+                  shape.preFillColor = Constants.COLOR_ERROR_INDICATOR;
                   break;
                 default:
                   console.log(`Unknown error type`);
@@ -715,7 +712,7 @@ class Debug extends Component {
           buttonStyle="btn--primary--solid-go-back"
           buttonSize="btn--medium"
         >
-          Select All Correct Answers
+          Make shapes' colors correct
         </Button>
 
         <br></br>
@@ -742,64 +739,6 @@ class Debug extends Component {
         >
           Remove Preview Shape
         </Button>
-
-        <br></br>
-        <br></br>
-
-        <div>
-          <p>To see the color coding key, look at the top of Debug.js or ExerciseTemplate.js or open any exercise.</p>
-        </div>
-
-        <div
-          id="mapper-container"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            flexDirection: "column",
-          }}
-        >
-          <ImageMapper
-            id="mapper-debug"
-            src={IMAGE_PATH}
-            map={this.state.theMap}
-            onImageMouseMove={(evt) => this.moveOnImage(evt)}
-            onMouseMove={(area, _, evt) => this.moveOnArea(area, evt)}
-            onImageClick={(evt) => this.clickedOutside(evt)}
-            onClick={(area) => this.clicked(area)}
-            stayMultiHighlighted={true}
-            width={this.state.imageWidth}
-            imgWidth={this.state.imageWidth}
-          />
-        </div>
-
-        <br></br>
-
-        <div id="debug-information">Debug Information</div>
-
-        <br></br>
-
-        <div id="image-properties">...</div>
-
-        <br></br>
-
-        <div id="x-coordinate">X coordinate is unknown</div>
-
-        <div id="y-coordinate">Y coordinate is unknown</div>
-
-        <br></br>
-
-        <div id="coordinate-json">Coordinate JSON is unknown</div>
-
-        <br></br>
-
-        <div id="shape-id">Shape info: unknown</div>
-
-        <br></br>
-        <br></br>
-
-        {/* <SheetMusic onInsideClick={this.handleClickSheetMusic}> */}
-        {/* <SheetMusic> */}
-        {/* </SheetMusic> */}
 
         <br></br>
         <br></br>
@@ -845,70 +784,99 @@ class Debug extends Component {
 
         <br></br>
         <br></br>
+
+        <select id="exercise_picker" onchange={this.handleExercisePicker}>
+          <option value="none" defaultValue disabled hidden>Pick an Exercise</option>
+        </select>
+
+        <br></br>
         <br></br>
 
-        <p>
-          Use the below buttons and information to create an exercise
-          <br></br>
-          If the preview shape isn't enabled. you will likely want to click the
-          "Toggle Preview" button at the top of this page
-          <br></br>
-          When adding a rhythm error, click on the area where you want the TOP
-          LEFT of the rectangle to be.
-          <br></br>
-          Then, click on the area where you want the BOTTOM RIGHT of the
-          rectangle to be.
-        </p>
+        <div>
+          <p>To see the color coding key, look at the top of Debug.js or ExerciseTemplate.js or open any exercise.</p>
+        </div>
 
+        <div
+          id="mapper-container"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+            border: "2px solid red"
+          }}
+        >
+          <ImageMapper
+            id="mapper-debug"
+            src={IMAGE_PATH}
+            map={this.state.theMap}
+            onImageMouseMove={(evt) => this.moveOnImage(evt)}
+            onMouseMove={(area, _, evt) => this.moveOnArea(area, evt)}
+            onImageClick={(evt) => this.clickedOutside(evt)}
+            onClick={(area) => this.clicked(area)}
+            stayMultiHighlighted={true}
+            width={this.state.imageWidth}
+            imgWidth={this.state.imageWidth}
+          />
+        </div>
+
+        <br></br>
+
+        <div>--------------------</div>
         <br></br>
 
         <div className="radio-buttons-error-type">
-          <input
-            type="radio"
-            name="clickType"
-            value=""
-            onClick={() => this.setState({ jsonGeneratorSelection: NO_ERROR })}
-          />
-          No error <br></br>
-          <input
-            type="radio"
-            name="clickType"
-            value=""
-            onClick={() =>
-              this.setState({ jsonGeneratorSelection: PITCH_ERROR })
-            }
-          />
-          Pitch error <br></br>
-          <input
-            type="radio"
-            name="clickType"
-            value=""
-            onClick={() =>
-              this.setState({ jsonGeneratorSelection: INTONATION_ERROR })
-            }
-          />
-          Intonation error <br></br>
-          <input
-            type="radio"
-            name="clickType"
-            value=""
-            onClick={() =>
-              this.setState({ jsonGeneratorSelection: RHYTHM_ERROR })
-            }
-          />
+          <input type="radio" name="clickType" value="" onClick={() => this.setState({ shapeToGenerate: Constants.ERROR_INDICATOR })} />
+          Error indicator
+          <br></br>
+          <input type="radio" name="clickType" value="" onClick={() => this.setState({ shapeToGenerate: Constants.NO_ERROR })} />
+          No error
+          <br></br>
+          <input type="radio" name="clickType" value="" onClick={() => this.setState({ shapeToGenerate: Constants.PITCH_ERROR })} />
+          Pitch error
+          <br></br>
+          <input type="radio" name="clickType" value="" onClick={() => this.setState({ shapeToGenerate: Constants.INTONATION_ERROR })} />
+          Intonation error
+          <br></br>
+          <input type="radio" name="clickType" value="" onClick={() => this.setState({ shapeToGenerate: Constants.RHYTHM_ERROR })} />
           Rhythm error
+          <br></br>
+          <input type="radio" name="clickType" value="" onClick={() => this.setState({ shapeToGenerate: Constants.NO_ERROR_RECT })} />
+          No error rectangle (for rhythm errors)
         </div>
 
         <br></br>
 
-        <div
-          id="generated-json"
+        <div>Copy this JSON:</div>
+
+        <div id="generated-json"
           style={{ marginRight: 20 + "px", marginLeft: 20 + "px" }}
         >
-          Copy the generated JSON below
+          ...
         </div>
 
         <br></br>
+        <div>--------------------</div>
+
+        <div id="shape-json"></div>
+
+        <br></br>
+
+        <div id="image-properties">...</div>
+
+        <br></br>
+
+        <div id="x-coordinate">X coordinate is unknown</div>
+
+        <div id="y-coordinate">Y coordinate is unknown</div>
+
+        <br></br>
+
+        <div id="coordinate-json">Coordinate JSON is unknown</div>
+
+        <br></br>
+
+        <div id="shape-id">Shape info: unknown</div>
+
         <br></br>
 
         <div

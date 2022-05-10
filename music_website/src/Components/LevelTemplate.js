@@ -5,8 +5,6 @@ import "./../Styles/home.css";
 import { withRouter } from "react-router-dom";
 import headerImg from "./../Resources/Images/Header.png";
 
-import { LEVEL_DATA } from "../Exercises/LevelData";
-
 class LevelTemplate extends Component {
     constructor(props) {
         super(props);

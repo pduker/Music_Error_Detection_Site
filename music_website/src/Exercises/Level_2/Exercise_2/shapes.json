@@ -1,7 +1,6 @@
 [
   {
     "id": "e425863e-b724-4342-94fc-5f314d583147",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [104, 70, 20]
@@ -9,7 +8,6 @@
 
   {
     "id": "3bc519e9-efd2-4f90-ab36-92a0a2c9abae",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [153, 43, 20]
@@ -17,7 +15,6 @@
 
   {
     "id": "993d6b7c-5215-492e-8fe2-f4888e869ca7",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [201, 48, 20]
@@ -25,7 +22,6 @@
 
   {
     "id": "2e02e3fb-4e37-4776-ace4-85d02df9f398",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [253, 70, 20]
@@ -33,7 +29,6 @@
 
   {
     "id": "B6E1B4F6-ED2E-4B7A-95D6-038143F663A2",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [304, 46, 20]
@@ -41,7 +36,6 @@
 
   {
     "id": "7a38a83f-cd44-4827-ba57-256b489c1e20",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [304, 46, 20]
@@ -49,7 +43,6 @@
 
   {
     "id": "ab061db3-2de1-40f7-a96b-c9b6b1e58dfa",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [426, 71, 20]
@@ -57,7 +50,6 @@
 
   {
     "id": "261650f6-8e42-4a8d-af21-66c489723bb4",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [522, 70, 20]
@@ -65,7 +57,6 @@
 
   {
     "id": "12d199da-2736-41c6-949e-c51cabfdec1d",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [684, 55, 20]
@@ -73,7 +64,6 @@
 
   {
     "id": "3686bd6f-451e-4f33-905e-5c00ce665fc5",
-    "isError": true,
     "errorType": "pitchError",
     "shape": "circle",
     "coords": [735, 48, 20]
@@ -81,7 +71,6 @@
 
   {
     "id": "706bddee-4706-4ea3-8a40-3a35cf4d926c",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [832, 50, 20]
@@ -89,7 +78,6 @@
 
   {
     "id": "de3045c3-fa16-4b59-a046-2f4e67b54f50",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [885, 49, 20]
@@ -97,7 +85,6 @@
 
   {
     "id": "e0965499-2185-457a-99a9-1c850f7624d8",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [952, 52, 20]
@@ -105,7 +92,6 @@
 
   {
     "id": "76e598a0-a64e-449a-b86a-0d01026d2692",
-    "isError": true,
     "errorType": "pitchError",
     "shape": "circle",
     "coords": [1005, 58, 20]
@@ -113,7 +99,6 @@
 
   {
     "id": "4e868ccf-87fd-4ff9-b60f-b5d2b1484b02",
-    "isError": true,
     "errorType": "pitchError",
     "shape": "circle",
     "coords": [1053, 51, 20]
@@ -121,7 +106,6 @@
 
   {
     "id": "81d8cdb2-01c2-4585-bcc8-c8d8d573dde6",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [1109, 46, 20]
@@ -129,7 +113,6 @@
 
   {
     "id": "ed729edd-15a3-4d3c-960e-fc4ae0d1024f",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [1179, 69, 20]

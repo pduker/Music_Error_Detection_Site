@@ -1,169 +1,104 @@
 [
   {
     "id": "01ec8f9e-5733-4817-a02e-53b9d580f08f",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [168, 85, 20]
   },
   {
     "id": "bf586b7c-dbfe-47cb-b8b9-a228dd05cfe4",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [220, 60, 20]
   },
   {
     "id": "bc7c2311-0f14-4381-9b10-1206c8ed29fe",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [265, 60, 20]
   },
-
   {
     "id": "4cb0f0ee-c6b0-48d2-bf26-acea1ffcb698",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [312, 86, 20]
   },
-
   {
     "id": "4fbdfd87-d82d-49fd-b6d0-b08fdc2547e6",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [361, 64, 20]
   },
-
   {
     "id": "8afd3425-e9c7-4a54-b4f9-c538fe2c0777",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [412, 64, 20]
   },
-
   {
     "id": "10bb98cb-8897-40b8-94d3-faa0ef36af06",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [488, 84, 20]
   },
-
   {
     "id": "26030ff0-c0c9-4ebb-957d-d6acff2c9734",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [573, 83, 20]
   },
-
   {
     "id": "76c58ac6-9046-4ecc-a32b-1c0d51cb93ed",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [680, 45, 20]
   },
-
   {
     "id": "bd0cd9c0-8782-4783-9310-864b5855cb72",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [730, 46, 20]
   },
-
   {
     "id": "fa55513a-62b3-4679-85c6-36f74cc41a0c",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [777, 46, 20]
   },
-
   {
     "id": "be61a113-912f-400c-8bf0-f8863ff2cf34",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [832, 55, 20]
   },
-
   {
     "id": "01dfc6bb-264b-4628-b82f-2dd482f103a9",
-    "isError": true,
     "errorType": "pitchError",
     "shape": "circle",
     "coords": [881, 56, 20]
   },
-
   {
     "id": "393f0d31-f61b-4e4b-8677-b02bd75db365",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [970, 82, 20]
   },
-
   {
     "id": "d7db27fe-2d19-4212-951d-682c87bf5f8a",
-    "isError": true,
     "errorType": "pitchError",
     "shape": "circle",
     "coords": [1064, 75, 20]
   },
-
   {
     "id": "971ff0ce-818c-4de5-a27f-b7985b91bcec",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [1114, 89, 20]
   },
-
   {
     "id": "6895c23a-4e8d-4128-bca9-4ce32bc8acdd",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
     "coords": [1162, 80, 20]
-  },
-
-  {
-    "id": "70e3f664-9d88-49c9-8a38-16faca1d6d40",
-    "isError": false,
-    "errorType": "errorSign",
-    "shape": "poly",
-    "coords": [295,0,150,30,440,30,295,0]
-  },
-
-  {
-    "id": "54d276e3-4f89-4d2c-9f85-cb6d85d316b2",
-    "isError": false,
-    "errorType": "errorSign",
-    "shape": "poly",
-    "coords": [550,0,460,30,640,30,550,0]
-  },
-
-  {
-    "id": "1c4fa95b-4521-4a5d-915a-2cd8af18cac2",
-    "isError": false,
-    "errorType": "errorSign",
-    "shape": "poly",
-    "coords": [790,0,660,30,920,30,790,0]
-  },
-
-  {
-    "id": "0b962252-f52d-4167-9cef-76d710527add",
-    "isError": false,
-    "errorType": "errorSign",
-    "shape": "poly",
-    "coords": [1075,0,940,30,1210,30,1075,0]
   }
-
-
 ]

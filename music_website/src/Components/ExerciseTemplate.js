@@ -5,33 +5,11 @@ import "./../Styles/exercise.css";
 import ImageMapper from "react-img-mapper";
 import swal from "sweetalert";
 
+import * as Constants from "./Constants";
+
 var count;
 var isPlaying = false;
 
-let allCorrect = false;
-
-const PITCH_ERROR = "pitchError";
-const INTONATION_ERROR = "intonationError";
-const RHYTHM_ERROR = "rhythmError";
-const NO_ERROR = "noError";
-const ERROR_SIGN = "errorSign"
-
-const INITIAL_PREFILL_COLOR = "#ffffff00";
-const INITIAL_FILL_COLOR = "#e3fc0080";
-const INITIAL_STROKE_COLOR = "#ffffff00";
-
-// The 80 at the end of a hex value means 50% transparency
-const COLOR_NO_ERROR = "#e3fc0080";
-const COLOR_PITCH_ERROR = "#9013fe80";
-const COLOR_RHYTHM_ERROR = "#d0021b80";
-const COLOR_INTONATION_ERROR = "#ffa50080";
-const COLOR_ERROR_SIGN = "#0eebb980";
-// The color used for transparency
-const COLOR_TRANSPARENT = "#ffffff00";
-// The color used for incorrect answers
-const COLOR_INCORRECT = "#0eebb980";
-
-const WINDOW_WIDTH_OFFSET = 90;
 
 class ExerciseTemplate extends Component {
   constructor(props) {
@@ -48,6 +26,7 @@ class ExerciseTemplate extends Component {
     this.shapes = this.props.data.shapes;
 
     this.audio = new Audio(this.sound);
+
     this.IMAGE_MAP = {
       name: "map",
       areas: this.shapes,
@@ -55,10 +34,9 @@ class ExerciseTemplate extends Component {
 
     this.state = {
       coordinates: [0, 0],
-      selectedArea: { id: "0", isError: false, errorType: "noError" },
+      selectedArea: { id: "0", errorType: "noError" },
       imageWidth: 0,
       windowWidth: window.innerWidth,
-      jsonGeneratorSelection: "noError",
       toggle: true,
       ALL_SHAPES: this.shapes,
       theMap: this.IMAGE_MAP,
@@ -67,22 +45,29 @@ class ExerciseTemplate extends Component {
     };
 
     /*
-        This watches for when the window is resized and updates the
-        windowWidth so the mapper gets set to the width of the window
-        */
+    This watches for when the window is resized and updates the
+    windowWidth so the mapper gets set to the width of the window
+    */
     window.addEventListener("resize", () => {
-      this.setState({ windowWidth: window.innerWidth - WINDOW_WIDTH_OFFSET });
+      this.setState({ windowWidth: window.innerWidth - Constants.WINDOW_WIDTH_OFFSET });
     });
   }
 
   /*
-    This sets the initial color of each shape
-    */
+  This sets the initial color of each shape
+  */
   setInitialShapeColors(someShapes) {
     for (let shape of someShapes) {
-      shape["preFillColor"] = INITIAL_PREFILL_COLOR;
-      shape["fillColor"] = INITIAL_FILL_COLOR;
-      shape["strokeColor"] = INITIAL_STROKE_COLOR;
+      // If the shape indicates the general region where an error should be, then it should be invisible
+      if (shape.errorType == Constants.ERROR_INDICATOR) {
+        shape["preFillColor"] = Constants.COLOR_TRANSPARENT;
+        shape["fillColor"] = Constants.COLOR_TRANSPARENT;
+        shape["strokeColor"] = Constants.COLOR_TRANSPARENT;
+      } else {
+        shape["preFillColor"] = Constants.INITIAL_PREFILL_COLOR;
+        shape["fillColor"] = Constants.INITIAL_FILL_COLOR;
+        shape["strokeColor"] = Constants.INITIAL_STROKE_COLOR;
+      }
     }
   }
 
@@ -90,7 +75,7 @@ class ExerciseTemplate extends Component {
    * Updates the windowWidth state to the current window width
    */
   updateWindowWidth = () => {
-    this.setState({ windowWidth: window.innerWidth - WINDOW_WIDTH_OFFSET });
+    this.setState({ windowWidth: window.innerWidth - Constants.WINDOW_WIDTH_OFFSET });
   };
 
   /**
@@ -113,12 +98,13 @@ class ExerciseTemplate extends Component {
   async componentDidMount() {
     this.setInitialState()
       .then(this.getImageWidthHeight())
-      .finally(() => {
+      .then(() => {
         this.refreshMapper();
         // Temporary fix for the occasional issue where the shapes won't appear
-        setTimeout(() => {  this.refreshMapper(); }, 500);
-        setTimeout(() => {  this.refreshMapper(); }, 2000);
-        setTimeout(() => {  this.refreshMapper(); }, 5000);
+        // TODO improve this
+        setTimeout(() => { this.refreshMapper(); }, 500);
+        setTimeout(() => { this.refreshMapper(); }, 2000);
+        setTimeout(() => { this.refreshMapper(); }, 5000);
       });
   }
 
@@ -165,76 +151,42 @@ class ExerciseTemplate extends Component {
     );
   };
 
-  turnErrorSignON(errorSignID) {
-    for (const sign of this.IMAGE_MAP.areas) {
-      if (sign.id == errorSignID) {
-        sign.fillColor = COLOR_ERROR_SIGN;
-        sign.preFillColor = COLOR_ERROR_SIGN;
-      }
-    }
-  }
-  turnErrorSignOFF(errorSignID) {
-    for (const sign of this.IMAGE_MAP.areas) {
-      if (sign.shape == 'poly') {
-        sign.fillColor = COLOR_TRANSPARENT;
-        sign.preFillColor = COLOR_TRANSPARENT;
-      }
-    }
-  }
-  /**
-   * Determines which error sign is associated with the given shape then
-   * calls the turnErrorSignON function to turn the correct error sign red
-   */
-  whichErrorSign(shape) {
-    let closest = 10000;
-    let errorSignID;
-    for (const sign of this.IMAGE_MAP.areas) {
-      if (sign.errorType == ERROR_SIGN) {
-        let diff = Math.abs(shape.coords[0] - sign.coords[0]);
-        if (diff < closest) {
-          closest = diff;
-          errorSignID = sign.id;
-        }
-      }
-    }
-    this.turnErrorSignON(errorSignID);
-  }
-
   /**
    * This is triggered when a shape is clicked
    */
   clicked(area) {
     for (const shape of this.IMAGE_MAP.areas) {
-      if (shape.errorType == "errorSign") {
-        //do nothing
+      if (shape.errorType == Constants.ERROR_INDICATOR) {
+        continue;
       }
-      else if (shape.errorType != "rhythmError") {
+      else if (shape.errorType == Constants.RHYTHM_ERROR) {
         if (shape.id === area.id) {
-          if (area.fillColor === COLOR_PITCH_ERROR) {
-            shape.fillColor = COLOR_INTONATION_ERROR;
-            shape.preFillColor = COLOR_INTONATION_ERROR;
-          } else if (area.fillColor === COLOR_INTONATION_ERROR) {
-            shape.fillColor = COLOR_NO_ERROR;
-            shape.preFillColor = COLOR_TRANSPARENT;
-          } else if (area.fillColor === COLOR_NO_ERROR) {
-            shape.fillColor = COLOR_PITCH_ERROR;
-            shape.preFillColor = COLOR_PITCH_ERROR;
+          if (area.fillColor === Constants.COLOR_NO_ERROR) {
+            shape.fillColor = Constants.COLOR_RHYTHM_ERROR;
+            shape.preFillColor = Constants.COLOR_RHYTHM_ERROR;
+          } else if (area.fillColor === Constants.COLOR_RHYTHM_ERROR) {
+            shape.fillColor = Constants.COLOR_NO_ERROR;
+            shape.preFillColor = Constants.COLOR_TRANSPARENT;
           } else {
-            shape.fillColor = COLOR_NO_ERROR;
-            shape.preFillColor = COLOR_TRANSPARENT;
+            shape.fillColor = Constants.COLOR_NO_ERROR;
+            shape.preFillColor = Constants.COLOR_TRANSPARENT;
           }
         }
-      } else {
+      }
+      else {
         if (shape.id === area.id) {
-          if (area.fillColor === COLOR_NO_ERROR) {
-            shape.fillColor = COLOR_RHYTHM_ERROR;
-            shape.preFillColor = COLOR_RHYTHM_ERROR;
-          } else if (area.fillColor === COLOR_RHYTHM_ERROR) {
-            shape.fillColor = COLOR_NO_ERROR;
-            shape.preFillColor = COLOR_TRANSPARENT;
+          if (area.fillColor === Constants.COLOR_PITCH_ERROR) {
+            shape.fillColor = Constants.COLOR_INTONATION_ERROR;
+            shape.preFillColor = Constants.COLOR_INTONATION_ERROR;
+          } else if (area.fillColor === Constants.COLOR_INTONATION_ERROR) {
+            shape.fillColor = Constants.COLOR_NO_ERROR;
+            shape.preFillColor = Constants.COLOR_TRANSPARENT;
+          } else if (area.fillColor === Constants.COLOR_NO_ERROR) {
+            shape.fillColor = Constants.COLOR_PITCH_ERROR;
+            shape.preFillColor = Constants.COLOR_PITCH_ERROR;
           } else {
-            shape.fillColor = COLOR_NO_ERROR;
-            shape.preFillColor = COLOR_TRANSPARENT;
+            shape.fillColor = Constants.COLOR_NO_ERROR;
+            shape.preFillColor = Constants.COLOR_TRANSPARENT;
           }
         }
       }
@@ -277,112 +229,121 @@ class ExerciseTemplate extends Component {
   }
 
   /*
-    This returns a summary of correct/incorrect selections for the user
-    */
-  generateResults() {
-    let reportText = "";
-
-    let pitchErrorsCorrect = 0;
-    let pitchErrorsMissed = 0;
-    let rhythmErrorsCorrect = 0;
-    let rhythmErrorsMissed = 0;
-    let intonationErrorsCorrect = 0;
-    let intonationErrorsMissed = 0;
-    let noErrorsCorrect = 0;
-    let noErrorsMissed = 0;
-
+  This highlights any shapes inside an error indicator rectangle
+  */
+  highlightShapesInIndicators(someShape) {
     for (const shape of this.state.ALL_SHAPES) {
-      // Check if the shape's fill color is correct
-      if (shape.errorType === PITCH_ERROR) {
-        if (shape.fillColor === COLOR_PITCH_ERROR) {
-          pitchErrorsCorrect += 1;
-        } else {
-          pitchErrorsMissed += 1;
-          this.whichErrorSign(shape);
-        }
-      } else if (shape.errorType === INTONATION_ERROR) {
-        if (shape.fillColor === COLOR_INTONATION_ERROR) {
-          intonationErrorsCorrect += 1;
-        } else {
-          intonationErrorsMissed += 1;
-          this.whichErrorSign(shape);
-        }
-      } else if (shape.errorType === RHYTHM_ERROR) {
-        if (shape.fillColor === COLOR_RHYTHM_ERROR) {
-          rhythmErrorsCorrect += 1;
-        } else {
-          rhythmErrorsMissed += 1;
-          this.whichErrorSign(shape);
-        }
-      } else if (shape.errorType === NO_ERROR) {
-        if (shape.fillColor === COLOR_NO_ERROR) {
-          noErrorsCorrect += 1;
-          shape.preFillColor = COLOR_TRANSPARENT;
-          shape.strokeColor = COLOR_TRANSPARENT;
-        } else {
-          noErrorsMissed += 1;
-          this.whichErrorSign(shape);
-        }
-      }
+      if (shape.errorType === Constants.ERROR_INDICATOR) {
+        const coords = shape.coords;
+        const topLeftX = coords[0];
+        const topLeftY = coords[1];
+        const bottomRightX = coords[2];
+        const bottomRightY = coords[3];
 
-      const totalCorrect =
-        pitchErrorsCorrect +
-        rhythmErrorsCorrect +
-        intonationErrorsCorrect +
-        noErrorsCorrect;
-      const totalMissed =
-        pitchErrorsMissed +
-        rhythmErrorsMissed +
-        intonationErrorsMissed +
-        noErrorsMissed;
-      const pitchErrors = pitchErrorsCorrect + pitchErrorsMissed;
-      const rhythmErrors = rhythmErrorsCorrect + rhythmErrorsMissed;
-      const intonationErrors = intonationErrorsCorrect + intonationErrorsMissed;
+        const type = someShape.errorType;
 
-      reportText = `Here are the results of your submission:\n\nIncorrect guesses are represented by the cyan circles.\n\n`;
+        // Handle circle type errors
+        if (type === Constants.PITCH_ERROR || type === Constants.INTONATION_ERROR || type === Constants.NO_ERROR) {
+          const xCoord = someShape.coords[0];
+          const yCoord = someShape.coords[1];
 
-      reportText += `There are ${pitchErrors + rhythmErrors + intonationErrors} errors in this exercise.\n`;
-      reportText += `You found ${pitchErrorsCorrect + rhythmErrorsCorrect + intonationErrorsCorrect} error(s) and missed ${pitchErrorsMissed + rhythmErrorsMissed + intonationErrorsMissed} error(s).\n\n`;
-
-      if (noErrorsMissed > 0) {
-        reportText += `You incorrectly labeled ${noErrorsMissed} shape(s) as being errors when they were not errors.\n\n`;
-      }
-
-      if (totalMissed > 0) {
-        allCorrect = false;
-        reportText = reportText.concat(`You missed: \n`);
-        if (pitchErrorsMissed > 0) {
-          reportText = reportText.concat(`${pitchErrorsMissed} pitch error`);
-          if (pitchErrorsMissed > 1) {
-            reportText = reportText.concat(`s`);
+          // Check if the circle's coordinates are inside the rectangle
+          if (xCoord > topLeftX && xCoord < bottomRightX && yCoord > topLeftY && yCoord < bottomRightY) {
+            // Change the color of the error indicator to make it non transparent
+            shape["preFillColor"] = Constants.COLOR_ERROR_INDICATOR;
+            shape["fillColor"] = Constants.COLOR_ERROR_INDICATOR;
+            shape["strokeColor"] = Constants.COLOR_ERROR_INDICATOR;
           }
-          reportText = reportText.concat(`\n`);
         }
-        if (rhythmErrorsMissed > 0) {
-          reportText = reportText.concat(`${rhythmErrorsMissed} rhythm error`);
-          if (rhythmErrorsMissed > 1) {
-            reportText = reportText.concat(`s`);
+        // Handle rectangle type errors
+        else if (type === Constants.RHYTHM_ERROR || type === Constants.NO_ERROR_RECT) {
+          const otherCoords = someShape.coords;
+          const otherTopLeftX = otherCoords[0];
+          const otherTopLeftY = otherCoords[1];
+          const otherBottomRightX = otherCoords[2];
+          const otherBottomRightY = otherCoords[3];
+
+          // Check if the rectangle's coordinates are inside the outside rectangle
+          if (otherTopLeftX > topLeftX && otherTopLeftY > topLeftY && otherBottomRightX < bottomRightX && otherBottomRightY < bottomRightY) {
+            // Change the color of the error indicator to make it non transparent
+            shape["preFillColor"] = Constants.COLOR_ERROR_INDICATOR;
+            shape["fillColor"] = Constants.COLOR_ERROR_INDICATOR;
+            shape["strokeColor"] = Constants.COLOR_ERROR_INDICATOR;
           }
-          reportText = reportText.concat(`\n`);
         }
-        if (intonationErrorsMissed > 0) {
-          reportText = reportText.concat(
-            `${intonationErrorsMissed} intonation error`
-          );
-          if (intonationErrorsMissed > 1) {
-            reportText = reportText.concat(`s`);
-          }
-          reportText = reportText.concat(`\n`);
-        }
-      } else {
-        reportText = reportText.concat(
-          `You correctly identified all errors!\n`
-        );
-        allCorrect = true;
       }
     }
 
-    return reportText;
+    this.refreshMapper();
+  }
+
+  /*
+  This is triggered when the submit button is clicked
+  */
+  handleSubmit() {
+    // Reset all errorIndicator colors to default
+    for (const shape of this.state.ALL_SHAPES) {
+      if (shape.errorType === Constants.ERROR_INDICATOR) {
+        shape["preFillColor"] = Constants.COLOR_TRANSPARENT;
+        shape["fillColor"] = Constants.COLOR_TRANSPARENT;
+        shape["strokeColor"] = Constants.COLOR_TRANSPARENT;
+      }
+    }
+
+    let incorrectAnswers = 0;
+
+    // Find incorrect answers
+    for (const shape of this.state.ALL_SHAPES) {
+      if (!this.isSelectionCorrect(shape)) {
+        // If an answer is incorrect, check if it's inside a errorIndicator rectangle,
+        // and if it is change the color of the rectangle
+
+        this.highlightShapesInIndicators(shape);
+
+        incorrectAnswers += 1;
+      }
+
+      /* if (shape.errorType === Constants.ERROR_INDICATOR) {
+        shape["preFillColor"] = Constants.COLOR_TRANSPARENT;
+        shape["fillColor"] = Constants.COLOR_TRANSPARENT;
+        shape["strokeColor"] = Constants.COLOR_TRANSPARENT;
+      } */
+    }
+
+    console.log(`incorrectAnswers = ${incorrectAnswers}`);
+
+    // If all the answers are correct, show a popup
+    if (incorrectAnswers === 0) {
+      swal("Good job, you got everything correct!");
+    }
+
+    this.refreshMapper();
+  }
+
+  isSelectionCorrect(someShape) {
+    // Check if the shape's fill color is correct
+    if (someShape.errorType === Constants.PITCH_ERROR) {
+      if (someShape.fillColor === Constants.COLOR_PITCH_ERROR) {
+        return true;
+      }
+    } else if (someShape.errorType === Constants.INTONATION_ERROR) {
+      if (someShape.fillColor === Constants.COLOR_INTONATION_ERROR) {
+        return true;
+      }
+    } else if (someShape.errorType === Constants.RHYTHM_ERROR) {
+      if (someShape.fillColor === Constants.COLOR_RHYTHM_ERROR) {
+        return true;
+      }
+    } else if (someShape.errorType === Constants.NO_ERROR) {
+      if (someShape.fillColor === Constants.COLOR_NO_ERROR) {
+        return true;
+      }
+    } else if (someShape.errorType === Constants.ERROR_INDICATOR) {
+      // ERROR_INDICATOR is not an error, so it's never incorrect
+      return true;
+    }
+
+    return false;
   }
 
   render() {
@@ -471,14 +432,7 @@ class ExerciseTemplate extends Component {
         <Button
           id="submit"
           onClick={() => {
-            const results = this.generateResults();
-
-            swal(results);
-
-            /*if (allCorrect === true) {
-              swal(results);
-            }*/
-            this.refreshMapper();
+            this.handleSubmit();
           }}
           type="button"
           buttonStyle="btn--primary--solid"

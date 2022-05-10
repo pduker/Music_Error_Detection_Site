@@ -1,225 +1,128 @@
 [
   {
     "id": "8b8bb0c5-ac07-4230-b26a-9a2eef58124b",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "coords": [157,103,20]
-    },
-
+    "coords": [157, 103, 20]
+  },
   {
     "id": "07365dc3-fcc3-412e-b793-3afbceb22030",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "coords": [229,96,20]
-    },
-  
+    "coords": [229, 96, 20]
+  },
   {
     "id": "4b7f48f0-f9b4-4ac9-abae-f148b998a867",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "coords": [283,93,20]
-    },
-
+    "coords": [283, 93, 20]
+  },
   {
     "id": "e044251f-e22a-4430-ba6b-66e21522400f",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "coords": [356,87,20]
-    },
-
+    "coords": [356, 87, 20]
+  },
   {
     "id": "42082d5d-64ff-4759-ba76-1e4fdac6cabe",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "coords": [427,83,20]
-    },
-
+    "coords": [427, 83, 20]
+  },
   {
     "id": "09f377bf-076b-4af0-bec8-62c9cfce8434",
-    "isError": true,
     "errorType": "pitchError",
     "shape": "circle",
-    "coords": [497,77,20]
-    },
-
+    "coords": [497, 77, 20]
+  },
   {
     "id": "3b178bea-79c1-4d41-b149-25181a1640e8",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "coords": [
-    551,
-    80,
-    20
-    ]
-    },
-
+    "coords": [551, 80, 20]
+  },
   {
     "id": "60b3afd3-0f1e-4bd7-a53b-59f05f225151",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "coords": [
-    666,
-    82,
-    20
-    ]
-    },
-
+    "coords": [666, 82, 20]
+  },
   {
     "id": "43759e44-ad54-403f-83cf-a262907f9e45",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "coords": [
-    719,
-    88,
-    20
-    ]
-    },
-                  
+    "coords": [719, 88, 20]
+  },
   {
     "id": "5668e78e-801e-48b0-a645-1686696cd98e",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "coords": [
-    768,
-    91,
-    20
-    ]
-    },
-
+    "coords": [768, 91, 20]
+  },
   {
     "id": "8028cc40-0c3b-43d5-a3dd-feafa23ea7cb",
-    "isError": true,
     "errorType": "intonationError",
     "shape": "circle",
-    "coords": [
-    824,
-    97,
-    20
-    ]
-    },
-
+    "coords": [824, 97, 20]
+  },
   {
     "id": "6dd1c39f-c0a8-4384-a546-6773cd280253",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "coords": [
-    895,
-    87,
-    20
-    ]
-    },
-
+    "coords": [895, 87, 20]
+  },
   {
     "id": "9080c366-8e01-4f1d-bb43-a6bd341f912e",
-    "isError": false,
     "errorType": "noError",
     "shape": "circle",
-    "coords": [
-    967,
-    101,
-    20
-    ]
-    },
-
+    "coords": [967, 101, 20]
+  },
   {
     "id": "e7fbee93-665f-4d3c-944a-1ed9d97d94c5",
-    "isError": false,
     "errorType": "rhythmError",
     "shape": "rect",
-    "coords": [
-    148,
-    29,
-    252,
-    49
-    ]
-    },
-
+    "coords": [148, 29, 252, 49]
+  },
   {
     "id": "82a9f8d5-05d6-4d1e-a5b1-bb254d680bcb",
-    "isError": true,
     "errorType": "rhythmError",
     "shape": "rect",
-    "coords": [
-    272,
-    32,
-    381,
-    48
-    ]
-    },
-
+    "coords": [272, 32, 381, 48]
+  },
   {
     "id": "9ca400fd-9adc-43a7-a2aa-4b22127ac449",
-    "isError": false,
     "errorType": "rhythmError",
     "shape": "rect",
-    "coords": [
-    408,
-    31,
-    509,
-    49
-    ]
-    },
-
+    "coords": [408, 31, 509, 49]
+  },
   {
     "id": "52744da0-0d4b-429e-94fb-c3130af5f89a",
-    "isError": false,
     "errorType": "rhythmError",
     "shape": "rect",
-    "coords": [
-    519,
-    32,
-    635,
-    52
-    ]
-    },
-
+    "coords": [519, 32, 635, 52]
+  },
   {
     "id": "6bf9a214-412d-4677-8d8c-c4b4ce8041ee",
-    "isError": false,
     "errorType": "rhythmError",
     "shape": "rect",
-    "coords": [
-    646,
-    32,
-    781,
-    52
-    ]
-    },
-
+    "coords": [646, 32, 781, 52]
+  },
   {
     "id": "a5bc0846-faa9-4ea7-8b93-5a2660a3bb18",
-    "isError": false,
     "errorType": "rhythmError",
     "shape": "rect",
-    "coords": [
-    790,
-    33,
-    930,
-    52
-    ]
-    },
-
+    "coords": [790, 33, 930, 52]
+  },
   {
     "id": "3e0fd5be-0872-496e-9414-8b0e1186aa3c",
-    "isError": false,
     "errorType": "rhythmError",
     "shape": "rect",
-    "coords": [
-    944,
-    32,
-    1058,
-    54
-    ]
-    }
-
+    "coords": [944, 32, 1058, 54]
+  },
+  {
+    "id": "beaef2a3-1155-48bc-81bb-e60153433213",
+    "errorType": "errorIndicator",
+    "shape": "rect",
+    "coords": [139, 2, 403, 185]
+  }
 ]

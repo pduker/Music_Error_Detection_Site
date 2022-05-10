@@ -11,6 +11,23 @@ import ExerciseTemplate from "../Components/ExerciseTemplate";
 
 import { LEVEL_DATA } from "../Exercises/LevelData";
 
+const DEBUG_DATA = {
+  "number": 0,
+  "description": " - debug exercise preview",
+  "maxRecommendedPlays": 2,
+  "exercises": [
+    {
+      "number": 0,
+      "sound": require("../Exercises/Debug/sound.mp3"),
+      "display": require("../Exercises/Debug/display2.png"),
+      "shapes": require("../Exercises/Debug/shapes.json")
+    }
+  ]
+};
+
+const DEBUG_EXERCISES = DEBUG_DATA["exercises"][0];
+
+
 export default class Routes extends Component {
   render() {
     return (
@@ -20,6 +37,8 @@ export default class Routes extends Component {
             <Route path="/" exact component={Home} />
 
             <Route path="/Debug" component={Debug} />
+
+            <Route path="/DebugPreview" render={(props) => (<ExerciseTemplate {...props} data={DEBUG_EXERCISES} levelData={DEBUG_DATA} />)} />
 
             {
               LEVEL_DATA.map(
