@@ -4,7 +4,7 @@ from PIL import Image
 assignmentsDirectory = f"{os.getcwd()}\\music_website\\src\\Exercises"
 
 if __name__ == "__main__":
-    print("Start")
+    print("Program start")
 
     print(f"assignmentsDirectory = {assignmentsDirectory}\n")
 
@@ -19,7 +19,7 @@ if __name__ == "__main__":
                 width, height = image.size
                 if width < 1200:
                     print(
-                        f"Warning: display.png at this path is low quality (width: {width} height: {height}): {pathToImage}"
+                        f"WARNING: display.png at this path is low quality (width: {width} height: {height}): {pathToImage}"
                     )
                 ## Check if display2.png exists
                 if os.path.exists(display2Path):
@@ -34,7 +34,7 @@ if __name__ == "__main__":
                     image.save(display2Path)
                     print("Done")
 
-                print()
+                #print()
 
 
-print("\nEnd")
+print("Program end")

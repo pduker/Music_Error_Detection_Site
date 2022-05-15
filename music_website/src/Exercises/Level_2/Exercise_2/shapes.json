@@ -5,116 +5,130 @@
     "shape": "circle",
     "coords": [104, 70, 20]
   },
-
   {
     "id": "3bc519e9-efd2-4f90-ab36-92a0a2c9abae",
     "errorType": "noError",
     "shape": "circle",
     "coords": [153, 43, 20]
   },
-
   {
     "id": "993d6b7c-5215-492e-8fe2-f4888e869ca7",
     "errorType": "noError",
     "shape": "circle",
     "coords": [201, 48, 20]
   },
-
   {
     "id": "2e02e3fb-4e37-4776-ace4-85d02df9f398",
     "errorType": "noError",
     "shape": "circle",
     "coords": [253, 70, 20]
   },
-
   {
     "id": "B6E1B4F6-ED2E-4B7A-95D6-038143F663A2",
     "errorType": "noError",
     "shape": "circle",
     "coords": [304, 46, 20]
   },
-
   {
     "id": "7a38a83f-cd44-4827-ba57-256b489c1e20",
     "errorType": "noError",
     "shape": "circle",
     "coords": [304, 46, 20]
   },
-
   {
     "id": "ab061db3-2de1-40f7-a96b-c9b6b1e58dfa",
     "errorType": "noError",
     "shape": "circle",
     "coords": [426, 71, 20]
   },
-
   {
     "id": "261650f6-8e42-4a8d-af21-66c489723bb4",
     "errorType": "noError",
     "shape": "circle",
     "coords": [522, 70, 20]
   },
-
   {
     "id": "12d199da-2736-41c6-949e-c51cabfdec1d",
     "errorType": "noError",
     "shape": "circle",
     "coords": [684, 55, 20]
   },
-
   {
     "id": "3686bd6f-451e-4f33-905e-5c00ce665fc5",
     "errorType": "pitchError",
     "shape": "circle",
     "coords": [735, 48, 20]
   },
-
   {
     "id": "706bddee-4706-4ea3-8a40-3a35cf4d926c",
     "errorType": "noError",
     "shape": "circle",
     "coords": [832, 50, 20]
   },
-
   {
     "id": "de3045c3-fa16-4b59-a046-2f4e67b54f50",
     "errorType": "noError",
     "shape": "circle",
     "coords": [885, 49, 20]
   },
-
   {
     "id": "e0965499-2185-457a-99a9-1c850f7624d8",
     "errorType": "noError",
     "shape": "circle",
     "coords": [952, 52, 20]
   },
-
   {
     "id": "76e598a0-a64e-449a-b86a-0d01026d2692",
     "errorType": "pitchError",
     "shape": "circle",
     "coords": [1005, 58, 20]
   },
-
   {
     "id": "4e868ccf-87fd-4ff9-b60f-b5d2b1484b02",
     "errorType": "pitchError",
     "shape": "circle",
     "coords": [1053, 51, 20]
   },
-
   {
     "id": "81d8cdb2-01c2-4585-bcc8-c8d8d573dde6",
     "errorType": "noError",
     "shape": "circle",
     "coords": [1109, 46, 20]
   },
-
   {
     "id": "ed729edd-15a3-4d3c-960e-fc4ae0d1024f",
     "errorType": "noError",
     "shape": "circle",
     "coords": [1179, 69, 20]
+  },
+  {
+    "id": "3ba4046d-6a75-4973-a466-ca28c27cf6fe",
+    "errorType": "noError",
+    "shape": "circle",
+    "coords": [355, 46, 20]
+  },
+  {
+    "id": "4cf0beb0-6a94-4540-a2a4-86b28fe2bf1f",
+    "errorType": "errorIndicator",
+    "shape": "rect",
+    "coords": [66, 2, 398, 115]
+  },
+  {
+    "id": "243f5b18-e454-4347-8cae-7e8c93cc8724",
+    "errorType": "errorIndicator",
+    "shape": "rect",
+    "coords": [401, 1, 605, 117]
+  },
+  {
+    "id": "2b01c857-83d3-455d-a8e3-c546ce0c9003",
+    "errorType": "errorIndicator",
+    "shape": "rect",
+    "coords": [610, 1, 925, 116]
+  },
+  {
+    "id": "59887de1-7101-4e61-88ff-68db4703f739",
+    "errorType": "errorIndicator",
+    "shape": "rect",
+    "coords": [928, 0, 1219, 112]
   }
 ]

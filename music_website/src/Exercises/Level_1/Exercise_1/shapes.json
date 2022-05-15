@@ -1,37 +1,37 @@
 [
   {
     "id": "c7eda1e3-aa4b-40a7-adb0-e25a6d77ae3c",
-    "errorType": "rhythmError",
+    "errorType": "noErrorRect",
     "shape": "rect",
     "coords": [125, 10, 259, 27]
   },
   {
     "id": "2acf64bd-bf22-4ed8-b653-cfa081a5edd7",
-    "errorType": "rhythmError",
+    "errorType": "noErrorRect",
     "shape": "rect",
     "coords": [273, 11, 418, 33]
   },
   {
     "id": "10ef8e5b-896d-4e15-bf3b-60e9d5bdc16e",
-    "errorType": "rhythmError",
+    "errorType": "noErrorRect",
     "shape": "rect",
     "coords": [437, 20, 524, 38]
   },
   {
     "id": "8f1d371d-461c-4f65-bc0c-48ccda5acbac",
-    "errorType": "rhythmError",
+    "errorType": "noErrorRect",
     "shape": "rect",
     "coords": [538, 21, 631, 42]
   },
   {
     "id": "69a61242-bf31-4e44-822c-3b82b04b0321",
-    "errorType": "rhythmError",
+    "errorType": "noErrorRect",
     "shape": "rect",
     "coords": [647, 14, 775, 39]
   },
   {
     "id": "124f2317-5624-44a0-9e8c-076329fbcd0d",
-    "errorType": "rhythmError",
+    "errorType": "noErrorRect",
     "shape": "rect",
     "coords": [797, 18, 921, 41]
   },
@@ -43,8 +43,32 @@
   },
   {
     "id": "5b2fb8ed-c313-49ec-90b6-d201482e19a2",
-    "errorType": "rhythmError",
+    "errorType": "noErrorRect",
     "shape": "rect",
     "coords": [1061, 20, 1192, 40]
+  },
+  {
+    "id": "db06f988-71e8-4a31-af37-443a21d5da17",
+    "errorType": "errorIndicator",
+    "shape": "rect",
+    "coords": [86, 2, 427, 129]
+  },
+  {
+    "id": "43e2dbf0-975b-4ead-8e69-349c8cc76804",
+    "errorType": "errorIndicator",
+    "shape": "rect",
+    "coords": [429, 0, 636, 126]
+  },
+  {
+    "id": "8aa8f392-1c04-45ef-9769-053a4463264d",
+    "errorType": "errorIndicator",
+    "shape": "rect",
+    "coords": [641, 1, 930, 129]
+  },
+  {
+    "id": "f701b909-0b06-4814-ab02-b5412d949a2a",
+    "errorType": "errorIndicator",
+    "shape": "rect",
+    "coords": [935, 1, 1219, 130]
   }
 ]

@@ -100,5 +100,29 @@
     "errorType": "noError",
     "shape": "circle",
     "coords": [1162, 80, 20]
+  },
+  {
+    "id": "fc043ecf-e9dd-45b3-8a89-36f64740e278",
+    "errorType": "errorIndicator",
+    "shape": "rect",
+    "coords": [139, 19, 456, 131]
+  },
+  {
+    "id": "027d23ec-33dc-4bc3-a1ff-0b26cf13239f",
+    "errorType": "errorIndicator",
+    "shape": "rect",
+    "coords": [458, 16, 654, 131]
+  },
+  {
+    "id": "dbfe9981-7c3e-4a2e-a520-37e6a7d9c1bf",
+    "errorType": "errorIndicator",
+    "shape": "rect",
+    "coords": [655, 11, 939, 128]
+  },
+  {
+    "id": "48cf2e57-019d-4848-8afd-e165242b669c",
+    "errorType": "errorIndicator",
+    "shape": "rect",
+    "coords": [941, 12, 1216, 130]
   }
 ]

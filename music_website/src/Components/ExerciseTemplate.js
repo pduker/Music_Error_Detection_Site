@@ -155,11 +155,11 @@ class ExerciseTemplate extends Component {
    * This is triggered when a shape is clicked
    */
   clicked(area) {
-    for (const shape of this.IMAGE_MAP.areas) {
+    for (const shape of this.state.theMap.areas) {
       if (shape.errorType == Constants.ERROR_INDICATOR) {
         continue;
       }
-      else if (shape.errorType == Constants.RHYTHM_ERROR) {
+      else if (shape.errorType == Constants.RHYTHM_ERROR || shape.errorType == Constants.NO_ERROR_RECT) {
         if (shape.id === area.id) {
           if (area.fillColor === Constants.COLOR_NO_ERROR) {
             shape.fillColor = Constants.COLOR_RHYTHM_ERROR;
@@ -335,6 +335,10 @@ class ExerciseTemplate extends Component {
         return true;
       }
     } else if (someShape.errorType === Constants.NO_ERROR) {
+      if (someShape.fillColor === Constants.COLOR_NO_ERROR) {
+        return true;
+      }
+    } else if (someShape.errorType === Constants.NO_ERROR_RECT) {
       if (someShape.fillColor === Constants.COLOR_NO_ERROR) {
         return true;
       }

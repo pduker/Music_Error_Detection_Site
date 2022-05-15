@@ -17,12 +17,12 @@ import { LEVEL_DATA } from "../Exercises/LevelData";
 
 var count;
 var isPlaying = false;
+
+var imagePath = IMAGE_PATH;
+var shapeJson = SHAPE_JSON;
 var audio = new Audio(AUDIO_FILE);
 
-var IMAGE_MAP = {
-  name: "debug-map",
-  areas: SHAPE_JSON,
-};
+var IMAGE_MAP = { name: "debug-map", areas: shapeJson };
 
 var topLeftX = 0;
 var topLeftY = 0;
@@ -44,13 +44,13 @@ class Debug extends Component {
       windowWidth: window.innerWidth,
       shapeToGenerate: "noError",
       toggle: true,
-      allCurrentErrors: SHAPE_JSON,
       theMap: IMAGE_MAP,
       rhythmSide: "topLeft",
       errorIndicatorSide: "topLeft",
-      noErrorRectSide: "topLeft"
+      noErrorRectSide: "topLeft",
+      currentImagePath: imagePath,
+      currentAudio: audio
     };
-    // this.handleClickSheetMusic = this.handleClickSheetMusic.bind(this);
 
     /*
         This watches for when the window is resized and updates the
@@ -90,7 +90,7 @@ class Debug extends Component {
 
     const imgData = await this.getImageWidthHeight();
 
-    this.setInitialShapeColors(SHAPE_JSON);
+    this.setInitialShapeColors(shapeJson);
 
     this.setState({
       imageWidth: imgData.width,
@@ -126,7 +126,7 @@ class Debug extends Component {
               console.log(`someExercise:`, someExercise);
 
               let optionText = `Level ${someLevel.number} Exercise ${someExercise.number}`;
-              let optionElement = `<option value="8">${optionText}</option>`;
+              let optionElement = `<option value="${someLevel.number}_${someExercise.number}">${optionText}</option>`;
 
               document.getElementById("exercise_picker").innerHTML += optionElement;
             }
@@ -153,7 +153,7 @@ class Debug extends Component {
         buttonStyle="btn--primary--solid"
         buttonSize="btn--medium"
       >
-        Play Sound
+        Play Sound (ignore this)
       </Button>
     );
   };
@@ -161,8 +161,41 @@ class Debug extends Component {
   /*
   This is triggered when a drop down option is selected in the exercise picker
   */
-  handleExercisePicker() {
-    console.log(`handleExercisePicker`);
+  handleExercisePicker = () => {
+    let input = document.getElementById("exercise_picker").value;
+
+    if (input === "debug") {
+      this.setState({ theMap: { name: "debug-map", areas: shapeJson } });
+      this.setState({ currentImagePath: IMAGE_PATH, currentAudio: new Audio(AUDIO_FILE) });
+      audio = new Audio(AUDIO_FILE);
+      return;
+    }
+
+    const split = input.split("_");
+    const levelNumber = parseInt(split[0]);
+    const exerciseNumber = parseInt(split[1]);
+
+    for (const someLevel of LEVEL_DATA) {
+      if (someLevel.number === levelNumber) {
+        for (const someExercise of someLevel.exercises) {
+          if (someExercise.number === exerciseNumber) {
+            imagePath = someExercise.display;
+            shapeJson = someExercise.shapes;
+            audio = new Audio(someExercise.sound);
+
+            this.setState({ currentImagePath: imagePath, currentAudio: new Audio(someExercise.sound) });
+            this.setState({ theMap: { name: "debug-map", areas: shapeJson } });
+
+            // Update the image state
+            this.getImageWidthHeight().then(data => {
+              this.setState({ imageWidth: data.width, })
+            });
+          }
+        }
+      }
+    }
+
+    this.refreshMapper();
   }
 
   /**
@@ -223,7 +256,9 @@ class Debug extends Component {
    * can get a preview of where the shape will be placed
    */
   addTempShape(shapeObject) {
-    IMAGE_MAP.areas.push(shapeObject);
+    let tmp = this.state.theMap;
+    tmp.areas.push(shapeObject);
+    this.setState({ theMap: tmp });
     this.refreshMapper();
   }
 
@@ -231,10 +266,11 @@ class Debug extends Component {
    * This removes the temporary shape with id "tmp"
    */
   removeTempShape() {
-    const removeIndex = IMAGE_MAP.areas.findIndex((item) => item.id === "tmp");
+    let tmp = this.state.theMap;
+    const removeIndex = tmp.areas.findIndex((item) => item.id === "tmp");
 
     if (removeIndex !== -1) {
-      IMAGE_MAP.areas.splice(removeIndex, 1);
+      tmp.areas.splice(removeIndex, 1);
     }
 
     this.refreshMapper();
@@ -423,7 +459,7 @@ class Debug extends Component {
    * This is triggered when a shape is clicked
    */
   clicked(area) {
-    for (const shape of this.IMAGE_MAP.areas) {
+    for (const shape of this.state.theMap.areas) {
       if (shape.errorType == Constants.ERROR_INDICATOR) {
         continue;
       }
@@ -475,7 +511,7 @@ class Debug extends Component {
       return data;
     };
 
-    img.src = IMAGE_PATH;
+    img.src = this.state.currentImagePath;
     return img.onload();
   }
 
@@ -512,7 +548,7 @@ class Debug extends Component {
     let noErrorsCorrect = 0;
     let noErrorsMissed = 0;
 
-    for (const shape of this.state.allCurrentErrors) {
+    for (const shape of this.state.theMap.areas) {
       // Check if the shape's fill color is correct
       if (shape.errorType === Constants.PITCH_ERROR) {
         if (shape.fillColor === Constants.COLOR_PITCH_ERROR) {
@@ -644,7 +680,7 @@ class Debug extends Component {
 
         <Button
           onClick={() => {
-            for (const shape of this.state.allCurrentErrors) {
+            for (const shape of this.state.theMap.areas) {
               // If the shape is transparent, make it visible
               if (shape.preFillColor === Constants.COLOR_TRANSPARENT) {
                 shape.preFillColor = Constants.COLOR_NO_ERROR;
@@ -661,7 +697,7 @@ class Debug extends Component {
           buttonStyle="btn--primary--solid-go-back"
           buttonSize="btn--medium"
         >
-          Toggle Transparency
+          Toggle Transparency (ignore this)
         </Button>
 
         <Button
@@ -675,7 +711,7 @@ class Debug extends Component {
 
         <Button
           onClick={() => {
-            for (const shape of this.state.allCurrentErrors) {
+            for (const shape of this.state.theMap.areas) {
               switch (shape.errorType) {
                 case Constants.PITCH_ERROR:
                   shape.fillColor = Constants.COLOR_PITCH_ERROR;
@@ -779,14 +815,14 @@ class Debug extends Component {
           buttonStyle="btn--primary--solid"
           buttonSize="btn--medium"
         >
-          Submit
+          Submit (ignore this)
         </Button>
 
         <br></br>
         <br></br>
 
-        <select id="exercise_picker" onchange={this.handleExercisePicker}>
-          <option value="none" defaultValue disabled hidden>Pick an Exercise</option>
+        <select id="exercise_picker" onChange={this.handleExercisePicker}>
+          <option value="debug" defaultValue>Debug</option>
         </select>
 
         <br></br>
@@ -807,7 +843,7 @@ class Debug extends Component {
         >
           <ImageMapper
             id="mapper-debug"
-            src={IMAGE_PATH}
+            src={this.state.currentImagePath}
             map={this.state.theMap}
             onImageMouseMove={(evt) => this.moveOnImage(evt)}
             onMouseMove={(area, _, evt) => this.moveOnArea(area, evt)}
