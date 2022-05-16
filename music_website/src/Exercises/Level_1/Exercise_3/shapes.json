@@ -1,0 +1,52 @@
+[
+  {
+    "id": "b2ae963e-f753-4b78-98bf-1b43b7d0138d",
+    "errorType": "noErrorRect",
+    "shape": "rect",
+    "coords": [133, 9, 257, 35]
+  },
+  {
+    "id": "1f7e9904-ae79-4099-8508-ea4e0979c266",
+    "errorType": "noErrorRect",
+    "shape": "rect",
+    "coords": [284, 8, 409, 39]
+  },
+  {
+    "id": "372bea8f-3255-4cf5-96fc-a4535222616f",
+    "errorType": "noErrorRect",
+    "shape": "rect",
+    "coords": [445, 11, 520, 34]
+  },
+  {
+    "id": "2d63b480-f37c-4d77-97ea-e609b07059e0",
+    "errorType": "noErrorRect",
+    "shape": "rect",
+    "coords": [540, 10, 626, 32]
+  },
+  {
+    "id": "6f1670f5-836a-4261-865f-cd6eeb6bd341",
+    "errorType": "noErrorRect",
+    "shape": "rect",
+    "coords": [657, 9, 779, 32]
+  },
+  {
+    "id": "4e9e0aab-3d8c-4ce9-a75e-77c027ffe512",
+    "errorType": "rhythmError",
+    "shape": "rect",
+    "coords": [796, 5, 918, 24]
+  },
+  {
+    "id": "03af1d78-7324-4fdc-84a6-a84fe4c6986e",
+    "errorType": "noErrorRect",
+    "shape": "rect",
+    "coords": [926, 15, 1068, 28]
+  },
+  {
+    "id": "a5b85c86-83cf-4e7b-b2a9-30a548a16e81",
+    "errorType": "rhythmError",
+    "shape": "rect",
+    "coords": [1088, 12, 1192, 30]
+  }
+
+
+]

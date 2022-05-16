@@ -15,6 +15,12 @@ export const LEVEL_DATA = [
                 "sound": require("../Exercises/Level_1/Exercise_2/sound.mp3"),
                 "display": require("../Exercises/Level_1/Exercise_2/display2.png"),
                 "shapes": require("../Exercises/Level_1/Exercise_2/shapes.json")
+            },
+            {
+                "number": 3,
+                "sound": require("../Exercises/Level_1/Exercise_3/sound.mp3"),
+                "display": require("../Exercises/Level_1/Exercise_3/display2.png"),
+                "shapes": require("../Exercises/Level_1/Exercise_3/shapes.json")
             }
         ]
     },

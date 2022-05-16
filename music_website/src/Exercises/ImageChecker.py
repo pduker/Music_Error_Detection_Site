@@ -1,7 +1,7 @@
 import os
 from PIL import Image
 
-assignmentsDirectory = f"{os.getcwd()}\\music_website\\src\\Exercises"
+assignmentsDirectory = "/Users/pduker/Documents/Projects/Error_Detection_Game/Github_repository/Music_Error_Detection_Site/music_website/src/Exercises"
 
 if __name__ == "__main__":
     print("Program start")
@@ -10,10 +10,11 @@ if __name__ == "__main__":
 
     for path, subdirs, files in os.walk(assignmentsDirectory):
         for name in files:
+
             ## Check for display.png
             if name == "display.png":
-                pathToImage = f"{path}\\{name}"
-                display2Path = f"{path}\\display2.png"
+                pathToImage = f"{path}/{name}"
+                display2Path = f"{path}/display2.png"
                 ## Check the image width of display.png and warn if it isn't high quality
                 image = Image.open(pathToImage)
                 width, height = image.size
