@@ -396,14 +396,28 @@ class ExerciseTemplate extends Component {
             <br></br>
             <br></br>
             Once you are satisfied with your work, you can press the “Submit”
-            button. At the bottom of the screen you will see how many errors you
-            identified correctly. Each error that is not identified correctly
-            will return a light blue circle. Try to identify the correct error
-            again.
+            button.
+            If some the shapes you selected were incorrect, a transparent rectangle will appear over the general
+            area where you were wrong. Try to find the correct error(s) and press the submit button again.
+            If all of your selections were correct, a popup will appear.
+            <br></br>
+            <br></br>
+            Note: If the shapes are not showing up, try clicking the "Reload Shapes" button.
           </h2>
         </div>
 
         {this.RenderButtonAndSound()}
+
+        <Button
+          onClick={() => {
+            this.refreshMapper();
+          }}
+          type="button"
+          buttonStyle="btn--primary--solid-go-back"
+          buttonSize="btn--medium"
+        >
+          Reload Shapes
+        </Button>
 
         <br></br>
         <br></br>
