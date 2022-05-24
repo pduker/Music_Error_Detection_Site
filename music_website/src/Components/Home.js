@@ -17,7 +17,7 @@ class Home extends Component {
         <h2 style={{ color: 'white' }}>Welcome to the Music Error Detection Practice Quiz!</h2>
         <h3 style={{ color: 'white' }}>Click on one of the levels below to begin.</h3>
 
-        <div>
+        {/* <div>
           <Button
             onClick={() => {
               history.push('/Debug');
@@ -27,7 +27,7 @@ class Home extends Component {
             buttonStyle="home-page-button"
             buttonSize="btn--large"
           >Debug</Button>
-        </div>
+        </div> */}
 
         {
           LEVEL_DATA.map((data) => (

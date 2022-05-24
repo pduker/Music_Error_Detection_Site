@@ -90,7 +90,7 @@ export const LEVEL_DATA = [
                 "number": 1,
                 "sound": require("../Exercises/Level_5/Exercise_1/sound.mp3"),
                 "display": require("../Exercises/Level_5/Exercise_1/display2.png"),
-                "shapes": require("../Exercises/placeholder.json")
+                "shapes": require("../Exercises/Level_5/Exercise_1/shapes.json")
             }
         ]
     }
